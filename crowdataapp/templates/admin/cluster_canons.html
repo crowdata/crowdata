@@ -1,0 +1,38 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n staticfiles  %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />{% endblock %}
+{% block bodyclass %} change-form{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+     Back to  <a href="../">Canons</a> &rsaquo;
+</div>
+{% endblock %}
+
+{% block content_title %}
+<h1>Unir los siguientes canons</h1>
+{% endblock %}
+{% block content %}
+<div id="content-main">
+  <form enctype="multipart/form-data" action="/admin/crowdataapp/canonicalfieldentrylabel/cluster/" method="post" id="canons_form">
+    {% csrf_token %}
+
+    <input type="hidden" name="ids" value="{{ canon_ids }}">
+
+    <div>
+      <fieldset class="module aligned">
+
+        {% for canon in canons %}
+
+            <input type="radio" name="canon" value="{{ canon.id }}"> {{ canon.value }} -  en {{ canon.document_set.name }} para {{ canon.form_field.label }}<br>
+
+        {% endfor %}
+
+        <p class="help">Elegir uno de los canonicos que será nuestro canonico principal.</p>
+      </fieldset>
+      <div class="submit-row">
+        <input type="submit" value="Unir" class="default" name="_save">
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

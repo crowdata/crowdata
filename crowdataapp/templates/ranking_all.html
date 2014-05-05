@@ -1,0 +1,23 @@
+{% load pagination_tags %}
+{% load crowdataapp_tags %}
+{% load humanize %}
+<div class="caja001 cont_ranking_all">
+  <div class="titulo">{{ranking.name}}</div>
+  <div class="subtitulo"></div>
+  {% autopaginate ranking_calculate_all %}
+  {% for i in ranking_calculate_all %}
+  <div class="gris">
+    <div class="caja_numeral">
+      {% index_in_ranking page forloop.counter 20 %}
+    </div>
+    <div class="caja_detalle">
+      <a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}">{{ i.0 }}</a>
+    </div>
+    <div class="caja_monto" data-formatTextMillons="true">
+      $ {{ i.1|floatformat:"0"|intcomma }}
+    </div>
+    <br clear="all" />
+  </div>
+  {% endfor %}
+  {% paginate %}
+</div>

@@ -1,0 +1,129 @@
+# CrowData
+# Copyright (C) 2013 Manuel Aristaran
+# This file is distributed under the same license as the PACKAGE package.
+# Manuel Aristaran <manuel at jazzido dot com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-15 12:34-0400\n"
+"PO-Revision-Date: 2013-10-11 13:59-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: crowdataapp/admin.py:50
+#, fuzzy
+msgid "Document Set Description"
+msgstr "Conjuntos de documentos"
+
+#: crowdataapp/admin.py:53
+#, fuzzy
+msgid "Document Set Behaviour"
+msgstr "Conjunto de documentos"
+
+#: crowdataapp/admin.py:82
+msgid ""
+"Header cells must be <code>document_title</code> and <code>document_url</"
+"code>"
+msgstr ""
+"Las celdas del encabezado deben ser <code>document_title</code> y "
+"<code>document_url</code>"
+
+#: crowdataapp/admin.py:95
+msgid "Could not create documents"
+msgstr "No se pudieron crear los documentos"
+
+#: crowdataapp/admin.py:101
+#, python-format
+msgid "Successfully created %(count)d documents"
+msgstr "Se crearon %(count)d documentos"
+
+#: crowdataapp/models.py:45
+msgid "Document set name"
+msgstr "Nombre del conjunto de documentos"
+
+#: crowdataapp/models.py:48
+#, fuzzy
+msgid "Description for this Document Set"
+msgstr "Agregar documentos a este Conjunto de Documentos"
+
+#: crowdataapp/models.py:53
+msgid ""
+"Javascript function to insert the document into the DOM. Receives the URL of "
+"the document as its only parameter. Must be called insertDocument"
+msgstr ""
+"Función de javascript para insertar el document en el DOM. Recibe el URL del "
+"documento como único parámetro. Debe llamarse 'insertDocument'"
+
+#: crowdataapp/models.py:56
+msgid "Maximum number of times each document will be shown to users."
+msgstr "Máxima cantidad de veces que se mostrará cada documento"
+
+#: crowdataapp/models.py:60
+msgid "HTML to be inserted in the <head> element in this page"
+msgstr "HTML a ser insertado en el elemento <head>"
+
+#: crowdataapp/models.py:66
+msgid "Document Set"
+msgstr "Conjunto de documentos"
+
+#: crowdataapp/models.py:67
+msgid "Document Sets"
+msgstr "Conjuntos de documentos"
+
+#: crowdataapp/models.py:79
+msgid "Export all answers to CSV"
+msgstr "Exportar todas las respuestas a CSV"
+
+#: crowdataapp/models.py:80
+msgid "Add Documents to this document set"
+msgstr "Agregar documentos a este Conjunto de Documentos"
+
+#: crowdataapp/models.py:125
+msgid "Autocomplete"
+msgstr "Autocompletar"
+
+#: crowdataapp/models.py:126
+msgid "If checked, this text field will have autocompletion"
+msgstr "Si está activado, este campo de texto tendrá autocompletado"
+
+#: crowdataapp/models.py:128
+msgid "Order"
+msgstr "Orden"
+
+#: crowdataapp/models.py:174
+msgid "Document title"
+msgstr "Título del documento"
+
+#: crowdataapp/models.py:175
+msgid "Document URL"
+msgstr "URL del documento"
+
+#: crowdataapp/models.py:246
+msgid "Document"
+msgstr "Documento"
+
+#: crowdataapp/models.py:247
+msgid "Documents"
+msgstr "Documentos"
+
+#: crowdataapp/templates/document_set_landing.html:7
+#, python-format
+msgid ""
+"This is the landing page for document set <strong>%(document_set.name)s</"
+"strong>"
+msgstr ""
+
+#: crowdataapp/templates/document_set_landing.html:8
+msgid "Give me one document!"
+msgstr ""
+
+#: templates/admin/base_site.html:4 templates/admin/base_site.html.py:7
+msgid "CrowData Administration"
+msgstr "Administración de CrowData"

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load humanize %}
+
+{% block scripts %}
+
+<script src='{% static "crowdataapp/js/typeahead.min.js" %}'></script>
+<script src='{% static "crowdataapp/js/jquery.inputmask.bundle.min.js" %}'></script>
+<script src='{% static "crowdataapp/js/jquery.cookie.js" %}'></script>
+<script src='{% static "crowdataapp/js/transcription_new.js" %}'></script>
+{{ head_html|safe }}
+{% endblock %}
+{% block headercontent %}
+  {{document.document_set}}
+{% endblock %}
+
+{% block content %}
+<div id="document-viewer-container"></div>
+<script>
+  {{ document.document_set.template_function|safe }}
+  insertDocument('{{document.url|safe}}');
+</script>
+{% endblock %}
+
+{% block rightcolumn %}
+
+<div class="contenedor">
+  <div class="head_especial">
+    <div class="cajas">
+      <div class="liberar">
+        <div class="central_data2">
+          <a href="{% url 'new_transcription' document_set.slug %}" class="vd_btn btn_bg_l" onClick="ga('send', 'event', 'Liberá un documento', 'show_document')">Liberá un documento
+            <!--
+            <img src='{% static "img/bot_libera.png" %}' alt="Liberá un dato ya!">
+             -->
+          </a>
+        </div>
+        <div class="central_data">
+          {% if document_set.get_verified_documents.count > 0 %}
+          ¡Ya revisamos {{ document_set.get_verified_documents.count }} de {{ document_set.documents.count }} documentos!
+
+          {% endif %}
+          <br />
+          <div class="regla2"><div class="medidor" style="width:{% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}%"> </div></div>
+        </div>
+        <div class="central_data">Gastos del Senado procesados: $ {{ document_set.amount_on_field|floatformat:"0"|intcomma }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="herramientasSociales social" style="height:90px;">
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){ create_sosial($('.herramientasSociales.social'), location.href, 'Revisé #GastosDelSenado. ¡Sumate!'); });
+</script>
+
+{% endblock %}

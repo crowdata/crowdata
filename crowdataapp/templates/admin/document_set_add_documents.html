@@ -1,0 +1,34 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n staticfiles  %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />{% endblock %}
+{% block bodyclass %} change-form{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+     Back to  <a href="../">{{ document_set.name}}</a> &rsaquo;
+</div>
+{% endblock %}
+
+{% block content_title %}
+<h1>Add documents to <em>{{ document_set.name }}</em></h1>
+{% endblock %}
+{% block content %}
+<div id="content-main">
+  <form enctype="multipart/form-data" action="" method="post" id="documentset_form">
+    {% csrf_token %}
+    <div>
+      <fieldset class="module aligned">
+        <div class="form-row field-name">
+          <div>
+            <label for="csv_file">CSV file:</label>
+            <input type="file" id="csv_file" name="csv_file">
+            <p class="help">Upload a CSV file with columns <code>document_title</code> and <code>document_url</code></p>
+          </div>
+        </div>
+      </fieldset>
+      <div class="submit-row">
+        <input type="submit" value="Save" class="default" name="_save">
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

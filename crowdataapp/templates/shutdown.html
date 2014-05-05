@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+
+{% block headercontent %}
+  {{document_set.name}}
+{% endblock %}
+
+{% block content %}
+<div class="introduccion">
+  {% if document_set.header_image %}
+  <img src="{{ document_set.header_image }}" width="316" height="216" class="fotovozdata" />
+  {% endif %}
+
+  <div class="text_intro">
+    {{document_set.description|linebreaks}}
+  </div>
+</div>
+<div class="cont_ranking">
+{% for ranking in document_set.rankings.all %}
+{% render_ranking ranking %}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block rightcolumn %}
+<div class="contenedor">
+  <div class="head_especial">
+    <div class="cajas">
+      <div class="liberar">
+        <div class="central_data2">
+          <a href="#" class="vd_btn btn_bg_l">Liberá un documento
+            <!--
+            <img src='{% static "img/bot_libera.png" %}' alt="Liberá un dato ya!">
+             -->
+          </a>
+        </div>
+        <div class="central_data">
+          {% if document_set.get_verified_documents.count > 0 %}
+          ¡Ya revisamos {{ document_set.get_verified_documents.count }} de {{ document_set.documents.count }} documentos!
+
+          {% endif %}
+          <br />
+          <div class="regla2"><div class="medidor" style="width:{% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}%"> </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="herramientasSociales social" style="height:90px;">
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){ create_sosial($('.herramientasSociales.social')); });
+</script>
+<div class="caja_usuarios">
+  <div class="titulo">Ranking de usuarios</div>
+  <div class="subtitulo">
+    Por cantidad de documentos revisados
+  </div>
+  {% for user in document_set.leaderboard|slice:":10" %}
+  <div class="gris">
+    <div class="caja_numeral"><img src="http://bucket.clanacion.com.ar/avatar/{{user.username|slice:"-1:"}}/{{ user.username|slice:"3:" }}G.jpg" width="45" height="45" /></div>
+    <div class="caja_detalle">
+      <a href="https://registracion.lanacion.com.ar/mis-datos-publico?usuario_id={{ user.username|slice:"3:" }}">{{ user.get_full_name }}</a>
+    </div>
+    <div class="caja_monto">
+      {{ user.num_entries }}
+    </div>
+    <br clear="all" />
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

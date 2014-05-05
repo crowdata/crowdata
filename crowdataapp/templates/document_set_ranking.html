@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+
+{% block headercontent %}
+  {{document_set.name}}
+{% endblock %}
+
+{% block content %}
+
+{% render_ranking_all ranking search_term %}
+
+{% endblock %}
+
+{% block rightcolumn %}
+{% load humanize %}
+
+  {% documents_verified document_set  %}
+
+
+<div class="herramientasSociales social" style="height:90px;">
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){ create_sosial($('.herramientasSociales.social')); });
+</script>
+  
+  {% list_ranking_user document_set.leaderboard|slice:":10" %}
+
+{% endblock %}

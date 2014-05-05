@@ -1,0 +1,31 @@
+<!-- PIE -->
+    <footer>
+    <!-- <section id="pie" class="floatFix expandido"> -->
+    <section id="pie" class="floatFix">
+    	<div class="logos">
+	    	<a class="" href="http://www.mozillaopennews.org/" title="Knight-Mozilla OpenNews" target="_blaank"><img src="/static/img/Open_News-small.png" alt="Knight-Mozilla OpenNews" /></a>
+	    	<a class="ln" href="http://www.lanacion.com.ar/" title="Diario La Nación" target="_blaank"><img src="/static/img/lanacioncom.png" alt="Diario La Nación" /></a>
+    	</div>
+        <ul><li><a href="http://especiales.lanacion.com.ar/varios/mapa-sitio/index.asp" title="Mapa del sitio"><b>Mapa del sitio</b></a><span>|</span></li><li><a href="https://registracion.lanacion.com.ar/faq" title="Ayuda">Ayuda</a><span>|</span></li><li><a href="https://registracion.lanacion.com.ar/condiciones" title="Términos y condiciones">Términos y condiciones</a><span>|</span></li><li><a href="http://www.lanacion.in/" title="Cómo anunciar" rel="external">Cómo anunciar</a><span>|</span></li><li><a href="http://lanacion.zonajobs.com.ar/" title="Trabajá con nosotros" rel="external">Trabajá con nosotros</a></li></ul>
+            <div class="copy floatFix"><span class="textoCopy">Copyright 2013 SA LA NACION | Todos los derechos reservados.&nbsp;</span><b>Miembro de GDA. Grupo de Diarios América</b></div>
+            <a onclick="ga('send', 'event', 'ver_creditos', location.pathname); show_ctos(this);" id="creditos">créditos</a>
+    </section>
+    </footer>
+    <script type="text/javascript">
+// ().show_p({title:'Créditos', body: $('#creditos_cont').html()}); return false;
+			function show_ctos(e){
+				var cto_popup = new Popup();	
+				cto_popup.show_p({title:'Créditos', body: $('#creditos_cont').html(), addclass: "popup_cont_small"});
+				
+			}
+    </script>
+    <!-- créditos -->
+
+    <script type="text/template" id="creditos_cont">
+      <ul class="ctos">
+        <li>Manuel Aristarán - <span class="rol">2013 Knight Mozilla OpenNews Fellow</span></li>
+        <li>Gabriela Rodriguez - <span class="rol">2014 Knight Mozilla OpenNews Fellow</span></li>
+        <li>Cristian Bertelgni - <span class="rol">Programador LA NACION</span></li>
+      </ul>
+    </script>
+<!-- PIE -->

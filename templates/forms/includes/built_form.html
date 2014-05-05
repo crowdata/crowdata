@@ -1,0 +1,59 @@
+{% load static from staticfiles %}
+<form action="{{ form.get_absolute_url }}" method="post"
+      {% if form_for_form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+  <fieldset>
+    <div class="contenedor">
+      <div class="head_especial">
+        <div class="cajas">
+          <div class="mapa">
+            <div class="titulo">
+              <legend>{{ form.title }}</legend>
+            </div>
+            {% if form.intro %}
+            <div class="subtitulo">
+              {{ form.intro|safe }}
+            </div>
+            {% endif %}
+            {% csrf_token %}
+            {% for field in form_for_form %}
+            <div class="vd_label {% if forloop.counter|divisibleby:"2" %}label_gris{% else %}label_bco{% endif %}">
+              <div class="ayuda">
+                <!-- <a onmouseover="ShowContent('help_{{forloop.counter}}'); return true;" onmouseout="HideContent('help_{{forloop.counter}}'); return true;"  href="javascript:ShowContent('help_{{forloop.counter}}')"><img src='{% static "img/ayuda.png" %}' width="49" height="17" border="0" alt="ayuda" /></a> -->
+                <a href="#" onclick="ga('send', 'event', 'New_trancription','BTN_HELP'); return false;"><img src='{% static "img/ayuda.png" %}' width="49" height="17" border="0" alt="ayuda" /></a>
+              </div>
+              <!--
+              <div id="help_{{forloop.counter}}" class="ayuda_hidden">
+                <b>{{field.label}}</b><br />
+                {{field.help_text}}
+              </div> <!-- /div#ayuda1 
+
+              <span>{{field.label_tag}}</span>
+              -->
+
+              <b>{{field.label_tag}}</b>
+              <p class="field_help">{{field.help_text}}</p>
+              {{ field }} <img class="spinner" src="{% static 'img/ajax-loader.gif'%}">
+            </div> <!-- /div.label_{bco,gris} -->
+            {% endfor %} {% comment %} for field in form_for_form {% endcomment %}
+            <div class="label_bco_enviar">
+              <div style="clear:left;">&nbsp;</div>
+              <input type="image" src="{% static "img/bot_enviar.png" %}" alt="Enviar" onClick="ga('send', 'event', 'New_trancription','Enviar')" >
+              <br />
+              <br />
+              -- o <b>saltear</b> porque --
+              <br />
+              <br />
+              <a href="#" onClick="ga('send', 'event', 'New_trancription','No tiene importe final', '{{document.url}}')" class="vd_btn btn_bg_l red">No tiene importe final</a>
+              <br />
+              <br />
+              <a href="#" onClick="ga('send', 'event', 'New_trancription','Es un llamado a licitación', '{{document.url}}')" class="vd_btn btn_bg_l red">Es un llamado a licitación</a>
+              <br />
+              <br />
+              <a href="#" onClick="ga('send', 'event', 'New_trancription','Quiero otro documento', '{{document.url}}')" class="vd_btn btn_bg_l red">Quiero otro documento</a>
+            </div>
+          </div>  <!-- /div.mapa -->
+        </div> <!-- /div.cajas -->
+      </div>  <!-- /div.head_especial -->
+    </div>  <!-- /div.contenedor -->
+  </fieldset>
+</form>

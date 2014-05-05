@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block content %}
+<div class="pure-u-1">
+  <p>{% blocktrans %}<strong>Crowdata</strong> uses <a target="_blank" href="http://www.mozilla.org/en-US/persona/">Mozilla Persona</a>. Please click on the button above to sign in.</p>{% endblocktrans %}
+</div>
+{% endblock %}

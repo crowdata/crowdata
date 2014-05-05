@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+{% load pagination_tags %}
+
+
+{% block headercontent %}
+  <!-- {{document_set.name}} -->
+  {% trans "Perfil de usuario" %}
+{% endblock %}
+
+{% block content %}
+
+<!-- maqueta -->
+
+<div class="usuario">
+  <img src="http://bucket.clanacion.com.ar/avatar/{{profile.user.username|slice:"-1:"}}/{{ profile.user.username|slice:"3:" }}G.jpg" width="90" height="90" class="" />
+
+  <div class="text_usuario">
+  <p><b>
+  {{ full_name }}
+  <a target="_blank" style="font-size:12px" href="https://registracion.lanacion.com.ar/mis-datos-publico?usuario_id={{ profile.user.username|slice:"3:" }}"><span class="ver_mas">ver en lanacion.com</span></a>
+  </b></p>
+  <p>
+  Usuario: {{ profile.name }}
+  </p>
+  </div>
+</div>
+    <div class="caja001 ajuste" style="width:631px; margin-left:0">
+      <div class="titulo">Documentos Liberados</div>
+      <div class="subtitulo">Estos son los <b>{{ verified_documents_count }} documentos liberados</b> y validados de {{ full_name }}</div>
+  {% autopaginate verified_documents %}
+  {% for doc in verified_documents %}
+      <div class="gris">
+
+        <div class="caja_numeral">
+        {{ forloop.counter }}.
+        </div>
+        <div class="caja_detalle_usuario">
+        <a href="{% url 'show_document' doc.document_set.slug doc.id %}" target="_blank">{{ doc.name }}</a>
+        </div>
+        <br clear="all" />
+      </div>
+
+  {% endfor %}
+  {% paginate %}
+  </div>
+
+  <br clear="all" />
+<!--
+  <div id="paginado">
+  anterior | <a href="#" title="1"><b>1</b></a> | <a href="#" title="2">2</a> | <a href="#" title="3">3</a> | <a href="#" title="siguiente">siguiente</a>
+  </div>
+ -->
+
+  <!-- maqueta -->
+
+{% endblock %}
+
+{% block rightcolumn %}
+ 
+  {% documents_verified document_set %}
+
+  {% list_ranking_user users_ranking_list profile %}
+
+<div class="herramientasSociales social" style="overflow:hidden">
+</div>
+<script type="text/javascript">
+$(document).ready(function(){ create_sosial($('.herramientasSociales.social')); });
+</script>
+
+{% endblock %}

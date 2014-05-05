@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+{% load pagination_tags %}
+{% load crowdataapp_tags %}
+
+{% block headercontent %}
+  <!-- {{document_set.name}} -->
+  Documentos por {{ field_name }}
+{% endblock %}
+
+{% block content %}
+
+<!-- maqueta -->
+
+<div class="usuario">
+  {{ entry_value }}
+</div>
+
+  <div class="caja001 ajuste" style="width:631px; margin-left:0">
+      <div class="titulo">Documentos Liberados</div>
+      <div class="subtitulo">Estos son los <b>documentos liberados</b> que contienen el texto "<b>{{ entry_value }}</b>" en el <b>{{ field_name }}</b></div>
+  {% autopaginate documents %}
+  {% for doc in documents %}
+      <div class="gris">
+
+        <div class="caja_numeral">
+        {{ forloop.counter }}.
+        </div>
+        <div class="caja_detalle_usuario">
+        <a href="{% url 'show_document' document_set.slug doc.0 %}" target="_blank">{{ doc.1 }}</a>
+        </div>
+        <br clear="all" />
+      </div>
+
+  {% endfor %}
+  {% paginate %}
+  </div>
+
+  <br clear="all" />
+
+  <!-- maqueta -->
+{% endblock %}
+
+{% block rightcolumn %}
+{% load humanize %}
+
+  {% documents_verified document_set  %}
+
+<div class="herramientasSociales social" style="height:90px;">
+
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){ create_sosial($('.herramientasSociales.social')); });
+</script>
+
+  {% list_ranking_user document_set.leaderboard|slice:":10" %}
+
+{% endblock %}

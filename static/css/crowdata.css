@@ -1,0 +1,8 @@
+#header h1 {
+  display: inline;
+  letter-spacing: 0em;
+  font-size: 3em;
+}
+#document-viewer-container, #form-container {
+  margin: 0 auto;
+}

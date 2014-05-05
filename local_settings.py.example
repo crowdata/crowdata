@@ -1,0 +1,32 @@
+from settings import *
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+# for mozilla persona on local
+SESSION_COOKIE_SECURE = False
+BROWSERID_CREATE_USER = True
+
+
+LANACION_LOGIN_PAGE = ''
+
+def username(email):
+    return email
+BROWSERID_USERNAME_ALGO = username
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake'
+    }
+}

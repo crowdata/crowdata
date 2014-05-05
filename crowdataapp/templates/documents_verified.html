@@ -1,0 +1,24 @@
+{% load humanize %}
+<div class="contenedor">
+  <div class="head_especial">
+    <div class="cajas">
+      <div class="liberar">
+        <div class="central_data2">
+          <a href="{% url 'new_transcription' document_set.slug %}" class="vd_btn btn_bg_l">Liberá un documento
+          </a>
+        </div>
+        <div class="central_data">
+          {% if document_set.get_verified_documents.count > 0 %}
+          ¡Ya revisamos {{ document_set.get_verified_documents.count }} de {{ document_set.documents.count }} documentos!
+
+          {% endif %}
+          <br />
+          <div class="regla2"><div class="medidor" style="width:{% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}%"> </div></div>
+        </div>
+        <div class="central_data">
+          <p data-formatTextMillons="true">Gastos del Senado procesados: $ {{ document_set.amount_on_field|floatformat:"0"|intcomma }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

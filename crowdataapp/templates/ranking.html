@@ -1,0 +1,19 @@
+{% load humanize %}
+<div class="caja001">
+  <div class="titulo"><a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" class="vd_titulo" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');">{{ranking.name}} <span class="ver_mas">ver mas</span></a></div>
+  <div class="subtitulo"></div>
+  {% for i in ranking.calculate %}
+  <div class="gris">
+    <div class="caja_numeral">
+      {{ forloop.counter }}
+    </div>
+    <div class="caja_detalle">
+      <a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}">{{ i.0 }}</a>
+    </div>
+    <div class="caja_monto" data-formatTextMillons="true">
+      $ {{ i.1|floatformat:"0"|intcomma }}
+    </div>
+    <br clear="all" />
+  </div>
+  {% endfor %}
+</div>
