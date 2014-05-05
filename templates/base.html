@@ -5,21 +5,21 @@
   <head>
     <!-- BEGIN header.inc -->
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>VozData - lanacion.com </title>
-    <link rel="icon" href='http://www.lanacion.com.ar/item1.ico' />
-    <meta name="title" content="VozData - lanacion.com ">
-    <meta name="description" content="VozData - lanacion.com">
+    <title>CrowData -  </title>
+    <link rel="icon" href='/item1.ico' />
+    <meta name="title" content="CrowData -  ">
+    <meta name="description" content="CrowData - ">
     <meta name="keywords" content="">
     <meta name="news_keywords" content="">
     <meta name="copyright" content="2013 lanacion.com">
-    <meta name="application-name" content="lanacion.com">
+    <meta name="application-name" content="">
 <!-- mestas face-->
-    <meta property="og:title" content="VozData - lanacion.com "/>
-    <meta property="og:image" content="http://vozdata.lanacion.com.ar/static/img/portada_gastos_senado1.jpg"/>
-    <meta property="og:site_name" content="VozData - lanacion.com "/>
+    <meta property="og:title" content="CrowData -  "/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="CrowData -  "/>
     <meta property="og:description" content=""/>
     <!-- fix IE < 9 -->
-    <!--[if lt IE 9]> 
+    <!--[if lt IE 9]>
     <script type="text/javascript">
       // create elements HTML5 for IE
       document.createElement("aside");
@@ -35,8 +35,8 @@
     <link rel="stylesheet" href='{% static "css/fonts.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/reset_header_footer.min.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/vozdata.css" %}' type="text/css" />
-    <!-- descomentar cuando se use el datepicker 
+    <link rel="stylesheet" href='{% static "css/crowdata.css" %}' type="text/css" />
+    <!-- descomentar cuando se use el datepicker
     <link rel="stylesheet" href='{% static "css/datepicker.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/datepicker3.css" %}' type="text/css" />
      -->
@@ -92,7 +92,7 @@
           else { dd.style.display = "none"; }
       }
 
-      
+
       //-->
     </script>
     <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
@@ -100,11 +100,11 @@
     <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
     <script src="{% static "js/crowdata.js" %}"></script>
     <script src="{% static "js/simpleslide.js" %}"></script>
-    <!-- 
+    <!--
     <script src="{% static "js/jquery.easing.min.js" %}"></script>
      -->
      <script>
-     
+
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -205,7 +205,7 @@
     <script type="text/javascript">
       function show_ajax_popup(conf){
         $.get(conf.url, function(data){
-          var cto_popup = new Popup();  
+          var cto_popup = new Popup();
           cto_popup.show_p({title:conf.title, body: data, addclass: ''});
           ga('send', 'event', conf.title, location.pathname);
         });
