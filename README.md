@@ -1,44 +1,53 @@
-vozdata
-=======
+CrowData
+========
 
-**Importante**: esta es la versión de [CrowData](http://github.com/jazzido/crowdata) que se usará para implementar el producto VozData de La Nación
+This is the software we used to create [VozData](http://vozdata.lanacion.com).
+
+### Install Locally
 
 ## Crear entorno de desarrollo ##
 
-1. Se recomienda el uso de [virtualenv](http://virtualenv.org) — Instalarlo.
+1. Python 2.7.5
 
-2. Crear un entorno virtual y activarlo:
+2. We recommend the use of [virtualenv](http://virtualenv.org) — Install it.
+
+2. Create a virtual environment and activate it:
 
     ```bash
     virtualenv ~/.python-envs/crowdata
     . ~/.python-envs/crowdata/bin/activate
     ```
 
-3. Obtener el código fuente:
+3. Get the source code:
 
     ```bash
-    git clone https://github.com/lanacioncom/vozdata.git crowdata
+    git clone https://github.com/jazzido/crowdata-wit.git crowdata
     cd crowdata
     ```
 
-4. Instalar las dependencias:
+4. Install dependencies:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-   (Si está en Ubuntu, es probable que también deba instalar `python-dev` antes de instalar las depdencias.)
+   (If you are using Ubuntu, you may need to install `python-dev` before dependencies.)
 
-4. Crear una base de datos PostgreSQL
+4. Create PostgreSQL database
 
-4. Renombrar `local_settings.py.example` a `local_settings.py` y editarlo para ajustar los parámetros de conexión a DB según corresponda.
+    ```bash
+    $ createuser -s -h localhost crow_user
+    $ createdb -O crow_user -h localhost crowdata_developmen
+    ```
+
+4. We keep local settings outside GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.
 
     ```python
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
             'NAME': 'crowdata_development',                      # Or path to database file if using sqlite3.
-            'USER': '',
+            'USER': 'crow_user',
             'PASSWORD': '',
             'HOST': '',
             'PORT': '',
@@ -46,26 +55,26 @@ vozdata
     }
     ```
 
-5. Inicializar la DB:
+5. Initialize the database:
 
     ```bash
     python manage.py syncdb
     python manage.py migrate --all
     ```
 
-6. Iniciar el servidor de desarrollo
+6. Start the development server
 
     ```bash
     python manage.py runserver_plus
     ```
 
-## Al crear un document set ##
+## When creating a document set ##
 
-Si vas a utilizar document cloud para cargar y visualizar los documentos PDFs, tenes que tener en el head html:
+If you are going to use document cloud to load and view the PDF documents, then you will have to set the 'head html' in the admin, when creating the document set:
 
 ``` <script src="http://s3.documentcloud.org/viewer/loader.js"></script> ```
 
-y en el template function:
+and the template function:
 
 ```
 // Javascript function to insert the document into the DOM.
@@ -80,8 +89,4 @@ function insertDocument(document_url) {
 }
 ```
 
-El copyright de [CrowData](http://github.com/jazzido/crowdata) es © 2013 Manuel Aristarán <jazzido@jazzido.com>.
-
-El diseño de VozData y las modificaciones de CrowData desarrolladas para VozData son © 2013 La Nación.
-
-[CrowData](http://github.com/jazzido/crowdata) fue creado gracias al apoyo de [Open News](http://www.opennews.org).
+[CrowData](http://github.com/jazzido/crowdata)'s copyright is © 2013 Manuel Aristarán <jazzido@jazzido.com>. [CrowData](http://github.com/jazzido/crowdata) was developed with [Open News](http://www.opennews.org) and [La Nacion Argentina](http://www.lanacion.com.ar).
