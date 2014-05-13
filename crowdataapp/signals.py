@@ -11,7 +11,7 @@ from crowdataapp import models
 def create_entry(sender=None, form=None, entry=None, document_id=None, **kwargs):
 
     request = sender
-
+    
     if not request.user.is_authenticated() or document_id is None:
         raise
 
@@ -38,7 +38,7 @@ def create_entry(sender=None, form=None, entry=None, document_id=None, **kwargs)
             entry.force_verify()
         else:
             entry.document.verify()
-    except:
+    except Exception as e:
         # should delete the 'entry' here
         entry.delete()
         raise

@@ -36,6 +36,9 @@
     <link rel="stylesheet" href='{% static "css/reset_header_footer.min.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/crowdata.css" %}' type="text/css" />
+    <!--<link rel="stylesheet" href='{% static "bootstrap/css/bootstrap.css" %}' type="text/css" />
+    <link rel="stylesheet" href='{% static "bootstrap/css/bootstrap-theme.css" %}' type="text/css" />-->
+
     <!-- descomentar cuando se use el datepicker
     <link rel="stylesheet" href='{% static "css/datepicker.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/datepicker3.css" %}' type="text/css" />
@@ -100,6 +103,7 @@
     <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
     <script src="{% static "js/crowdata.js" %}"></script>
     <script src="{% static "js/simpleslide.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
     <!--
     <script src="{% static "js/jquery.easing.min.js" %}"></script>
      -->
@@ -110,7 +114,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-43038614-3', 'lanacion.com.ar');
+      ga('create', '', '');
       ga('send', 'pageview');
     </script>
     {% block scripts %}
@@ -133,17 +137,11 @@
     <section id="item" class="floatFix" style="background:none; width:990px;margin:0 auto;padding:10px 0 0;position:relative">
     {% if request.user.is_admin or request.user.is_staff %}
     <div style="font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 15px; background-color: #ffcccc; border: 1px solid red;">
-      Logueado como <b>administrador</b>: viendo todos los proyectos
+      {{ _('Logged as') }}Logueado como <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
     </div>
     {% endif %}
 
       <article id="nota" itemscope="" itemtype="http://schema.org/NewsArticle" class="conTema">
-        <div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="path floatFix"><a href="http://www.lanacion.com.ar" alt="lanacion.com" title="lanacion.com" itemprop="url"><span itemprop="title">lanacion.com</span></a><span> | </span>
-          <div class="tag-destacado" itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-            <h2 itemprop="title"><a href="/cd/gastos-del-senado" alt="VozData" title="VozData" itemprop="url"><span itemprop="title">VozData</span></a></h2>
-          </div>
-          <span> | </span> <a href="/cd/gastos-del-senado" class="title_color"> Gastos Del Senado</a>
-        </div>
         <section id="anexos"></section>
 
         <section id="encabezado">
@@ -158,7 +156,6 @@
           <br />
           <br />
           <div class="central_data">
-            <a href="http://www.lanacion.com.ar/vozData" title="Volver a LN VozData"><img src="{% static 'imgs/volver.png' %}" width="149" height="27" border="0" alt="Volver a LN VozData" /></a>
           </div>
           {% endblock %}
         </section>
@@ -166,13 +163,13 @@
 
       <aside id="tercera">
         <div style="border:0px solid green; width:300px; height:50px; float:right; text-align:right;">
-          <a onclick="show_ajax_popup({url: '{% static "html/acerca.html" %}', title: '¿Qué es VozData?'})" title="" itemprop="url"><span itemprop="title">Acerca</span></a>
+          <a onclick="show_ajax_popup({url: '{% static "html/acerca.html" %}', title: '¿What is CrowData?'})" title="" itemprop="url"><span itemprop="title">Acerca</span></a>
           <span> | </span>
           <a onclick="show_ajax_popup({url: '{% static "html/preguntas_frecuentes.html" %}', title: 'Preguntas frecuentes'})" title="Preguntas frecuentes" itemprop="url"><span itemprop="title">Preguntas frecuentes</span></a>
           <span> | </span>
           <a <a onclick="show_ajax_popup({url: '{% static "html/aviso_legal.html" %}', title: 'Aviso legal'})" title="Aviso legal" itemprop="url" target="_blank"><span itemprop="title">Aviso legal</span></a>
           <span> | </span>
-          <a href="mailto:lndata@lanacion.com.ar" title="" itemprop="url"><span itemprop="title">Contacto</span></a>
+          <a href="mailto:" title="" itemprop="url"><span itemprop="title">Contacto</span></a>
           <br>
           <div style="border-top:1px solid #efefef; margin-top:10px; padding-top:7px;">
             {% if user.is_authenticated %}

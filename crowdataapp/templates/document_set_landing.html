@@ -31,12 +31,13 @@
 
   {% documents_verified document_set %}
 
-<div class="herramientasSociales social" style="height:90px;">
+  <div class="herramientasSociales social" style="height:90px;">
 
-</div>
-<script type="text/javascript">
-$(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Revisá #GastosdelSenado en #VozData"); });
-</script>
+  </div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
+  </script>
 
   {% list_ranking_user document_set.leaderboard|slice:":10" %}
 
