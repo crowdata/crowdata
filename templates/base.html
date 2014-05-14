@@ -1,5 +1,6 @@
  {% load i18n %}
  {% load static from staticfiles %}
+ {% load browserid %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -36,6 +37,8 @@
     <link rel="stylesheet" href='{% static "css/reset_header_footer.min.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "css/crowdata.css" %}' type="text/css" />
+    <link rel="stylesheet" src="{% static 'browserid/persona-buttons.css' %}">
+    {% browserid_css %}
     <!--<link rel="stylesheet" href='{% static "bootstrap/css/bootstrap.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "bootstrap/css/bootstrap-theme.css" %}' type="text/css" />-->
 
@@ -171,11 +174,13 @@
           <span> | </span>
           <a href="mailto:" title="" itemprop="url"><span itemprop="title">Contacto</span></a>
           <br>
+
+          {% browserid_info %}
           <div style="border-top:1px solid #efefef; margin-top:10px; padding-top:7px;">
             {% if user.is_authenticated %}
-            Hola, <a href="/cd/gastos-del-senado/users/{{ user.username }}">{{ user.get_full_name }}</a> <span> | </span> <a href="{% url 'logout_page' %}" alt="" title="" itemprop="url"><span itemprop="title"><b>Logout</b></span></a>
+              Hola, <a href="/cd/gastos-del-senado/users/{{ user.username }}">{{ user.get_full_name }}</a> <span> | </span> {% browserid_logout text='Logout' %}
             {% else %}
-            <a href="{% url 'login_page' %}" alt="" title="" itemprop="url"><span itemprop="title"><b>Login</b></span></a>
+              {% browserid_login text='Login' color='dark' %}
             {% endif %}
           </div>
         </div>
@@ -209,7 +214,9 @@
       }
     </script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{"parsetags": "explicit","lang": "es"}</script>
-
+    <script src="https://login.persona.org/include.js"></script>
+    <script src="{% static 'browserid/api.js' %}"></script>
+    <script src="{% static 'browserid/browserid.js' %}"></script>
   </body>
 
 </html>

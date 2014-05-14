@@ -133,7 +133,7 @@ def autocomplete_field(request, document_set, field_name):
 
 
 def login(request):
-    next_page = request.REQUEST.get(auth.REDIRECT_FIELD_NAME, reverse('document_set_view'))
+    next_page = request.REQUEST.get(auth.REDIRECT_FIELD_NAME, reverse('document_set_index'))
 
     if request.user.is_authenticated():
         return HttpResponseRedirect(next_page)
@@ -149,7 +149,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('document_set_view'))
+    return HttpResponseRedirect(reverse('document_set_index'))
 
 @login_required
 def after_login(request):
@@ -158,7 +158,7 @@ def after_login(request):
         del request.session['redirect_after_login']
         return redirect(redir)
 
-    return redirect(reverse('document_set_view'))
+    return redirect(reverse('document_set_index'))
 
 @render_to('edit_profile.html')
 @login_required

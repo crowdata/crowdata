@@ -9,6 +9,7 @@ js_info_dict = {
 }
 
 urlpatterns = patterns('',
+                       url(r'', include('django_browserid.urls')),
                        url(r'^cd/', include('crowdataapp.urls')),
                        url(r'^$', include('crowdataapp.urls')),
                        url(r'^admin/', include(admin.site.urls)),

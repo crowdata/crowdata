@@ -25,7 +25,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en'
 
 SITE_ID = 1
 
@@ -102,6 +102,7 @@ FORMS_BUILDER_USE_HTML5  = True
 INSTALLED_APPS = [
     'admintheme',
     'django.contrib.auth',
+    'django_browserid', # mozilla persona
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
@@ -122,6 +123,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = (
    'django.contrib.auth.backends.ModelBackend',
+   'django_browserid.auth.BrowserIDBackend',
 )
 
 

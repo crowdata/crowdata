@@ -10,6 +10,7 @@ django-ace==1.0.1
 django-admintheme==0.2
 django-annoying==0.7.9
 django-autofixture==0.6.3
+django-browserid==0.10.1
 django-countries==1.5
 django-debug-toolbar==1.0.1
 django-email-extras==0.1.13
