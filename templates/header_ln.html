@@ -1,20 +1,35 @@
+{% load browserid %}
 <!--CABEZAL-->
-<header>
-    <section class="cabezal interna">
-        <section class="desplegable floatFix">
-            <div class="logoConSeccion floatFix">
-                <section class="encabezado"><h1><a href="/">CrowData</a></h1></section>
-            </div>
-            <section class="buscador" id="buscador">
-                <ul>
-                    <li class="compartir floatFix"><a class="facebook" rel="external" title="crowdata en Facebook" target="_blank" href="http://www.facebook.com/crowdata">&nbsp;</a><a class="twitter" rel="external" title="crowdata en Twitter" target="_blank" href="http://twitter.com/crowdata">&nbsp;</a></li>
-                </ul>
-            </section>
-        </section>
-        </section>
-        <nav id="troncal">
+<header class="main">
+    <div class="brand">
+        <a href="javascript:void(0)" id="menu-nav" class="nav-visible"><i class="fa fa-bars"></i></a>
+        <a href="http://jazzido.github.com/crowdata" class="logo"><h1><strong>CrowData</strong></h1></a>
+    </div>
+    <nav class="navbar-left">
+        <ul class="list-inline">
+            <li><a href="">{{ _('Home') }}</a></li>
+            <li><a href="{% url 'admin:index'  %}">{{ _('Admin') }}</a></li>
+            <li><a href="http://github.com/jazzido/crowdata">{{ _('Source') }}</a></li>
+            <li><a href="http://crowdata.readthedocs.org/">{{ _('Documentation') }}</a></li>
+            <li><a href="http://vozdata.lanacion.com.ar">{{ _('Examples') }}</a></li>
+            <li>
 
-        </nav>
-        <div class="cierre"></div>
+            </li>
+          </ul>
+    </nav>
+    <nav class="navbar-right">
+        <ul class="list-inline">
+            <li><a href="javascript:void(0)" id="filter-nav"><i class="fa fa-search"></i></a></li>
+            <li>
+              {% browserid_info %}
+              {% if user.is_authenticated %}
+                <a href="reverse('user_profile', kwargs={'document_set':{{document_set}}, 'username':{{ user.username }} })">{{ user.get_full_name }}</a> <span> | </span> {% browserid_logout text=_('Logout')  %}
+              {% else %}
+                {% browserid_login text=_('Login') color='dark' %}
+              {% endif %}
+            </li>
+        </ul>
+    </nav>
+
 </header>
 <!--CABEZAL-->

@@ -1,7 +1,7 @@
 CrowData
 ========
 
-This is the software we used to create [VozData](http://vozdata.lanacion.com).
+In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com), a website to crowdsourced senate spendings by asking people to transcribe information from 6000 scanned PDF documents from the senate. This is the code that created that website and it can be used with any document set and any data you may need to take from them.
 
 ## Install Locally ##
 
@@ -101,6 +101,6 @@ function insertDocument(document_url) {
 
 ## When importing documents to a 'document set' via CSV upload ##
 
-There is an option 'Add Documents to this document set' in the admin for the document set. You can upload a CSV with columns document_title and document_url. This will create documents in the document set with that name and link to that url. 
+There is an option 'Add Documents to this document set' in the admin for the document set. You can upload a CSV with columns document_title and document_url. This will create documents in the document set with that name and link to that url.
 
 [CrowData](http://github.com/jazzido/crowdata)'s copyright is © 2013 Manuel Aristarán <jazzido@jazzido.com>. [CrowData](http://github.com/jazzido/crowdata) was developed with [Open News](http://www.opennews.org) and [La Nacion Argentina](http://www.lanacion.com.ar).

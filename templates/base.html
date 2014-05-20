@@ -9,11 +9,10 @@
     <title>CrowData -  </title>
     <link rel="icon" href='/item1.ico' />
     <meta name="title" content="CrowData -  ">
-    <meta name="description" content="CrowData - ">
-    <meta name="keywords" content="">
-    <meta name="news_keywords" content="">
-    <meta name="copyright" content="2013 lanacion.com">
-    <meta name="application-name" content="">
+    <meta name="description" content="CrowData - Community scan of PDF documents ">
+    <meta name="keywords" content="community, crowdsourcing, PDF, open data, data">
+    <meta name="news_keywords" content="community, crowdsourcing">
+    <meta name="application-name" content="Crowdata">
 <!-- mestas face-->
     <meta property="og:title" content="CrowData -  "/>
     <meta property="og:image" content=""/>
@@ -33,11 +32,11 @@
     </script>
     <![endif]-->
 
-    <link rel="stylesheet" href='{% static "css/fonts.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/reset_header_footer.min.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/crowdata.css" %}' type="text/css" />
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" src="{% static 'browserid/persona-buttons.css' %}">
+    <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
     {% browserid_css %}
     <!--<link rel="stylesheet" href='{% static "bootstrap/css/bootstrap.css" %}' type="text/css" />
     <link rel="stylesheet" href='{% static "bootstrap/css/bootstrap-theme.css" %}' type="text/css" />-->
@@ -140,7 +139,7 @@
     <section id="item" class="floatFix" style="background:none; width:990px;margin:0 auto;padding:10px 0 0;position:relative">
     {% if request.user.is_admin or request.user.is_staff %}
     <div style="font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 15px; background-color: #ffcccc; border: 1px solid red;">
-      {{ _('Logged as') }}Logueado como <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
+      {{ _('Logged as') }} <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
     </div>
     {% endif %}
 
@@ -165,58 +164,18 @@
       </article>
 
       <aside id="tercera">
-        <div style="border:0px solid green; width:300px; height:50px; float:right; text-align:right;">
-          <a onclick="show_ajax_popup({url: '{% static "html/acerca.html" %}', title: '¿What is CrowData?'})" title="" itemprop="url"><span itemprop="title">Acerca</span></a>
-          <span> | </span>
-          <a onclick="show_ajax_popup({url: '{% static "html/preguntas_frecuentes.html" %}', title: 'Preguntas frecuentes'})" title="Preguntas frecuentes" itemprop="url"><span itemprop="title">Preguntas frecuentes</span></a>
-          <span> | </span>
-          <a <a onclick="show_ajax_popup({url: '{% static "html/aviso_legal.html" %}', title: 'Aviso legal'})" title="Aviso legal" itemprop="url" target="_blank"><span itemprop="title">Aviso legal</span></a>
-          <span> | </span>
-          <a href="mailto:" title="" itemprop="url"><span itemprop="title">Contacto</span></a>
-          <br>
-
-          {% browserid_info %}
-          <div style="border-top:1px solid #efefef; margin-top:10px; padding-top:7px;">
-            {% if user.is_authenticated %}
-              Hola, <a href="/cd/gastos-del-senado/users/{{ user.username }}">{{ user.get_full_name }}</a> <span> | </span> {% browserid_logout text='Logout' %}
-            {% else %}
-              {% browserid_login text='Login' color='dark' %}
-            {% endif %}
-          </div>
-        </div>
         {% block rightcolumn %}
         {% endblock %}
       </aside>
 
-    </section>
-    </section>
+  </section>
+</section>
 
-    {% include "footer_ln.html" %}
-
-<!-- Popup -->
-    <div id="popup">
-      <div class="popup_bg" onClick='$(".popup_cont a.close").click(); return false;'></div>
-      <div class="popup_cont">
-        <b>Popup</b>
-        <a class="close theSans">x</a>
-        <hr>
-        <div class="popup_body">
-        </div>
-      </div>
-    </div>
-    <script type="text/javascript">
-      function show_ajax_popup(conf){
-        $.get(conf.url, function(data){
-          var cto_popup = new Popup();
-          cto_popup.show_p({title:conf.title, body: data, addclass: ''});
-          ga('send', 'event', conf.title, location.pathname);
-        });
-      }
-    </script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{"parsetags": "explicit","lang": "es"}</script>
     <script src="https://login.persona.org/include.js"></script>
     <script src="{% static 'browserid/api.js' %}"></script>
     <script src="{% static 'browserid/browserid.js' %}"></script>
+
   </body>
 
 </html>
