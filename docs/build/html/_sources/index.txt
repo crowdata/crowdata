@@ -1,0 +1,52 @@
+.. CrowData documentation master file, created by
+   sphinx-quickstart on Tue May 20 13:43:31 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Crowdsourcing the liberation of data trapped in documents!
+==========================================================
+
+'CrowData' is a tool to collaborate on the verification or release of data that otherwise would be hard or impossible to get via automatic tools.
+
+
+When to use Crowdata?
+=====================
+
+.. image:: _static/vozdata.png
+
+* 'VozData'
+
+Contents
+--------
+
+.. toctree::
+   :maxdepth: 2
+
+   technical
+   install
+   schema
+   how to use it
+
+Similar projects
+================
+
+Crowdata was inspired in the project from ProPublica called Free the Files. Here some of the projects that do the same for some specific cases.
+
+* Free the Files http://www.propublica.org/series/free-the-files
+* Yanukovych Leaks http://www.yanukovychleaks.org/detail/23570/
+
+
+Credits
+=======
+
+'Crowdata' is an open source project that was born when Manuel Aristaran was an Open News fellow at La Nacion in 2013. It was finally released as free software when Gabriela Rodriguez finished it for VozData in 2014. Thanks to Cristian Bertelegni and La Nacion for contributing to the code.
+
+Now it relies on contributions from people and organizations. Please, use it, comment on it and make improvements by pull requests in GitHub.
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
