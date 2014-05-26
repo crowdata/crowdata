@@ -101,6 +101,15 @@ function insertDocument(document_url) {
 
 ## When importing documents to a 'document set' via CSV upload ##
 
-There is an option 'Add Documents to this document set' in the admin for the document set. You can upload a CSV with columns document_title and document_url. This will create documents in the document set with that name and link to that url. 
+There is an option 'Add Documents to this document set' in the admin for the document set. You can upload a CSV with columns document_title and document_url. This will create documents in the document set with that name and link to that url.
 
 [CrowData](http://github.com/jazzido/crowdata)'s copyright is © 2013 Manuel Aristarán <jazzido@jazzido.com>. [CrowData](http://github.com/jazzido/crowdata) was developed with [Open News](http://www.opennews.org) and [La Nacion Argentina](http://www.lanacion.com.ar).
+
+
+Contributions
+=============
+
+* Fork the repo
+* Clone your fork
+* Make a branch of your changes
+* Make a pull request through GitHub, and clearly describe your changes
