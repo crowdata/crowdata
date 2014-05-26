@@ -6,7 +6,7 @@
 Crowdsourcing the liberation of data trapped in documents!
 ==========================================================
 
-'CrowData' is a tool to collaborate on the verification or release of data that otherwise would be hard or impossible to get via automatic tools.
+``CrowData`` is a tool to collaborate on the verification or release of data that otherwise would be hard or impossible to get via automatic tools.
 
 
 When to use Crowdata?
