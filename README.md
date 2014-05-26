@@ -20,7 +20,7 @@ This is the software we used to create [VozData](http://vozdata.lanacion.com).
 4. Get the source code:
 
     ```bash
-    git clone https://github.com/jazzido/crowdata-wit.git crowdata
+    git clone https://github.com/crowdata/crowdata.git crowdata
     cd crowdata
     ```
 
@@ -103,7 +103,11 @@ function insertDocument(document_url) {
 
 There is an option 'Add Documents to this document set' in the admin for the document set. You can upload a CSV with columns document_title and document_url. This will create documents in the document set with that name and link to that url.
 
-[CrowData](http://github.com/jazzido/crowdata)'s copyright is © 2013 Manuel Aristarán <jazzido@jazzido.com>. [CrowData](http://github.com/jazzido/crowdata) was developed with [Open News](http://www.opennews.org) and [La Nacion Argentina](http://www.lanacion.com.ar).
+[CrowData](http://github.com/crowdata/crowdata)'s copyright is © 2013 Manuel Aristarán <jazzido@jazzido.com>. [CrowData](http://github.com/crowdata/crowdata) was developed with [Open News](http://www.opennews.org) and [La Nacion Argentina](http://www.lanacion.com.ar).
+
+'Crowdata' is an open source project that was born when Manuel Aristaran was an Open News fellow at La Nacion in 2013. It was finally released as free software when Gabriela Rodriguez  continued it for VozData in 2014. Thanks to Cristian Bertelegni and La Nacion for contributing to the code.
+
+Now it relies on contributions from people and organizations. Please, use it, comment on it and make improvements by pull requests in 'GitHub <http://github.com/crowdata/crowdata>'.
 
 
 Contributions

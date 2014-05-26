@@ -18,7 +18,7 @@ How To Install It Locally
 4. Get the source code:
 
     ```bash
-    git clone https://github.com/jazzido/crowdata-wit.git crowdata
+    git clone https://github.com/crowdata/crowdata.git crowdata
     cd crowdata
     ```
 

@@ -41,7 +41,7 @@ Credits
 
 'Crowdata' is an open source project that was born when Manuel Aristaran was an Open News fellow at La Nacion in 2013. It was finally released as free software when Gabriela Rodriguez  continued it for VozData in 2014. Thanks to Cristian Bertelegni and La Nacion for contributing to the code.
 
-Now it relies on contributions from people and organizations. Please, use it, comment on it and make improvements by pull requests in 'GitHub <http://github.com/jazzido/crowdata>'.
+Now it relies on contributions from people and organizations. Please, use it, comment on it and make improvements by pull requests in 'GitHub <http://github.com/crowdata/crowdata>'.
 
 
 Contributions
