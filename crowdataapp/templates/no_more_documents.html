@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+{% load humanize %}
+
+{% block headercontent %}
+  {{document_set.name}}
+{% endblock %}
+
+{% block content %}
+<div class="introduccion">
+  {% if document_set.header_image %}
+  <img src="{{ document_set.header_image }}" width="316" height="216" class="fotovozdata" />
+  {% endif %}
+
+  <div class="text_intro">
+    Thanks! We completed all the documents for this project. 
+  </div>
+</div>
+<div class="cont_ranking">
+{% for ranking in document_set.rankings.all %}
+{% render_ranking ranking %}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block rightcolumn %}
+
+  {% documents_verified document_set %}
+
+<div class="herramientasSociales social" style="height:90px;">
+
+</div>
+<script type="text/javascript">
+$(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Revisá #GastosdelSenado en #VozData"); });
+</script>
+
+  {% list_ranking_user document_set.leaderboard|slice:":10" %}
+
+{% endblock %}
