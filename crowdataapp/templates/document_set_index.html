@@ -2,10 +2,11 @@
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 
+{% block headercontent %}
+  {{ _('Elija un proyecto') }}
+{% endblock %}
+
 {% block content %}
-
-  <h2>{{ _('Elija un proyecto') }}</h2>
-
   {% for ds in document_sets %}
 		<div class="media">
       {% if ds.header_image %}
@@ -24,4 +25,11 @@
 {% endblock %}
 
 {% block rightcolumn %}
+
+  <div class="herramientasSociales social row">
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
+  </script>
 {% endblock %}

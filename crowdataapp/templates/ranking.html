@@ -2,13 +2,14 @@
 
 <div class="table-responsive">
   <table class="table table-striped">
-    <th>
-      <td><a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');"><h3>{{ ranking.name }}</h3><button class="btn btn-primary">{{ _('more') }}</button>
-    </a></td>
-      <td></td>
-      <td></td>
-    </th>
-
+    <tr>
+      <th colspan="3">
+        <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');" title="{{ _('more') }}">
+            {{ ranking.name }} <span class="btn btn-primary btn-sm glyphicon glyphicon-plus pull-right"></span></a>
+      </th>
+    </tr>
+      
+    
     {% for i in ranking.calculate %}
       <tr>
         <td>

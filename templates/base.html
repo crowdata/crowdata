@@ -48,6 +48,7 @@
     .btn_bg_l { background: url({% static 'img/bot_bg_l.png' %}) 0 0 no-repeat;}
     .btn_bg_s { background: url({% static 'img/bot_bg_s.png' %}) 0 0 no-repeat;}
     .bot_mail2 { width: 48px; height: 62px; background: url({% static 'img/bot_mail2.png' %}) 0 0 no-repeat; display: block;}
+    .herramientasSociales { margin-top: 25px}
     </style>
 
     <script type="text/javascript" language="JavaScript">
@@ -133,26 +134,24 @@
 
     {% include "header_ln.html" %}
 
-    <div class="container-fluid">
+    <div class="container">
 
       {% if request.user.is_admin or request.user.is_staff %}
-      <div class="text-center bg-danger">
+      <div class="row">
+      <div class="col-md-12 text-center bg-danger">
         {{ _('Logged as') }} <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
+      </div>
       </div>
       {% endif %}
 
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-11">
+        <div class="col-md-12">
           <h1 itemprop="name">{% block headercontent %}{% endblock %}</h1>
         </div>
       </div> <!-- row -->
-
+<br>
       <div class="row">
-
-        <div class="col-md-1"></div>
-
-        <div class="col-md-6">
+        <div class="col-md-8">
 
           {% block content %}
           {% endblock %}
@@ -162,9 +161,6 @@
           {% block rightcolumn %}
           {% endblock %}
         </div>
-
-        <div class="col-md-1"></div>
-
       </div> <!-- row -->
 
     </div> <!-- container -->

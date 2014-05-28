@@ -22,10 +22,13 @@
     </div>
 
   </div>
-
+  <br>
+  <br>
   <div class="row">
     {% for ranking in document_set.rankings.all %}
+      <div class="col-md-6">
       {% render_ranking ranking %}
+      </div>
     {% endfor %}
   </div>
 
@@ -35,7 +38,7 @@
 
   {% documents_verified document_set %}
 
-  <div class="herramientasSociales social">
+  <div class="herramientasSociales social row">
   </div>
 
   <script type="text/javascript">
