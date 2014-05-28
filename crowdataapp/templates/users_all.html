@@ -7,41 +7,35 @@
 {% load humanize %}
 
 {% block headercontent %}
-  <!-- {{document_set.name}} -->
-  {% trans "Ranking de usuarios" %}
+  {{ _('Users Ranking') }}
 {% endblock %}
 
 {% block content %}
 
-<!-- maqueta -->
-
-
 <div class="caja001 cont_ranking_all">
-  <!-- <div class="titulo"></div> -->
-  <!-- <div class="subtitulo"></div> -->
-  {% autopaginate users_list %}
-  {% for user in users_list %}
-  <div class="gris">
-    <div class="caja_numeral" style="padding:0"><img src="http://bucket.clanacion.com.ar/avatar/{{user.username|slice:"-1:"}}/{{ user.username|slice:"3:" }}G.jpg" width="45" height="45" /></div>
-    <div class="caja_detalle" style="width: 470px; padding:15px 0 0 14px">
-    	<b class="theSans" style="display:inline-block; min-width: 30px;">{% index_in_ranking page forloop.counter 20 %}</b>
-      <a href="/cd/{{document_set.slug}}/users/{{user.username}}">{{user.get_full_name}}</a>
-    </div>
-    <div class="caja_monto">
-      {{ user.num_entries }}
-    </div>
-    <br clear="all" />
-  </div>
-  {% endfor %}
-  {% paginate %}
-</div>
 
-<!-- /maqueta -->
+  {% autopaginate users_list %}
+
+  <table class="table table-striped">
+  {% for user in users_list %}
+    <tr>
+      <td><img src="{{ user.get_image }}" width="45" height="45" /></td>
+      <td>{% index_in_ranking page forloop.counter 20 %}</td>
+      <td><a href="/cd/{{document_set.slug}}/users/{{user.username}}">{{user.get_full_name}}</a></td>
+      <td>{{ user.num_entries }}</td>
+    </tr>
+
+  {% endfor %}
+  </table>
+
+  {% paginate %}
+
+</div>
 
 {% endblock %}
 
 {% block rightcolumn %}
- 
+
   {% documents_verified document_set %}
 
   {% list_ranking_user document_set.leaderboard|slice:":10" %}
