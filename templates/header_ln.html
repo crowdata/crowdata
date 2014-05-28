@@ -1,20 +1,47 @@
+{% load browserid %}
 <!--CABEZAL-->
-<header>
-    <section class="cabezal interna">
-        <section class="desplegable floatFix">
-            <div class="logoConSeccion floatFix">
-                <section class="encabezado"><h1><a href="/">CrowData</a></h1></section>
-            </div>
-            <section class="buscador" id="buscador">
-                <ul>
-                    <li class="compartir floatFix"><a class="facebook" rel="external" title="crowdata en Facebook" target="_blank" href="http://www.facebook.com/crowdata">&nbsp;</a><a class="twitter" rel="external" title="crowdata en Twitter" target="_blank" href="http://twitter.com/crowdata">&nbsp;</a></li>
-                </ul>
-            </section>
-        </section>
-        </section>
-        <nav id="troncal">
 
-        </nav>
-        <div class="cierre"></div>
-</header>
+<div class="navbar navbar-default" role="navigation">
+
+  <a href="javascript:void(0)" id="menu-nav" class="nav-visible"><i class="fa fa-bars"></i></a>
+
+  <!--<div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+      </button>
+      <h1><a href="http://crowdata.github.io/crowdata" class="navbar-brand">CrowData</a></h1>
+    </div>-->
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#" class="active">{{ _('Home') }}</a></li>
+        <li><a href="{% url 'admin:index'  %}">{{ _('Admin') }}</a></li>
+        <li><a href="http://github.com/crowdata/crowdata">{{ _('Source') }}</a></li>
+        <li><a href="http://crowdata.readthedocs.org/">{{ _('Documentation') }}</a></li>
+        <li><a href="http://vozdata.lanacion.com.ar">{{ _('Examples') }}</a></li>
+      </ul>
+      {% browserid_info %}
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="javascript:void(0)" id="filter-nav"><i class="fa fa-search"></i></a></li>
+          {% if user.is_authenticated %}
+        <li>
+            <a href="reverse('user_profile', kwargs={'document_set':{{document_set}}, 'username':{{ user.username }} })">{{ user.get_full_name }}</a>
+        </li>
+        <li>
+            {% browserid_logout text=_('Logout')  %}
+        </li>
+          {% else %}
+        <li>
+            {% browserid_login text=_('Login') color='dark' %}
+        </li>
+          {% endif %}
+      </ul>
+    </div>
+  </div>
+
+</div>
 <!--CABEZAL-->

@@ -2,18 +2,18 @@
  {% load static from staticfiles %}
  {% load browserid %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- BEGIN header.inc -->
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>CrowData -  </title>
     <link rel="icon" href='/item1.ico' />
     <meta name="title" content="CrowData -  ">
-    <meta name="description" content="CrowData - ">
-    <meta name="keywords" content="">
-    <meta name="news_keywords" content="">
-    <meta name="copyright" content="2013 lanacion.com">
-    <meta name="application-name" content="">
+    <meta name="description" content="CrowData - Community scan of PDF documents ">
+    <meta name="keywords" content="community, crowdsourcing, PDF, open data, data">
+    <meta name="news_keywords" content="community, crowdsourcing">
+    <meta name="application-name" content="Crowdata">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- mestas face-->
     <meta property="og:title" content="CrowData -  "/>
     <meta property="og:image" content=""/>
@@ -33,14 +33,11 @@
     </script>
     <![endif]-->
 
-    <link rel="stylesheet" href='{% static "css/fonts.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/reset_header_footer.min.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "css/crowdata.css" %}' type="text/css" />
-    <link rel="stylesheet" src="{% static 'browserid/persona-buttons.css' %}">
+    <!-- link rel="stylesheet" src="{% static 'browserid/persona-buttons.css' %}">-->
     {% browserid_css %}
-    <!--<link rel="stylesheet" href='{% static "bootstrap/css/bootstrap.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "bootstrap/css/bootstrap-theme.css" %}' type="text/css" />-->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}" type="text/css"/>
 
     <!-- descomentar cuando se use el datepicker
     <link rel="stylesheet" href='{% static "css/datepicker.css" %}' type="text/css" />
@@ -51,6 +48,7 @@
     .btn_bg_l { background: url({% static 'img/bot_bg_l.png' %}) 0 0 no-repeat;}
     .btn_bg_s { background: url({% static 'img/bot_bg_s.png' %}) 0 0 no-repeat;}
     .bot_mail2 { width: 48px; height: 62px; background: url({% static 'img/bot_mail2.png' %}) 0 0 no-repeat; display: block;}
+    .herramientasSociales { margin-top: 25px}
     </style>
 
     <script type="text/javascript" language="JavaScript">
@@ -106,7 +104,7 @@
     <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
     <script src="{% static "js/crowdata.js" %}"></script>
     <script src="{% static "js/simpleslide.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
     <!--
     <script src="{% static "js/jquery.easing.min.js" %}"></script>
      -->
@@ -131,92 +129,47 @@
     </script>
 
   </head>
+
   <body>
- <section id="contenedor">
 
     {% include "header_ln.html" %}
 
+    <div class="container">
 
-    <section id="item" class="floatFix" style="background:none; width:990px;margin:0 auto;padding:10px 0 0;position:relative">
-    {% if request.user.is_admin or request.user.is_staff %}
-    <div style="font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 15px; background-color: #ffcccc; border: 1px solid red;">
-      {{ _('Logged as') }}Logueado como <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
-    </div>
-    {% endif %}
-
-      <article id="nota" itemscope="" itemtype="http://schema.org/NewsArticle" class="conTema">
-        <section id="anexos"></section>
-
-        <section id="encabezado">
-          <p class="volanta"></p>
-          <h1 itemprop="name">{% block headercontent %}{% endblock %}</h1>
-        </section>
-
-        <section id="cuerpo" class="floatFix" style="line-height: 21px; font-size: 15px;" itemprop="articleBody">
-          {% block content %}
-          <!--iframe fijar el ancho el alto no es necesario-->
-          <img src="{% static 'imgs/iframe.jpg'% }" width="653" />
-          <br />
-          <br />
-          <div class="central_data">
-          </div>
-          {% endblock %}
-        </section>
-      </article>
-
-      <aside id="tercera">
-        <div style="border:0px solid green; width:300px; height:50px; float:right; text-align:right;">
-          <a onclick="show_ajax_popup({url: '{% static "html/acerca.html" %}', title: '¿What is CrowData?'})" title="" itemprop="url"><span itemprop="title">Acerca</span></a>
-          <span> | </span>
-          <a onclick="show_ajax_popup({url: '{% static "html/preguntas_frecuentes.html" %}', title: 'Preguntas frecuentes'})" title="Preguntas frecuentes" itemprop="url"><span itemprop="title">Preguntas frecuentes</span></a>
-          <span> | </span>
-          <a <a onclick="show_ajax_popup({url: '{% static "html/aviso_legal.html" %}', title: 'Aviso legal'})" title="Aviso legal" itemprop="url" target="_blank"><span itemprop="title">Aviso legal</span></a>
-          <span> | </span>
-          <a href="mailto:" title="" itemprop="url"><span itemprop="title">Contacto</span></a>
-          <br>
-
-          {% browserid_info %}
-          <div style="border-top:1px solid #efefef; margin-top:10px; padding-top:7px;">
-            {% if user.is_authenticated %}
-              Hola, <a href="/cd/gastos-del-senado/users/{{ user.username }}">{{ user.get_full_name }}</a> <span> | </span> {% browserid_logout text='Logout' %}
-            {% else %}
-              {% browserid_login text='Login' color='dark' %}
-            {% endif %}
-          </div>
-        </div>
-        {% block rightcolumn %}
-        {% endblock %}
-      </aside>
-
-    </section>
-    </section>
-
-    {% include "footer_ln.html" %}
-
-<!-- Popup -->
-    <div id="popup">
-      <div class="popup_bg" onClick='$(".popup_cont a.close").click(); return false;'></div>
-      <div class="popup_cont">
-        <b>Popup</b>
-        <a class="close theSans">x</a>
-        <hr>
-        <div class="popup_body">
-        </div>
+      {% if request.user.is_admin or request.user.is_staff %}
+      <div class="row">
+      <div class="col-md-12 text-center bg-danger">
+        {{ _('Logged as') }} <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
       </div>
-    </div>
-    <script type="text/javascript">
-      function show_ajax_popup(conf){
-        $.get(conf.url, function(data){
-          var cto_popup = new Popup();
-          cto_popup.show_p({title:conf.title, body: data, addclass: ''});
-          ga('send', 'event', conf.title, location.pathname);
-        });
-      }
-    </script>
+      </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1 itemprop="name">{% block headercontent %}{% endblock %}</h1>
+        </div>
+      </div> <!-- row -->
+<br>
+      <div class="row">
+        <div class="col-md-8">
+
+          {% block content %}
+          {% endblock %}
+        </div>
+
+        <div class="col-md-4">
+          {% block rightcolumn %}
+          {% endblock %}
+        </div>
+      </div> <!-- row -->
+
+    </div> <!-- container -->
+
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{"parsetags": "explicit","lang": "es"}</script>
     <script src="https://login.persona.org/include.js"></script>
     <script src="{% static 'browserid/api.js' %}"></script>
     <script src="{% static 'browserid/browserid.js' %}"></script>
+
   </body>
 
 </html>

@@ -1,19 +1,28 @@
 {% load humanize %}
-<div class="caja001">
-  <div class="titulo"><a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" class="vd_titulo" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');">{{ranking.name}} <span class="ver_mas">ver mas</span></a></div>
-  <div class="subtitulo"></div>
-  {% for i in ranking.calculate %}
-  <div class="gris">
-    <div class="caja_numeral">
-      {{ forloop.counter }}
-    </div>
-    <div class="caja_detalle">
-      <a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}">{{ i.0 }}</a>
-    </div>
-    <div class="caja_monto" data-formatTextMillons="true">
-      $ {{ i.1|floatformat:"0"|intcomma }}
-    </div>
-    <br clear="all" />
-  </div>
-  {% endfor %}
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <th colspan="3">
+        <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');" title="{{ _('more') }}">
+            {{ ranking.name }} <span class="btn btn-primary btn-sm glyphicon glyphicon-plus pull-right"></span></a>
+      </th>
+    </tr>
+      
+    
+    {% for i in ranking.calculate %}
+      <tr>
+        <td>
+          {{ forloop.counter }}
+        </td>
+        <td>
+          <a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}">{{ i.0 }}</a>
+        </td>
+        <td>
+          $ {{ i.1|floatformat:"0"|intcomma }}
+        </td>
+      </tr>
+    {% endfor %}
+
+  </table>
 </div>

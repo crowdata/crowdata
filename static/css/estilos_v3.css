@@ -1,15 +1,15 @@
 /*HOME*/
-a { cursor: pointer;} 
-div.introduccion{border-top:1px solid #dadada; border-right:1px solid #dadada; border-bottom:1px solid #dadada; width:652px; height:271px; margin-bottom:16px;}
-.fotovozdata{border-right:1px solid #dadada; border-bottom:1px solid #dadada; border-left:1px solid #dadada; float:left; margin-top: 17px;}
+a { cursor: pointer;}
+div.introduccion{border-top:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; width:652px; height:271px; margin-bottom:16px;}
+.fotovozdata{border-right:1px solid #000; border-bottom:1px solid #000; border-left:1px solid #000; float:left; margin-top: 17px;}
 div.text_intro{ margin:13px 20px 0 0; border:0px solid green; width:298px; float:right;}
 
-div.central_data2{text-align:center; margin:15px 15px; padding-bottom:15px; border-bottom:1px solid #dadada;}
-div.liberar{width:300px; border:1px solid #dadada; position:relative; margin-bottom:14px; background-color:#e8f5fa; padding-bottom: 10px}
-div.regla2{border:1px solid #dadada; margin:10px 15px; width:270px; height:21px; background-color:#f7f7f7;}
+div.central_data2{text-align:center; margin:15px 15px; padding-bottom:15px; border-bottom:1px solid #000;}
+div.liberar{width:300px; border:1px solid #000; position:relative; margin-bottom:14px; background-color:#222; padding-bottom: 10px}
+div.regla2{border:1px solid #000; margin:10px 15px; width:270px; height:21px; background-color:#f7f7f7;}
 
 div.cont_ranking { margin-left: -10px}
-div.caja001{  width:299px; border:1px solid #dadada; position:relative; margin: 0 0 15px 10px; padding:10px; float:left; }
+div.caja001{  width:299px; border:1px solid #000; position:relative; margin: 0 0 15px 10px; padding:10px; float:left; }
 div.caja001 div.titulo, div.caja_usuarios div.titulo, a.vd_titulo {cursor:default; font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;}
 a.vd_titulo { cursor: pointer;}
 div.caja001 div.subtitulo, div.caja_usuarios  div.subtitulo{cursor:default; padding-bottom:8px;  border-bottom:1px solid #e7e7e7; margin-bottom:6px; font-size:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif;}
@@ -24,7 +24,7 @@ div.caja001  div.caja_numeral{float:left; width:45px; text-align:center;}
 div.caja001  div.caja_detalle{float:left; width:153px; white-space: nowrap; text-overflow: ellipsis;overflow: hidden;}
 div.caja001  div.caja_monto{float:right; width:90px; text-align:right; margin-right:10px; font-weight:bold;}
 
-div.caja_usuarios{width:278px; border:1px solid #dadada; position:relative; margin-bottom:15px; padding:10px; float:left; }
+div.caja_usuarios{width:278px; border:1px solid #000; position:relative; margin-bottom:15px; padding:10px; float:left; }
 div.caja_usuarios div.gris{background-color:#f7f7f7;  border:0px solid blue; margin-bottom:3px;}
 div.caja_usuarios div.caja_detalle, div.caja_usuarios  div.caja_monto{ font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0; border:0px solid orange;}
 div.caja_usuarios  div.caja_numeral{float:left; width:60px; text-align:left; margin:0px; padding:0px; height:45px;}
@@ -52,7 +52,7 @@ div.compmail2{margin-left:5px; border:0px solid red; float:left; width:48px;}
 #date, .charfield, .multiplechoicefield, textarea{border:1px solid #ccc;border-radius: 4px;}
 textarea {  max-width: 266px; min-width: 266px; min-height: 6em; max-height: 6em}
 /*grales*/
-section#contenedor {margin:auto;width:988px;border:1px solid #dadada;border-top:none;padding-top:0px;border-bottom:none;position:relative;z-index:1;}
+section#contenedor {margin:auto;width:988px;border:1px solid #000;border-top:none;padding-top:0px;border-bottom:none;position:relative;z-index:1;}
 #tercera {width:300px;float:right;padding:7px 0px; margin-right:15px; border:0px solid red;}
 #tercera .banner {margin-bottom:20px;}
 
@@ -76,7 +76,7 @@ a.title_color, a.title_color:hover {color:#1da3d6 !important; font: normal 14px/
 }
 
 /*----- especial destacado----- */
-		
+
 div.cajas {width:300px; margin-left: 0px; margin-top:102px;}
 
 div.contenedor div.cajas div.destacado{width:300px; height:180px; margin-bottom:10px; }
@@ -97,9 +97,9 @@ div.contenedor div.cajas div.destacado div.cuadrados div.off
 {width:10px; height:10px; cursor:pointer; margin-left:10px; margin-top:3px; -moz-border-radius: 75px; -webkit-border-radius: 75px; border-radius: 75px; background:#ccc; float:left;  }
 div.contenedor div.cajas div.destacado div.cuadrados div.on
 {width:15px; height:15px; cursor:pointer; margin-left:10px; text-align:center; font-weight:bold; -moz-border-radius: 75px; -webkit-border-radius: 75px; border-radius: 75px; background:#32a9d3; font-family: Arial, Helvetica, sans-serif; font-size:11px; color:#fff; float:left;  }
-	
-	
-div.contenedor div.cajas div.mapa{width:300px; border:1px solid #dadada; position:relative; margin-bottom:15px;}
+
+
+div.contenedor div.cajas div.mapa{width:300px; border:1px solid #000; position:relative; margin-bottom:15px;}
 div.contenedor div.cajas div.mapa div.titulo{cursor:default; padding:8px 0px 0px 10px; font-size:17px; color:#000; letter-spacing: -1px;  font-family: "TheSans";}
 div.contenedor div.cajas div.mapa div.subtitulo{width:280px; cursor:default; margin-left:10px; padding-bottom:5px;  border-bottom:0px solid #e7e7e7; font-size:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif;}
 div.contenedor div.cajas div.mapa a.btn2{padding:5px 10px; margin-left:120px; cursor:pointer; border-radius:3px; display:inline-block; background:#335577; color:#fff; font-size:12px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;}
@@ -108,10 +108,10 @@ div.contenedor div.cajas div.mapa a.btn2:hover{background:#e7e7e7; color:#000; b
 div.contenedor div.cajas div.mapa a{ text-decoration:none; cursor:pointer;}
 div.contenedor div.cajas div.mapa div.btn{width:95px; height:25px; cursor:pointer; position:absolute; top:5px; left:215px; text-align:center; line-height:24px; font-size:12px; color:#335577; font-family:Arial, Helvetica, sans-serif; }
 div.contenedor div.cajas div.mapa div.btn:hover{ text-decoration:underline;}
-	
-div.mapa div.label_bco, div.mapa div.label_gris {border-top:1px solid #dadada; padding:15px 10px; margin-top:9px; position: relative;}
-div.contenedor div.cajas { background-color:#f5f5f5;}	
-div.contenedor div.cajas div.mapa div.label_bco_enviar {border-top:1px solid #dadada; padding:10px; text-align:center;}	
+
+div.mapa div.label_bco, div.mapa div.label_gris {border-top:1px solid #000; padding:15px 10px; margin-top:9px; position: relative;}
+div.contenedor div.cajas { background-color:#f5f5f5;}
+div.contenedor div.cajas div.mapa div.label_bco_enviar {border-top:1px solid #000; padding:10px; text-align:center;}
 img.spinner { position: absolute; bottom: 20px; right: 15px; display: none;}
 div.contenedor div.cajas div.mapa p{color:#7c7c7c; margin-bottom:5px;}
 
@@ -119,11 +119,11 @@ div.central_data{text-align:center; font-size:14px; border:0px solid red;}
 div.evaluaste{font-size:11px; line-height:13px; width:130px; float:left;}
 div.evaluaste strong{font-weight:bold;}
 strong {font-weight:bold;}
-div.regla{border:1px solid #dadada; float:right; width:130px; height:21px; background-color:#f7f7f7;}
+div.regla{border:1px solid #000; float:right; width:130px; height:21px; background-color:#f7f7f7;}
 div.medidor{background-color:#1b7da2; height:21px;}
 
 
-#tercera .herramientasSociales {border:1px solid #dadada;padding:9px 13px 10px 13px;margin-bottom:17px;height:97px; overflow: hidden;}
+#tercera .herramientasSociales {border:1px solid #000;padding:9px 13px 10px 13px;margin-bottom:17px;height:97px; overflow: hidden;}
 #tercera .herramientasSociales b, #popup b, .theSans {display:block;font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;margin-bottom:9px;}
 #tercera .herramientasSociales .google, .herramientasSociales .facebookMeGusta, .herramientasSociales .twitter {float:left!important;}
 #tercera .herramientasSociales .facebookMeGusta {margin-right:18px;}
@@ -267,9 +267,9 @@ div.logos { margin: 10px 0}
 div.logos .ln{ margin-left: 20px; }
 
 /*perfil user*/
-div.usuario { width: 652px; border-top:1px solid #dadada; border-right:1px solid #dadada; border-bottom:1px solid #dadada; margin-bottom:16px; overflow: hidden;}
+div.usuario { width: 652px; border-top:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; margin-bottom:16px; overflow: hidden;}
 div.usuario span.ver_mas { font-size: 10px}
-div.usuario img { border: 1px solid #DADADA; border-top: none; border-bottom: none; float: left}
+div.usuario img { border: 1px solid #000; border-top: none; border-bottom: none; float: left}
 div.text_usuario{ margin:13px 20px 0 0; border:0px solid green; width:530px; float:right; padding-top:10px;}
 div.caja001  div.caja_detalle_usuario{float:left; width:565px; font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0;}
 div.caja_posicion{float:left; width:20px; text-align:right; margin-right:10px; font-weight:bold;}

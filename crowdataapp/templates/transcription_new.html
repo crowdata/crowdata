@@ -3,30 +3,30 @@
 {% load static from staticfiles %}
 
 {% block scripts %}
-
-<script src='{% static "crowdataapp/js/typeahead.min.js" %}'></script>
-<script src='{% static "crowdataapp/js/jquery.inputmask.bundle.min.js" %}'></script>
-<script src='{% static "crowdataapp/js/jquery.cookie.js" %}'></script>
-<script src='{% static "crowdataapp/js/transcription_new.js" %}'></script>
-{{ head_html|safe }}
+	<script src='{% static "crowdataapp/js/typeahead.min.js" %}'></script>
+	<script src='{% static "crowdataapp/js/jquery.inputmask.bundle.min.js" %}'></script>
+	<script src='{% static "crowdataapp/js/jquery.cookie.js" %}'></script>
+	<script src='{% static "crowdataapp/js/transcription_new.js" %}'></script>
+	{{ head_html|safe }}
 {% endblock %}
+
 {% block headercontent %}
-	{{document.document_set}}
+	{{ document.document_set }}
 {% endblock %}
 
 {% block content %}
-<div id="document-viewer-container"></div>
-<script>
-  {{ document.document_set.template_function|safe }}
-  var host = location.origin ? location.origin : location.host;
-  window.doc_url = host + "{% url 'show_document' document.document_set.slug document.id %}"; /* url document */
-  insertDocument('{{document.url|safe}}');
-</script>
+	<div id="document-viewer-container"></div>
+	<script>
+	  {{ document.document_set.template_function|safe }}
+	  var host = location.origin ? location.origin : location.host;
+	  window.doc_url = host + "{% url 'show_document' document.document_set.slug document.id %}"; /* url document */
+	  insertDocument('{{document.url|safe}}');
+	</script>
 {% endblock %}
 
 {% block rightcolumn %}
 <div id="form-container">
-{% render_form document.document_set.form.all.0 %}
+	{% render_form document.document_set.form.all.0 %}
 </div>
 
 <!-- social  -->

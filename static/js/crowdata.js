@@ -64,7 +64,7 @@ function create_sosial(cont_social, url, text, title){ // recibe the JQ content 
     if(!url) var url = location.href;
     
     // FB
-    var face = $('<div class="fb-share-button facebookMeGusta" style="width:84px; padding:0px; margin:0px;">'); 
+    var face = $('<div class="col-md-3 fb-share-button facebookMeGusta" style="">'); 
         face.attr({
           "data-type": "box_count"
           // "data-href": url
@@ -81,22 +81,22 @@ function create_sosial(cont_social, url, text, title){ // recibe the JQ content 
           // "data-hashtags": "VozData"
         })
         .html('Tweet');
-    var wrap_tw = $('<div class="twitter" style="width:65px; padding:0px; margin:0px;">');
+    var wrap_tw = $('<div class="twitter col-md-3" style="">');
         
     var twitter_js = $('<script src="http://platform.twitter.com/widgets.js">');
         wrap_tw.append(twitter);
 
     // GOO+
-    var gplus = $('<div class="google" id="plusoneAcumulado" style="width:63px; padding:0px; margin:0px;">');
+    var gplus = $('<div class="google col-md-3" id="plusoneAcumulado" style="">');
 
     // MAIL
-    var mail = $('<div class="compmail2" style="width:48px; padding-left:13px; margin:0px;">');
+    var mail = $('<div class="compmail2 col-md-3" style="">');
         mail.append(
           $('<a class="enviar bot_mail2" title="Enviar">').attr("href", "mailto:?subject=" + title +"&body=" + text + " " + url)
           // .append($('<img src="" border="0">'))
             );
     
-    cont_social.html("").append("<b>Compartir</b>", face, face_root, face_js, wrap_tw, twitter_js, gplus, mail );
+    cont_social.html("").append(face, face_root, face_js, wrap_tw, twitter_js, gplus, mail );
     
     gapi.plusone.render("plusoneAcumulado",{"size": "tall", "href": url});
 
