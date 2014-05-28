@@ -10,20 +10,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="introduccion">
-  {% if document_set.header_image %}
-  <img src="{{ document_set.header_image }}" width="316" height="216" class="fotovozdata" />
-  {% endif %}
+  <div class="media">
+    {% if document_set.header_image %}
+        <a class="pull-left" href="{{ds.get_absolute_url}}">
+          <img src="{{ document_set.header_image }}" width="316" height="216" class="media-object" />
+        </a>
+    {% endif %}
 
-  <div class="text_intro">
-    {{document_set.description|linebreaks}}
+    <div class="media-body">
+      {{document_set.description|linebreaks}}
+    </div>
+
   </div>
-</div>
-<div class="cont_ranking">
-{% for ranking in document_set.rankings.all %}
-{% render_ranking ranking %}
-{% endfor %}
-</div>
+
+  <div class="row">
+    {% for ranking in document_set.rankings.all %}
+      {% render_ranking ranking %}
+    {% endfor %}
+  </div>
 
 {% endblock %}
 
@@ -31,12 +35,11 @@
 
   {% documents_verified document_set %}
 
-  <div class="herramientasSociales social" style="height:90px;">
-
+  <div class="herramientasSociales social">
   </div>
 
   <script type="text/javascript">
-  $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
+    $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
   </script>
 
   {% list_ranking_user document_set.leaderboard|slice:":10" %}

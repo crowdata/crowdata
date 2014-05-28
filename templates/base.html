@@ -2,7 +2,7 @@
  {% load static from staticfiles %}
  {% load browserid %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- BEGIN header.inc -->
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -13,6 +13,7 @@
     <meta name="keywords" content="community, crowdsourcing, PDF, open data, data">
     <meta name="news_keywords" content="community, crowdsourcing">
     <meta name="application-name" content="Crowdata">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- mestas face-->
     <meta property="og:title" content="CrowData -  "/>
     <meta property="og:image" content=""/>
@@ -32,14 +33,11 @@
     </script>
     <![endif]-->
 
-
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" src="{% static 'browserid/persona-buttons.css' %}">
-    <link rel="stylesheet" href='{% static "css/estilos_v3.css" %}' type="text/css" />
+    <!-- link rel="stylesheet" src="{% static 'browserid/persona-buttons.css' %}">-->
     {% browserid_css %}
-    <!--<link rel="stylesheet" href='{% static "bootstrap/css/bootstrap.css" %}' type="text/css" />
-    <link rel="stylesheet" href='{% static "bootstrap/css/bootstrap-theme.css" %}' type="text/css" />-->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}" type="text/css"/>
 
     <!-- descomentar cuando se use el datepicker
     <link rel="stylesheet" href='{% static "css/datepicker.css" %}' type="text/css" />
@@ -105,7 +103,7 @@
     <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
     <script src="{% static "js/crowdata.js" %}"></script>
     <script src="{% static "js/simpleslide.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
     <!--
     <script src="{% static "js/jquery.easing.min.js" %}"></script>
      -->
@@ -130,46 +128,46 @@
     </script>
 
   </head>
+
   <body>
- <section id="contenedor">
 
     {% include "header_ln.html" %}
 
+    <div class="container-fluid">
 
-    <section id="item" class="floatFix" style="background:none; width:990px;margin:0 auto;padding:10px 0 0;position:relative">
-    {% if request.user.is_admin or request.user.is_staff %}
-    <div style="font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 15px; background-color: #ffcccc; border: 1px solid red;">
-      {{ _('Logged as') }} <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
-    </div>
-    {% endif %}
+      {% if request.user.is_admin or request.user.is_staff %}
+      <div class="text-center bg-danger">
+        {{ _('Logged as') }} <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
+      </div>
+      {% endif %}
 
-      <article id="nota" itemscope="" itemtype="http://schema.org/NewsArticle" class="conTema">
-        <section id="anexos"></section>
-
-        <section id="encabezado">
-          <p class="volanta"></p>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
           <h1 itemprop="name">{% block headercontent %}{% endblock %}</h1>
-        </section>
+        </div>
+      </div> <!-- row -->
 
-        <section id="cuerpo" class="floatFix" style="line-height: 21px; font-size: 15px;" itemprop="articleBody">
+      <div class="row">
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-6">
+
           {% block content %}
-          <!--iframe fijar el ancho el alto no es necesario-->
-          <img src="{% static 'imgs/iframe.jpg'% }" width="653" />
-          <br />
-          <br />
-          <div class="central_data">
-          </div>
           {% endblock %}
-        </section>
-      </article>
+        </div>
 
-      <aside id="tercera">
-        {% block rightcolumn %}
-        {% endblock %}
-      </aside>
+        <div class="col-md-4">
+          {% block rightcolumn %}
+          {% endblock %}
+        </div>
 
-  </section>
-</section>
+        <div class="col-md-1"></div>
+
+      </div> <!-- row -->
+
+    </div> <!-- container -->
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{"parsetags": "explicit","lang": "es"}</script>
     <script src="https://login.persona.org/include.js"></script>

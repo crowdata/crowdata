@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
-{% block content %}
-<h2 style="font: normal 35px/40px 'TheSans', 'Arial';color: #222;padding: 5px 12px 10px 12px;letter-spacing: -0.1px;">Elija un proyecto</h2>
-<ul>
-  {% for ds in document_sets %}
-	<li>
-		<div class="introduccion">
-    	<h3 style="clear:both; font: normal 25px 'TheSans', 'Arial'; color: #222; padding: 5px 12px 10px 12px;letter-spacing: -0.1px;"><a href="{{ds.get_absolute_url}}" style="color:#1da3d6">{{ds.name}}</a></h3>
-		  {% if ds.header_image %}
-		    <img src="{{ ds.header_image }}" width="316" height="216" class="fotovozdata" />
-		  {% endif %}
 
-		  <div class="text_intro" style="margin-top:0">
+{% block content %}
+
+  <h2>{{ _('Elija un proyecto') }}</h2>
+
+  {% for ds in document_sets %}
+		<div class="media">
+      {% if ds.header_image %}
+        <a class="pull-left" href="{{ds.get_absolute_url}}">
+          <img src="{{ ds.header_image }}" width="316" height="216" class="media-object" />
+        </a>
+      {% endif %}
+
+      <div class="media-body">
+        <h4 class="media-heading"><a href="{{ds.get_absolute_url}}">{{ds.name}}</a></h4>
 		    {{ds.description}}
 		  </div>
 		</div>
-	</li>
   {% endfor %}
-</ul>
-
 
 {% endblock %}
+
 {% block rightcolumn %}
-;
 {% endblock %}
