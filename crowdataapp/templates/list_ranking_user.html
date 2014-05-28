@@ -1,17 +1,19 @@
+<div class="row" style="margin-top:25px">
 
-<h5><a class="vd_titulo" href="{% url 'users_all' document_set.slug %}">{{ _('User ranking') }} <button class="btn btn-primary pull-right">{{ _('more') }}</button></a></h5>
+<h5><a class="vd_titulo" href="{% url 'users_all' document_set.slug %}">{{ _('User ranking') }} <button class="btn btn-primary pull-right btn-xs">{{ _('more') }}</button></a></h5>
 
 <h6>{{ _('Per reviewed documents') }}</h6>
 
 <table class="table table-striped">
 {% for user in users_ranking %}
-
   <tr>
-    <td><img src="{{ user.get_image }}" width="45" height="45" />
+    <td>
+    	<img src="http://bucket.clanacion.com.ar/avatar/{{user.username|slice:"-1:"}}/{{ user.username|slice:"3:" }}G.jpg" width="45" height="45" />
+      <a style="margin-left:10px" href="/cd/{{document_set.slug}}/users/{{user.username}}">{{user.get_full_name}}</a>
     </td>
-    <td><a href="/cd/{{document_set.slug}}/users/{{user.username}}">{{ user.get_full_name }}</a></td>
     <td>{{ user.num_entries }}</td>
   </tr>
 
 {% endfor %}
 </table>
+</div>

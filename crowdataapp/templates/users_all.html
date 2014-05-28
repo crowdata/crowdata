@@ -13,11 +13,11 @@
 {% block content %}
 
 <div class="caja001 cont_ranking_all">
-
   {% autopaginate users_list %}
 
   <table class="table table-striped">
   {% for user in users_list %}
+
     <tr>
       <td><img src="{{ user.get_image }}" width="45" height="45" /></td>
       <td>{% index_in_ranking page forloop.counter 20 %}</td>
