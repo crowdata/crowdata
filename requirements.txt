@@ -16,6 +16,7 @@ django-forms-builder==0.9
 django-pagination==1.0.7
 djorm-ext-pgtrgm==0.1
 fancy-tag==0.2.0
+gunicorn==18.0
 ipdb==0.8
 ipython==1.2.1
 psycopg2==2.5.2
