@@ -57,84 +57,67 @@
 <li><p class="first">We recommend the use of [virtualenv](<a class="reference external" href="http://virtualenv.org">http://virtualenv.org</a>) — Install it.</p>
 </li>
 <li><p class="first">Create a virtual environment and activate it:</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">virtualenv</span> <span class="pre">~/.python-envs/crowdata</span>
-<span class="pre">.</span> <span class="pre">~/.python-envs/crowdata/bin/activate</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>$ virtualenv ~/.python-envs/crowdata
+$ . ~/.python-envs/crowdata/bin/activate
+</pre></div>
+</div>
 </li>
 <li><p class="first">Get the source code:</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/crowdata/crowdata.git</span> <span class="pre">crowdata</span>
-<span class="pre">cd</span> <span class="pre">crowdata</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/crowdata/crowdata.git crowdata
+$ cd crowdata
+</pre></div>
+</div>
 </li>
 <li><p class="first">Install dependencies:</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install -r requirements.txt
+</pre></div>
+</div>
+</li>
+</ol>
 <p>(If you are using Ubuntu, you may need to install <cite>python-dev</cite> before dependencies.)</p>
+<ol class="arabic" start="6">
+<li><p class="first">Create PostgreSQL database:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ createuser -s -h localhost crow_user
+$ createdb -O crow_user -h localhost crowdata_development
+</pre></div>
+</div>
 </li>
-<li><p class="first">Create PostgreSQL database</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">$</span> <span class="pre">createuser</span> <span class="pre">-s</span> <span class="pre">-h</span> <span class="pre">localhost</span> <span class="pre">crow_user</span>
-<span class="pre">$</span> <span class="pre">createdb</span> <span class="pre">-O</span> <span class="pre">crow_user</span> <span class="pre">-h</span> <span class="pre">localhost</span> <span class="pre">crowdata_development</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
-</li>
-<li><p class="first">Create extensions for doing [trigram matching](<a class="reference external" href="http://www.postgresql.org/docs/9.2/static/pgtrgm.html">http://www.postgresql.org/docs/9.2/static/pgtrgm.html</a>) and [removing accents](<a class="reference external" href="http://www.postgresql.org/docs/9.1/static/unaccent.html">http://www.postgresql.org/docs/9.1/static/unaccent.html</a>) in PostgreSQL</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">$</span> <span class="pre">psql</span> <span class="pre">-ucrow_user</span>
-<span class="pre">crow_user=#</span> <span class="pre">\c</span> <span class="pre">crowdata_development</span>
-<span class="pre">crowdata_development=#</span> <span class="pre">CREATE</span> <span class="pre">EXTENSION</span> <span class="pre">pg_trgm;</span>
-<span class="pre">crowdata_development=#</span> <span class="pre">CREATE</span> <span class="pre">EXTENSION</span> <span class="pre">unaccent;</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
+<li><p class="first">Create extensions for doing <cite>trigram matching &lt;http://www.postgresql.org/docs/9.2/static/pgtrgm.html&gt;</cite> and <cite>removing accents &lt;http://www.postgresql.org/docs/9.1/static/unaccent.html&gt;</cite> in PostgreSQL:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ psql -ucrow_user
+crow_user=# \c crowdata_development
+crowdata_development=# CREATE EXTENSION pg_trgm;
+crowdata_development=# CREATE EXTENSION unaccent;
+</pre></div>
+</div>
 </li>
 </ol>
 <ol class="arabic" start="7">
-<li><p class="first">We keep local settings outside GIT. You will need to copy <cite>local_settings.py.example</cite> to <cite>local_settings.py</cite>. You will need to edit the database settings there.</p>
-<blockquote>
-<div><p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
-DATABASES = {</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&#8216;default&#8217;: {</dt>
-<dd><p class="first last">&#8216;ENGINE&#8217;: &#8216;django.db.backends.postgresql_psycopg2&#8217;, # Add &#8216;postgresql_psycopg2&#8217;, &#8216;postgresql&#8217;, &#8216;mysql&#8217;, &#8216;sqlite3&#8217; or &#8216;oracle&#8217;.
-&#8216;NAME&#8217;: &#8216;crowdata_development&#8217;,                      # Or path to database file if using sqlite3.
-&#8216;USER&#8217;: &#8216;crow_user&#8217;,
-&#8216;PASSWORD&#8217;: &#8216;&#8217;,
-&#8216;HOST&#8217;: &#8216;&#8217;,
-&#8216;PORT&#8217;: &#8216;&#8217;,</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-</div></blockquote>
+<li><p class="first">We keep local settings outside GIT. You will need to copy <cite>local_settings.py.example</cite> to <cite>local_settings.py</cite>. You will need to edit the database settings there.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql_psycopg2&#39;</span><span class="p">,</span> <span class="c"># Add &#39;postgresql_psycopg2&#39;, &#39;postgresql&#39;, &#39;mysql&#39;, &#39;sqlite3&#39; or &#39;oracle&#39;.</span>
+        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;crowdata_development&#39;</span><span class="p">,</span>                      <span class="c"># Or path to database file if using sqlite3.</span>
+        <span class="s">&#39;USER&#39;</span><span class="p">:</span> <span class="s">&#39;crow_user&#39;</span><span class="p">,</span>
+        <span class="s">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+        <span class="s">&#39;PORT&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </li>
 </ol>
 <ol class="arabic" start="5">
 <li><p class="first">Initialize the database:</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span>
-<span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span> <span class="pre">--all</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>$ python manage.py syncdb
+$ python manage.py migrate --all
+</pre></div>
+</div>
 </li>
-<li><p class="first">Start the development server</p>
-<blockquote>
-<div><p><tt class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver_plus</span>
-<span class="pre">`</span></tt></p>
-</div></blockquote>
+<li><p class="first">Start the development server:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python manage.py runserver_plus
+</pre></div>
+</div>
 </li>
 </ol>
 </div>

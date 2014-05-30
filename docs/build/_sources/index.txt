@@ -14,7 +14,7 @@ When to use Crowdata?
 
 .. image:: _static/vozdata.png
 
-* `VozData <http://vozdata.lanacion.com.ar>`_ is a website from `La Nacion <http://www.lanacion.com.ar>`_ in Argentina to convert scanned PDF documents from senate spendings into an usable dataset.
+* `VozData <http://vozdata.lanacion.com.ar>`_ is a website from `La Nacion <http://www.lanacion.com.ar>`_ in Argentina to convert scanned PDF documents from senate spendings into an usable dataset. `Collaborating to free data from PDFs <http://blogs.lanacion.com.ar/projects/data/vozdata/>`_.
 
 Contents
 --------
@@ -34,6 +34,7 @@ Crowdata was inspired in the project from `ProPublica <http://www.propublica.org
 
 * `Free the Files <http://www.propublica.org/series/free-the-files>`_
 * `Yanukovych Leaks <http://www.yanukovychleaks.org/detail/23570/>`_
+* `How to crowdsource MPs' expenses <http://www.theguardian.com/news/datablog/2009/jun/18/mps-expenses-houseofcommons>`_
 
 
 Credits
