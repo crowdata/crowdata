@@ -4,6 +4,8 @@ CrowData
 ``CrowData`` is a tool to collaborate on the verification or release of data that otherwise would be hard or impossible to get via automatic tools. This is the software we used to create [VozData](http://vozdata.lanacion.com.ar).
 In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com), a website to crowdsourced senate spendings by asking people to transcribe information from 6000 scanned PDF documents from the senate. This is the code that created that website and it can be used with any document set and any data you may need to take from them.
 
+[VozData: collaborating to free data from PDFs](http://blogs.lanacion.com.ar/projects/data/vozdata/): A really nice article about the process of creating ``VozData`` from La Nacion.
+
 ## Install Locally ##
 
 

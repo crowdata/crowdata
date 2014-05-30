@@ -14,7 +14,7 @@ When to use Crowdata?
 
 .. image:: _static/vozdata.png
 
-* 'VozData <http://vozdata.lanacion.com.ar>' is a website from 'La Nacion <http://www.lanacion.com.ar>' in Argentina to convert scanned PDF documents from senate spendings into an usable dataset.
+* `VozData <http://vozdata.lanacion.com.ar>`_ is a website from `La Nacion <http://www.lanacion.com.ar>`_ in Argentina to convert scanned PDF documents from senate spendings into an usable dataset.
 
 Contents
 --------
@@ -30,10 +30,10 @@ Contents
 Similar projects
 ================
 
-Crowdata was inspired in the project from 'ProPublica <http://www.propublica.org>' called 'Free the Files <https://projects.propublica.org/free-the-files/>'. Here some of the projects that do the same for some specific cases.
+Crowdata was inspired in the project from `ProPublica <http://www.propublica.org>`_ called `Free the Files <https://projects.propublica.org/free-the-files/>`_. Here some of the projects that do the same for some specific cases.
 
-* 'Free the Files <http://www.propublica.org/series/free-the-files>''
-* 'Yanukovych Leaks <http://www.yanukovychleaks.org/detail/23570/>'
+* `Free the Files <http://www.propublica.org/series/free-the-files>`_
+* `Yanukovych Leaks <http://www.yanukovychleaks.org/detail/23570/>`_
 
 
 Credits
@@ -41,7 +41,7 @@ Credits
 
 'Crowdata' is an open source project that was born when Manuel Aristaran was an Open News fellow at La Nacion in 2013. It was finally released as free software when Gabriela Rodriguez  continued it for VozData in 2014. Thanks to Cristian Bertelegni and La Nacion for contributing to the code.
 
-Now it relies on contributions from people and organizations. Please, use it, comment on it and make improvements by pull requests in 'GitHub <http://github.com/crowdata/crowdata>'.
+Now it relies on contributions from people and organizations. Please, use it, comment on it and make improvements by pull requests in `GitHub <http://github.com/crowdata/crowdata>`_.
 
 
 Contributions
