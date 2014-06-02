@@ -54,7 +54,7 @@
 <ol class="arabic">
 <li><p class="first">Python 2.7.5</p>
 </li>
-<li><p class="first">We recommend the use of [virtualenv](<a class="reference external" href="http://virtualenv.org">http://virtualenv.org</a>) — Install it.</p>
+<li><p class="first">We recommend the use of <cite>virtualenv &lt;http://virtualenv.org&gt;</cite> — Install it.</p>
 </li>
 <li><p class="first">Create a virtual environment and activate it:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ virtualenv ~/.python-envs/crowdata
@@ -91,8 +91,9 @@ crowdata_development=# CREATE EXTENSION unaccent;
 </div>
 </li>
 </ol>
-<ol class="arabic" start="7">
-<li><p class="first">We keep local settings outside GIT. You will need to copy <cite>local_settings.py.example</cite> to <cite>local_settings.py</cite>. You will need to edit the database settings there.:</p>
+<p><em>Note: In Debian/Ubuntu you need to install postgresql-contrib-9.1</em></p>
+<ol class="arabic" start="8">
+<li><p class="first">We keep local settings out of GIT. You will need to copy <cite>local_settings.py.example</cite> to <cite>local_settings.py</cite>. You will need to edit the database settings there.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.postgresql_psycopg2&#39;</span><span class="p">,</span> <span class="c"># Add &#39;postgresql_psycopg2&#39;, &#39;postgresql&#39;, &#39;mysql&#39;, &#39;sqlite3&#39; or &#39;oracle&#39;.</span>
@@ -106,8 +107,6 @@ crowdata_development=# CREATE EXTENSION unaccent;
 </pre></div>
 </div>
 </li>
-</ol>
-<ol class="arabic" start="5">
 <li><p class="first">Initialize the database:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ python manage.py syncdb
 $ python manage.py migrate --all

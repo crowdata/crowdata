@@ -6,7 +6,7 @@ How To Install It Locally
 
 1. Python 2.7.5
 
-2. We recommend the use of [virtualenv](http://virtualenv.org) — Install it.
+2. We recommend the use of `virtualenv <http://virtualenv.org>` — Install it.
 
 3. Create a virtual environment and activate it::
 
@@ -36,7 +36,9 @@ How To Install It Locally
     crowdata_development=# CREATE EXTENSION pg_trgm;
     crowdata_development=# CREATE EXTENSION unaccent;
 
-7. We keep local settings outside GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.::
+*Note: In Debian/Ubuntu you need to install postgresql-contrib-9.1*
+
+8. We keep local settings out of GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.::
 
     DATABASES = {
         'default': {
@@ -49,11 +51,11 @@ How To Install It Locally
         }
     }
 
-5. Initialize the database::
+9. Initialize the database::
 
     $ python manage.py syncdb
     $ python manage.py migrate --all
 
-6. Start the development server::
+10. Start the development server::
 
     $ python manage.py runserver_plus
