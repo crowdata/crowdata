@@ -36,7 +36,7 @@ How To Install It Locally
     crowdata_development=# CREATE EXTENSION pg_trgm;
     crowdata_development=# CREATE EXTENSION unaccent;
 
-*Note: In Debian/Ubuntu you need to install postgresql-contrib-9.1*
+   *Note: In Debian/Ubuntu you need to install postgresql-contrib-9.1 and geospatial libraries.*
 
 8. We keep local settings out of GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.::
 
