@@ -6,7 +6,9 @@
 
   <div class="center-block">
     {% if document_set.get_verified_documents.count > 0 %}
-      ¡Ya revisamos {{ document_set.get_verified_documents.count }} de {{ document_set.documents.count }} documentos!
+
+      ¡We already reviewed {{ document_set.get_verified_documents.count }} of {{ document_set.documents.count }} documents!
+
     {% endif %}
   </div>
 
