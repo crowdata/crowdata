@@ -21,7 +21,10 @@ from crowdataapp import models, forms
 
 @render_to('document_set_index.html')
 def document_set_index(request):
-    document_sets = models.DocumentSet.objects.order_by('-created_at')
+    try:
+      document_sets = models.DocumentSet.objects.all().order_by('-created_at')
+    except:
+      document_sets = []
     return { 'document_sets': document_sets, 'header_title': _('Choose one of this project') }
 
 @render_to('document_set_landing.html')
