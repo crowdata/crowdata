@@ -1,8 +1,7 @@
 .. _install
 
-How To Install It Locally
-=========================
-
+Installation
+============
 
 1. Python 2.7.5
 

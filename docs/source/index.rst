@@ -8,6 +8,8 @@ Crowdsourcing the liberation of data trapped in documents!
 
 ``CrowData`` is a tool to collaborate on the verification or release of data that otherwise would be hard or impossible to get via automatic tools.
 
+But the outcome of Crowdata is more than only to extract data. With Crowdata you can work with your community on a data set. They can navigate the data, help to extract it via a game and make comments on information that may be interesting to look at by journalists.
+
 
 When to use Crowdata?
 =====================
@@ -31,10 +33,10 @@ Similar projects
 ================
 
 
-Crowdata was inspired in the project from ‘ProPublica <http://www.propublica.org>’_ called ‘Free the Files <https://projects.propublica.org/free-the-files/>’_ and The Guardian MP´s Expenses and Sarah Palin´s Emails.
- It was born from a need that La Nacion had to transform scanned image PDFs into a comprehensible and structured dataset, and also to ask for community's help to catalog those spendings that call their attention.
+Crowdata was inspired by the project from ‘ProPublica <http://www.propublica.org>’_ called ‘Free the Files <https://projects.propublica.org/free-the-files/>’_ and The Guardian MP´s Expenses and Sarah Palin´s Emails.
+ It was born from a need that La Nacion had to transform scanned image PDFs into a comprehensible and structured dataset, and ask for their community's help to catalog those spendings that call their attention.
 
-Here some of the projects that do the same for some specific cases.
+Here are some of the projects that do the same for some specific cases.
 
 * `Free the Files <http://www.propublica.org/series/free-the-files>`_
 * `Yanukovych Leaks <http://www.yanukovychleaks.org/detail/23570/>`_
