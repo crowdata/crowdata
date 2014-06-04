@@ -46,7 +46,7 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com),
 
 7. Create extensions for doing [trigram matching](http://www.postgresql.org/docs/9.2/static/pgtrgm.html) and [removing accents](http://www.postgresql.org/docs/9.1/static/unaccent.html) in PostgreSQL
 
-    ```bash
+    ```
     $ psql -ucrow_user
     crow_user=# \c crowdata_development
     crowdata_development=# CREATE EXTENSION pg_trgm;
