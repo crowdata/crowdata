@@ -47,10 +47,8 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com),
 7. Create extensions for doing [trigram matching](http://www.postgresql.org/docs/9.2/static/pgtrgm.html) and [removing accents](http://www.postgresql.org/docs/9.1/static/unaccent.html) in PostgreSQL
 
     ```
-    $ psql -ucrow_user
-    crow_user=# \c crowdata_development
+    $ psql -Ucrow_user crowdata_development
     crowdata_development=# CREATE EXTENSION pg_trgm;
-    crowdata_development=# CREATE EXTENSION unaccent;
     ```
 
 7. We keep local settings outside GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.
