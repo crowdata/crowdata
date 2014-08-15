@@ -32,9 +32,8 @@ Contents
 Similar projects
 ================
 
-
-Crowdata was inspired by the project from ‘ProPublica <http://www.propublica.org>’_ called ‘Free the Files <https://projects.propublica.org/free-the-files/>’_ and The Guardian MP´s Expenses and Sarah Palin´s Emails.
- It was born from a need that La Nacion had to transform scanned image PDFs into a comprehensible and structured dataset, and ask for their community's help to catalog those spendings that call their attention.
+Crowdata was inspired by the project from `ProPublica <http://www.propublica.org>`_ called `Free the Files <https://projects.propublica.org/free-the-files/>`_ and The Guardian MP’s Expenses and Sarah Palin’s Emails. 
+It was born from a need that La Nacion had to transform scanned image PDFs into a comprehensible and structured dataset, and ask for their community's help to catalog those expenses that call their attention.
 
 Here are some of the projects that do the same for some specific cases.
 
