@@ -83,7 +83,9 @@ class DocumentSet(models.Model):
 
     tosum_field = models.ForeignKey("DocumentSetFormField",
                                         related_name='tosum_fields',
-                                        null=True, blank=True)
+                                        null=True, blank=True,
+                                        verbose_name='Field to sum on',
+                                        help_text=_("Field from the form to sum total on. This will be displayed in the document set's homepage."))
 
     template_function = models.TextField(default=DEFAULT_TEMPLATE_JS,
                                          null=False,
