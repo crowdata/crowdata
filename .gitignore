@@ -4,4 +4,4 @@
 local_settings.py
 .crowdenv
 TAGS
-
+.DS_Store
