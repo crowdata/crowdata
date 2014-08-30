@@ -51,7 +51,7 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com),
     crowdata_development=# CREATE EXTENSION pg_trgm;
     ```
 
-7. We keep local settings outside GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.
+8. We keep local settings outside GIT. You will need to copy `local_settings.py.example` to `local_settings.py`. You will need to edit the database settings there.
 
     ```python
     DATABASES = {
@@ -66,18 +66,26 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com),
     }
     ```
 
-5. Initialize the database:
+9. Initialize the database:
 
     ```bash
     python manage.py syncdb
     python manage.py migrate --all
     ```
 
-6. Start the development server
+10. Create superuser
+    ```bash
+    python manage.py createsuperuser
+    ```
+    and follow the prompts.
+
+11. Start the development server
 
     ```bash
     python manage.py runserver_plus
     ```
+
+12. Navigate to `http://localhost:8000/admin/` and log in with your superuser credentials.
 
 ## When creating a document set ##
 
