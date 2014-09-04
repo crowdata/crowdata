@@ -99,7 +99,18 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
 
 1. Set your environment variables
 
+There are 6 required environment variables.
 
+crowdata_NAME : your database name
+crowdata_USER : the main database user (this will also be the django superuser)
+crowdata_HOST : usually localhost
+crowdata_EMAIL : email for django superuser
+crowdata_WITH_DB : the filename of a prepopulated backup for the database
+crowdata_PASSWORD : the password you want
+
+set each of them with:
+
+`export [var name]=[value you want]`
 
 2. Build your image with
 
