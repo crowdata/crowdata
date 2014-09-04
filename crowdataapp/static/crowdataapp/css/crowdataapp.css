@@ -31,3 +31,24 @@ nav .username .caret {
   top: 23px;
   right: 10px;
 }
+
+/* footer */
+.panel-footer {
+  overflow: auto;
+  margin: 0;
+}
+.panel-footer ul {
+  padding: 0;
+  float: left;
+  margin: 0;
+}
+.panel-footer li {
+  display: inline-block;
+}
+.panel-footer li a {
+  padding: 0 0.5em;
+  line-height: 29px;
+}
+.panel-footer .open-news {
+  float: right;
+}
