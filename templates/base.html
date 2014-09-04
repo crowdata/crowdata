@@ -37,6 +37,7 @@
     {% browserid_css %}
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'crowdataapp/css/bootstrap-tabs.css' %}" type="text/css"/>    
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}" type="text/css"/>
     <link rel="stylesheet" href="{% static 'crowdataapp/css/crowdataapp.css' %}" type="text/css"/>
 
@@ -127,7 +128,7 @@
         replace_txt_html();
         $('[data-formatTextMillons="true"]').formatTextMillons(10);
       });
-    </script>
+    </script> 
 
   </head>
 
@@ -135,28 +136,19 @@
 
     {% include "header.html" %}
 
-    <div class="container">
+    <main class="container">
 
       <div class="row">
         <div class="col-md-12">
           <h1 itemprop="name">{% block headercontent %}{% endblock %}</h1>
         </div>
       </div> <!-- row -->
-<br>
-      <div class="row">
-        <div class="col-md-8">
 
-          {% block content %}
-          {% endblock %}
-        </div>
 
-        <div class="col-md-4">
-          {% block rightcolumn %}
-          {% endblock %}
-        </div>
-      </div> <!-- row -->
+      {% block content %}
+      {% endblock %}
 
-    </div> <!-- container -->
+    </main> <!-- container -->
 
     {% include "footer.html" %}
 

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout/layout_8-4.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 {% load i18n %}
@@ -10,7 +10,7 @@
   {{ _('Users Ranking') }}
 {% endblock %}
 
-{% block content %}
+{% block maincolumn %}
 
 <div class="caja001 cont_ranking_all">
   {% autopaginate users_list %}

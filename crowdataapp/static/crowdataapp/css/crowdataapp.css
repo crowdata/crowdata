@@ -32,7 +32,6 @@ nav .username .caret {
   right: 10px;
 }
 
-
 /*
   Document Set Index
 */
@@ -41,4 +40,25 @@ nav .username .caret {
 	width: 180px;
 	height: 180px;
 	overflow: hidden;
+}
+
+/* footer */
+.panel-footer {
+  overflow: auto;
+  margin: 0;
+}
+.panel-footer ul {
+  padding: 0;
+  float: left;
+  margin: 0;
+}
+.panel-footer li {
+  display: inline-block;
+}
+.panel-footer li a {
+  padding: 0 0.5em;
+  line-height: 29px;
+}
+.panel-footer .open-news {
+  float: right;
 }

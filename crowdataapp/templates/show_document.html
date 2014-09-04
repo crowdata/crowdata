@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout/layout_8-4.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 {% load humanize %}
@@ -15,7 +15,7 @@
   {{document.document_set}}
 {% endblock %}
 
-{% block content %}
+{% block maincolumn %}
 <div id="document-viewer-container"></div>
 <script>
   {{ document.document_set.template_function|safe }}
