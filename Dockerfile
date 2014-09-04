@@ -11,10 +11,12 @@ RUN pip install -r requirements.txt
 RUN docker_setup.py
 
 # Setup database
-ADD free_crow.backup
 RUN python manage.py syncdb
 RUN python manage.py migrate --all
-RUN pg_restore --dbname=$(ENV_VAR) --verbose free_crow.backup --clean
+
+# Populate database (TODO: from env_vars, because user might not have these...)
+ADD free_crow.backup
+RUN pg_restore --dbname=$(ENV_VAR) --verbose $(ENV_VAR) --clean
 
 # Create superuser TBD!!!
 
