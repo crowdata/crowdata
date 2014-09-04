@@ -350,7 +350,7 @@ class DocumentSetFormEntryInline(admin.TabularInline):
     extra = 0
 
     def answers(self, obj):
-        field_template = "<li><input type=\"checkbox\" data-change-url=\"%s\" data-field-entry=\"%d\" data-document=\"%d\" data-entry-value=\"%s\" %s><span class=\"%s\">%s</span>: <strong>%s</strong> - <em>%s</em></li>"
+        field_template = "<li><input type=\"checkbox\" data-change-url=\"%s\" data-field-entry=\"%d\" data-document=\"%d\" data-entry-value=\"%s\" %s><span class=\"%s\">%s</span>: <a href=\"/admin/crowdataapp/documentsetfieldentry/%s\"><strong>%s</strong></a> - <em>%s</em></li>"
         rv = '<ul>'
         form_fields = obj.form.fields.order_by('id').all()
         rv += ''.join([field_template % (reverse('admin:document_set_field_entry_change', args=(obj.document.pk, e.pk,)),
@@ -360,14 +360,13 @@ class DocumentSetFormEntryInline(admin.TabularInline):
                                          'checked' if e.verified else '',
                                          'verify' if f.verify else '',
                                          f.label,
+                                         e.pk,
                                          e.value,
                                          e.assigned_canonical_value())
                        for f, e in zip(form_fields,
                                        obj.fields.order_by('field_id').all())])
         rv += '</ul>'
-
         return mark_safe(rv)
-
 
     def user_link(self, obj):
         url = reverse('admin:auth_user_change', args=(obj.user.id,))
@@ -488,12 +487,20 @@ class CrowDataUserAdmin(UserAdmin):
 
     readonly_fields = ('last_login', 'date_joined', )
 
+class DocumentSetFieldEntryAdmin(admin.ModelAdmin):
+    def get_model_perms(self, request):
+        """
+        Return empty perms dict thus hiding the model from admin index.
+        """
+        return {}
 
 admin.site.register(models.DocumentSet, DocumentSetAdmin)
 admin.site.register(models.Document, DocumentAdmin)
 admin.site.unregister(forms_builder.forms.models.Form)
 
 admin.site.register(models.CanonicalFieldEntryLabel, CanonicalFieldEntryLabelAdmin)
+
+admin.site.register(models.DocumentSetFieldEntry, DocumentSetFieldEntryAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, CrowDataUserAdmin)

@@ -209,6 +209,10 @@ class DocumentSetForm(forms_builder.forms.models.AbstractForm):
     def get_absolute_url(self):
         return ('crowdata_form_detail', (), { 'slug': self.slug })
 
+    # def __unicode__(self):
+    #   return self.document_set.name
+
+
 class DocumentSetFormFieldManager(models.Manager):
     """
     Only show visible fields when displaying actual form..
@@ -287,6 +291,10 @@ class DocumentSetFormEntry(forms_builder.forms.models.AbstractFormEntry):
 
         self.document.verified = True
         self.document.save()
+
+  # def __unicode__(self):
+  #   return self.value
+
 
 class DocumentSetFieldEntry(forms_builder.forms.models.AbstractFieldEntry):
     entry = models.ForeignKey("DocumentSetFormEntry", related_name="fields")
@@ -647,3 +655,6 @@ class CanonicalFieldEntryLabel(models.Model):
     for entry in self.fields.all():
       entry.canonical_label = new_canon
       entry.save_without_setting_canon()
+
+  def __unicode__(self):
+    return self.value
