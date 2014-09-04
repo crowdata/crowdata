@@ -2,8 +2,6 @@
 
 <div class="bg-info center-block">
 
-  <a href="{% url 'new_transcription' document_set.slug %}" class="btn btn-primary btn-lg btn-block" role="button" >{{ _('Free a file') }}</a>
-
   <div class="center-block">
     {% if document_set.get_verified_documents.count > 0 %}
 
