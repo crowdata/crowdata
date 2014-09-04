@@ -36,6 +36,40 @@ nav .username .caret {
   Document Set Index
 */
 
+.project-index {
+  position: relative;
+  margin-bottom: 2em;
+}
+.project-index .btn-group {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+.project-index .media {
+  border-top: 1px solid #cecece;
+  padding-top: 2em;
+  margin-top: 2em;
+}
+.project-index .media .pull-left {
+  margin-right: 1em;
+}
+.project-index .media h4 {
+  margin-bottom: 1em;
+}
+.project-index .media .cta {
+  margin-top: 1em;
+}
+.project-index .media .verified-container,
+.project-index .media .new-transcription {
+  width: 48%;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.project-index .media:first-child {
+  border: 0;
+  margin: 0;
+}
 .pull-left{
 	width: 180px;
 	height: 180px;
