@@ -30,13 +30,11 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
 
 5. Install dependencies:
 
-    Ubuntu users: before you can move forward, please make sure you have the following packages installed: `python-dev`, `postgresql-9.3`, `postgresql-contrib`, and `libgeos-dev`
+    Ubuntu users: before you can move forward, please make sure you have the following packages installed: `python-dev`, `postgresql-9.3`, `postgresql-server-dev-9.3`, `postgresql-contrib`, and `libgeos-dev`
 
     ```bash
     pip install -r requirements.txt
     ```
-
-   (If you are using Ubuntu, you may need to install `python-dev` before dependencies.)
 
 6. Create PostgreSQL database
 
