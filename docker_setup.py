@@ -16,7 +16,8 @@ def dbPop():
 		print "No data to prepopulating.  Skipping this step..."
 
 	if prepop is not None:
-		"pg_restore --dbname=%s --verbose %s --clean" % (os.environ['crowdata_NAME'], prepop)
+		import subprocess
+		subprocess.call(("pg_restore --dbname=%s --verbose %s --clean" % (os.environ['crowdata_NAME'], prepop)).split(" "))
 
 	# superuser
 	print "Creating superuser"
