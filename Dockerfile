@@ -6,6 +6,7 @@
 FROM ubuntu:14.04
 MAINTAINER Harlo <harlo.holmes@gmail.com>
 
+# Install postgres (a la Chris's instructions)
 RUN apt-get update -qq
 
 # Change locale to UTF-8 from standard locale ("C")
@@ -50,6 +51,10 @@ RUN apt-get install -yq python-dev python-pip libgeos-dev
 # Install python deps
 RUN pip install -r requirements.txt
 
+# Add the crowdata application to the image
+ADD . /crowdata
+WORKDIR /crowdata
+
 # Import all the variables
 ENV crowdata_HOST $crowdata_HOST
 ENV crowdata_USER $crowdata_USER
@@ -61,7 +66,10 @@ ENV crowdata_WITH_DB $crowdata_WITH_DB
 # Clone and populate local_settings.py
 RUN python docker_setup.py -init
 
-# Setup database
+# Setup database 
+# TODO: since there is no prior postgres user, we have to:
+# init the primary user and grant permissions (Gaba, how to do this again?)
+# then...
 RUN createuser -s -h $crowdata_HOST $crowdata_USER
 RUN createdb -O $crowdata_USER -h $crowdata_HOST $crowdata_NAME
 RUN psql -U $crowdata_USER $crowdata_NAME -c "CREATE EXTENSION pg_trgm;"
@@ -69,9 +77,8 @@ RUN psql -U $crowdata_USER $crowdata_NAME -c "CREATE EXTENSION pg_trgm;"
 RUN python manage.py syncdb
 RUN python manage.py migrate --all
 
-# Populate database from imported file (if available) and create superuser
+# Populate database from imported file (if available) and create django superuser
 RUN python docker_setup.py -db_pop
 
 # OK LET'S ROLL
-RUN python manage.py runserver_plus
 EXPOSE [5432, 8000]
