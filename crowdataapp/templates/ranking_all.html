@@ -2,6 +2,12 @@
 {% load crowdataapp_tags %}
 {% load humanize %}
 <div class="caja001 cont_ranking_all">
+  <div class="search">
+    <form>
+      <input type="search" name="q">
+      <input type="submit" value="Search">
+    </form>
+  </div>
   <div class="titulo">{{ranking.name}}</div>
   <div class="subtitulo"></div>
   <table class="table table-striped">
