@@ -97,9 +97,7 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
 
 ## Installing via Docker ##
 
-1. Build the Docker container for postgres
-
-2. Build the Crowdata Docker image here.
+`sudo docker build -i -t lanacion/crowdata .`
 
 ## When creating a document set ##
 
