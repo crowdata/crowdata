@@ -75,7 +75,7 @@ def ranking_all(request, document_set, ranking_id):
             'document_set': document_set,
             'ranking': ranking,
             'page': request.GET.get('page', '1'),
-            'search_term': request.REQUEST.get('search'),
+            'search_term': request.REQUEST.get('q'),
             }
 
 @login_required

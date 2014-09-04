@@ -396,6 +396,11 @@ class DocumentSetRankingDefinition(models.Model):
         if limit is None:
             limit = 10000000
 
+        if search_term is None:
+            search_term = "%%%%"
+        else:
+            search_term = '%%' + search_term + '%%'
+
         # ToDo : WHERE label.value LIKE %(search_term)s
         q = None
         if self.grouping_function == 'COUNT':
@@ -410,21 +415,31 @@ class DocumentSetRankingDefinition(models.Model):
 
             q = q % { 'document_set_id': self.document_set.id, 'label_field_id': self.label_field.id }
         elif self.grouping_function == 'SUM':
+            subquery_label = self.SUBQUERY_LABEL % {
+                'document_set_id': self.document_set.id,
+                'label_field_id': self.label_field.id,
+                'magnitude_field_id': self.magnitude_field_id
+                }
+
+            subquery_magnitude = self.SUBQUERY_MAGNITUDE %  {
+                'document_set_id': self.document_set.id,
+                'label_field_id': self.label_field.id,
+                'magnitude_field_id': self.magnitude_field_id
+                }
+
             q = """ SELECT label.value, SUM(magnitude.value), label.canonical_label_id
                     FROM (%s) label
                     INNER JOIN (%s) magnitude
                       ON magnitude.document_id = label.document_id
+                    WHERE label.value ILIKE '%s'
                     GROUP BY label.value, label.canonical_label_id
                     ORDER BY SUM(magnitude.value) %s
-                    LIMIT %d OFFSET %d """ % (self.SUBQUERY_LABEL,
-                                              self.SUBQUERY_MAGNITUDE,
+                    LIMIT %d OFFSET %d """ % (subquery_label,
+                                              subquery_magnitude,
+                                              search_term,
                                               'ASC' if self.sort_order else 'DESC',
                                               limit,
                                               offset)
-
-            q = q % { 'document_set_id': self.document_set.id,
-                      'label_field_id': self.label_field.id,
-                      'magnitude_field_id': self.magnitude_field_id }
 
         elif self.grouping_function == 'AVG':
             q = """ SELECT label.value, AVG(magnitude.value), label.canonical_label_id
@@ -441,7 +456,8 @@ class DocumentSetRankingDefinition(models.Model):
 
             q = q % { 'document_set_id': self.document_set.id,
                       'label_field_id': self.label_field.id,
-                      'magnitude_field_id': self.magnitude_field_id}
+                      'magnitude_field_id': self.magnitude_field_id,
+                      }
             #ToDo, filter on 'search_term': "'%" + search_term.encode('utf-8') + "%'"
 
         return q

@@ -66,7 +66,7 @@ def render_ranking(context, ranking_definition):
 def render_ranking_all(context, ranking_definition, search_term):
     t = get_template('ranking_all.html')
     context['ranking'] = ranking_definition
-    context['ranking_calculate_all'] = ranking_definition.calculate_all(search_term)
+    context['ranking_calculate_all'] = ranking_definition.calculate_all(search_term=search_term)
 
     r = t.render(context)
     return r
@@ -79,7 +79,7 @@ def index_in_ranking(page, counter, cant_per_page ):
 def documents_verified(context, document_set):
     t = get_template("documents_verified.html")
     context["document_set"] = document_set
-    
+
     return t.render(context)
 
 @register.simple_tag(takes_context=True)
