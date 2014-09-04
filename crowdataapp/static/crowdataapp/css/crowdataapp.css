@@ -1,3 +1,11 @@
-/*  */
+/* Header */
+.navbar-logo{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.navbar-logo img {
+	width: 38px;
+}
 
 
