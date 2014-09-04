@@ -43,7 +43,6 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com),
     $ createdb -O crow_user -h localhost crowdata_development
     ```
 
-
 7. Create extensions for doing [trigram matching](http://www.postgresql.org/docs/9.2/static/pgtrgm.html) and [removing accents](http://www.postgresql.org/docs/9.1/static/unaccent.html) in PostgreSQL
 
     ```
@@ -66,26 +65,35 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com),
     }
     ```
 
-9. Initialize the database:
+9. Install the GEOS library in case you don't have installed already.
+
+10. Initialize the database:
 
     ```bash
     python manage.py syncdb
     python manage.py migrate --all
     ```
 
-10. Create superuser
+11. Ask a team member for a database backup and load it.
+
+    ```
+    pg_restore --dbname=crowdata_development --verbose ~/my_backup.backup --clean
+    ```
+
+12. Create superuser
+
     ```bash
     python manage.py createsuperuser
     ```
     and follow the prompts.
 
-11. Start the development server
+13. Start the development server
 
     ```bash
     python manage.py runserver_plus
     ```
 
-12. Navigate to `http://localhost:8000/admin/` and log in with your superuser credentials.
+14. Navigate to `http://localhost:8000/admin/` and log in with your superuser credentials.
 
 ## When creating a document set ##
 
