@@ -6,25 +6,23 @@ defaults = {
 	"USER" : "crowdata_user",
 	"PASSWORD" : "crowdata",
 	"HOST" : "localhost",
-	"EMAIL" : "crowdata@blahblah.com"
+	"EMAIL" : "crowdata@blahblah.com",
+	"WITH_DB" : None
 }
 
 def dbPop():
-	try:
-		prepop = os.environ["crowdata_WITH_DB"]
-	except Exception as e:
-		print "No data to prepopulating.  Skipping this step..."
-
-	if prepop is not None:
-		import subprocess
-		subprocess.call(("pg_restore --dbname=%s --verbose %s --clean" % (os.environ['crowdata_NAME'], prepop)).split(" "))
-
-	# superuser
-	print "Creating superuser"
-	for directive in ["USER", "EMAIL", "PASSWORD"]:
+	for directive in ["USER", "EMAIL", "PASSWORD", "WITH_DB"]:
 		if "crowdata_%s" % directive not in os.environ.keys():
 			os.environ['crowdata_%s' % directive] = defaults[directive]
 
+	if os.environ['crowdata_WITH_DB'] is not None:
+		print "Populating database from backup %s" % os.environ['crowdata_WITH_DB']
+		import subprocess
+		
+		subprocess.call(("pg_restore --dbname=%s --verbose %s --clean" % (os.environ['crowdata_NAME'], os.environ['crowdata_WITH_DB'])).split(" "))
+
+	# superuser
+	print "Creating superuser"
 	from django.db import DEFAULT_DB_ALIAS as database
 	from django.contrib.auth.models import User
 

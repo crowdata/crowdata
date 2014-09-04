@@ -56,6 +56,7 @@ ENV crowdata_USER $crowdata_USER
 ENV crowdata_PASSWORD $crowdata_PASSWORD
 ENV crowdata_NAME $crowdata_NAME
 ENV crowdata_EMAIL $crowdata_EMAIL
+ENV crowdata_WITH_DB $crowdata_WITH_DB
 
 # Clone and populate local_settings.py
 RUN python docker_setup.py -init
