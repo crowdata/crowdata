@@ -95,6 +95,12 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
 
 14. Navigate to `http://localhost:8000/admin/` and log in with your superuser credentials.
 
+## Installing via Docker ##
+
+1. Build the Docker container for postgres
+
+2. Build the Crowdata Docker image here.
+
 ## When creating a document set ##
 
 If you are going to use document cloud to load and view the PDF documents, then you will have to set the 'head html' in the admin, when creating the document set:
