@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout/layout_12.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 
@@ -6,7 +6,7 @@
   {{ _('Choose a project') }}
 {% endblock %}
 
-{% block content %}
+{% block maincolumn %}
   {% for ds in document_sets|order_by:"name" %}
 		<div class="media">
       {% if ds.header_image %}
