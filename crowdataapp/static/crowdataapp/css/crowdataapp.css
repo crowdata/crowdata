@@ -89,6 +89,10 @@ nav .username .caret {
   New transcript
 */
 
+#document-viewer-container {
+  width: 100%!important;
+}
+
 #document-viewer-container,
 #document-transcript {
   max-height: 73vh;
