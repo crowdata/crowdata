@@ -12,7 +12,7 @@ def main():
 					except Exception as e:
 						print "(%s) No directive set for %s" % (e, directive)
 
-		local_settings.append(line)
+			local_settings.append(line)
 
 	with open('local_settings.py', 'wb+') as C:
 		C.write('\n'.join(local_settings))
