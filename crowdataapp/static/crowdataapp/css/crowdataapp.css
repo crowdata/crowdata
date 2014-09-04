@@ -45,7 +45,7 @@ nav .username .caret {
 /* footer */
 .panel-footer {
   overflow: auto;
-  margin: 0;
+  margin: 40px 0 0 0;
 }
 .panel-footer ul {
   padding: 0;
@@ -85,6 +85,8 @@ nav .username .caret {
   margin:  0 0 30px ;
 }
 
+.media-wrapper {padding-bottom: 15px; border-bottom: 1px solid #ccc;}
+
 /*
   New transcript
 */
@@ -110,6 +112,9 @@ nav .username .caret {
   width: 90%;
   border: 1px solid #cecece;
   padding: 0.2em;
+}
+#document-transcript input[type="radio"] {
+  width: auto;
 }
 
 /* Utilities */
