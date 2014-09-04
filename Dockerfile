@@ -50,6 +50,13 @@ RUN apt-get install -yq python-dev python-pip libgeos-dev
 # Install python deps
 RUN pip install -r requirements.txt
 
+# Import all the variables
+ENV crowdata_HOST $crowdata_HOST
+ENV crowdata_USER $crowdata_USER
+ENV crowdata_PASSWORD $crowdata_PASSWORD
+ENV crowdata_NAME $crowdata_NAME
+ENV crowdata_EMAIL $crowdata_EMAIL
+
 # Clone and populate local_settings.py
 RUN python docker_setup.py -init
 

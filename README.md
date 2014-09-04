@@ -97,7 +97,13 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
 
 ## Installing via Docker ##
 
-`sudo docker build -i -t lanacion/crowdata .`
+1. Set your environment variables
+
+
+
+2. Build your image with
+
+`cat Dockerfile | envsubst | sudo docker build -t lanacion/crowdata -`
 
 ## When creating a document set ##
 
