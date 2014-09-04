@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-  {% for ds in document_sets %}
+  {% for ds in document_sets|order_by:"name" %}
 		<div class="media">
       {% if ds.header_image %}
         <a class="pull-left" href="{{ds.get_absolute_url}}">
@@ -18,18 +18,10 @@
       <div class="media-body">
         <h4 class="media-heading"><a href="{{ds.get_absolute_url}}">{{ds.name}}</a></h4>
 		    {{ds.description}}
+        {% documents_verified ds %}
+
 		  </div>
 		</div>
   {% endfor %}
 
-{% endblock %}
-
-{% block rightcolumn %}
-
-  <div class="herramientasSociales social row">
-  </div>
-
-  <script type="text/javascript">
-    $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
-  </script>
 {% endblock %}

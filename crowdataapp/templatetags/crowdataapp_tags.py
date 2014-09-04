@@ -95,3 +95,9 @@ def list_ranking_user(context, users_ranking, profile = None):
     context["users_ranking"] = users_ranking
     context["profile"] = profile
     return t.render(context)
+
+
+@register.filter_function
+def order_by(queryset, args):
+    args = [x.strip() for x in args.split(',')]
+    return queryset.order_by(*args)

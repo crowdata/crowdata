@@ -31,3 +31,14 @@ nav .username .caret {
   top: 23px;
   right: 10px;
 }
+
+
+/*
+  Document Set Index
+*/
+
+.pull-left{
+	width: 180px;
+	height: 180px;
+	overflow: hidden;
+}
