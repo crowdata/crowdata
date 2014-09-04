@@ -63,8 +63,36 @@ nav .username .caret {
   float: right;
 }
 
-
 /*
  Project overview
  */
- .project-header {margin-bottom: 30px;}
+
+.project-header {margin-bottom: 30px;}
+
+/*
+  New transcript
+*/
+
+#document-viewer-container,
+#document-transcript {
+  max-height: 73vh;
+  overflow: auto;
+  padding: 0;
+}
+#document-transcript .twitter-typeahead {
+  width: 100%;
+}
+#document-transcript label {
+  margin: 1em 0 0 0;
+}
+#document-transcript input,
+#document-transcript textarea {
+  width: 90%;
+  border: 1px solid #cecece;
+  padding: 0.2em;
+}
+
+/* Utilities */
+.DV-pixelping {
+  display: none;
+}
