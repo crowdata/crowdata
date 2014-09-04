@@ -68,10 +68,30 @@ nav .username .caret {
  */
 
 .project-header {margin-bottom: 30px;}
+.project-header .verified-container {padding: 15px 15px 5px; margin: 15px 0 0 0;}
+
+.table-rank td.wide {width: 65%;}
+.table-rank td.val {text-align: right}
+.table-rank .view-more {
+  text-align: center;
+  padding: 8px;
+  display: block;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  background: #fafafa;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin:  0 0 30px ;
+}
 
 /*
   New transcript
 */
+
+#document-viewer-container {
+  width: 100%!important;
+}
 
 #document-viewer-container,
 #document-transcript {
@@ -96,3 +116,4 @@ nav .username .caret {
 .DV-pixelping {
   display: none;
 }
+
