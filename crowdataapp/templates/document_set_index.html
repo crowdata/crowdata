@@ -7,8 +7,14 @@
 {% endblock %}
 
 {% block maincolumn %}
-  {% for ds in document_sets|order_by:"name" %}
-		<div class="media">
+<script src="/static/crowdataapp/js/jquery.tinysort.min.js"></script>
+<div class = "sort-name">Sort name</div>
+<div class = "sort-count">Sort count</div>
+<div class = "sort-percentage">Sort percentage</div>
+
+<div class = "media-wrapper">
+  {% for ds in document_sets %}
+		<div class="media" data-name = "{{ds.name}}" data-count = "{{ ds.documents.count }}" data-complete = "{% widthratio ds.get_verified_documents.count ds.documents.count 100 %}">
       {% if ds.header_image %}
         <a class="pull-left" href="{{ds.get_absolute_url}}">
           <img src="{{ ds.header_image }}" width="316" height="216" class="media-object" />
@@ -22,6 +28,23 @@
 
 		  </div>
 		</div>
+  </div>
+    <script>
+    $('div.sort-name').click(function() { 
+        orden = 'asc'; 
+
+        if ($(this).hasClass('desc')) { 
+            orden = 'desc'; 
+        }
+
+        $(this).toggleClass('desc');
+
+        $('div.media-wrapper').tsort('div.media',{data:'name'},{order:orden});
+    });
+
+
+
+    </script>
   {% endfor %}
 
 {% endblock %}
