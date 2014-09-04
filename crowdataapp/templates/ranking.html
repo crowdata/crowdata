@@ -1,11 +1,10 @@
 {% load humanize %}
 
-<div class="table-responsive">
+<div class="table-responsive table-rank">
   <table class="table table-striped">
     <tr>
       <th colspan="3">
-        <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');" title="{{ _('more') }}">
-            {{ ranking.name }} <span class="btn btn-primary btn-sm glyphicon glyphicon-plus pull-right"></span></a>
+        {{ ranking.name }}
       </th>
     </tr>
       
@@ -15,14 +14,17 @@
         <td>
           {{ forloop.counter }}
         </td>
-        <td>
+        <td class="wide">
           <a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}">{{ i.0 }}</a>
         </td>
-        <td>
+        <td class="val">
           $ {{ i.1|floatformat:"0"|intcomma }}
         </td>
       </tr>
     {% endfor %}
 
   </table>
+
+
+          <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ranking.id}}" onclick="ga('send', 'event', 'ranking_ver_mas','{{ranking.name}}');" title="{{ _('more') }}" class="view-more">View All Results</a>
 </div>
