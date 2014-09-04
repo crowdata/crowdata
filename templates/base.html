@@ -137,14 +137,6 @@
 
     <div class="container">
 
-      {% if request.user.is_admin or request.user.is_staff %}
-      <div class="row">
-      <div class="col-md-12 text-center bg-danger">
-        {{ _('Logged as') }} <b>{{ _('administrator') }}</b>: {{ _('looking at all the projects') }}
-      </div>
-      </div>
-      {% endif %}
-
       <div class="row">
         <div class="col-md-12">
           <h1 itemprop="name">{% block headercontent %}{% endblock %}</h1>

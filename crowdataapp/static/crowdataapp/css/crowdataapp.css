@@ -1,4 +1,8 @@
-/* Header */
+/*
+  Header
+*/
+
+/* logo */
 .navbar-logo{
 	display: inline-block;
 	margin-right: 5px;
@@ -8,4 +12,22 @@
 	width: 38px;
 }
 
-
+/* user navigation */
+.navbar-nav > li > a.username {
+  text-transform: capitalize;
+  position: relative;
+  padding: 10px 30px 10px 10px;
+}
+nav .username .role {
+  text-transform: uppercase;
+  font-size: 8px;
+  line-height: 10px;
+  color: #bbb;
+  font-weight: bold;
+  display: block;
+}
+nav .username .caret {
+  position: absolute;
+  top: 23px;
+  right: 10px;
+}
