@@ -6,6 +6,8 @@
   border-bottom: 0;
 }
 
+.tab-content {margin-left: 140px;}
+
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
@@ -57,7 +59,6 @@
 
 .tabs-left > .nav-tabs {
   float: left;
-  margin-right: 19px;
   border-right: 1px solid #ddd;
 }
 
@@ -104,3 +105,5 @@
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
 }
+
+

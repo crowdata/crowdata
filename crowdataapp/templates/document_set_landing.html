@@ -1,4 +1,4 @@
-{% extends "layout/layout_8-4.html" %}
+{% extends "layout/layout_12.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 {% load i18n %}
@@ -10,48 +10,56 @@
 {% endblock %}
 
 {% block headerblock %}
-    <div class="media">
-    {% if document_set.header_image %}
-        <a class="pull-left" href="{{ds.get_absolute_url}}">
-          <img src="{{ document_set.header_image }}" width="316" height="216" class="media-object" />
-        </a>
-    {% endif %}
+
+  <div class="row project-header">
+    <div class="col-md-8">
+      <div class="media">
+      {% if document_set.header_image %}
+          <a class="pull-left" href="{{ds.get_absolute_url}}">
+            <img src="{{ document_set.header_image }}" width="316" height="216" class="media-object" />
+          </a>
+      {% endif %}
 
 
-    <div class="media-body">
-      {{document_set.description|linebreaks}}
+        <div class="media-body">
+          {{document_set.description|linebreaks}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      {% call_to_action document_set %}
+      {% documents_verified document_set %}
     </div>
 
-  {% call_to_action document_set %}
-  {% documents_verified document_set %}
-
-  </div>
 {% endblock %}
 
 {% block maincolumn %}
-    <div class="col-md-12">
-            
+
       <!-- tabs left -->
       <div class="tabbable tabs-left">
         <ul class="nav nav-tabs">
-          <li><a href="#a" data-toggle="tab">Statistics</a></li>
-          <li class="active"><a href="#b" data-toggle="tab">User Rankings</a></li>
+          <li  class="active"><a href="#a" data-toggle="tab">Statistics</a></li>
+          <li><a href="#b" data-toggle="tab">User Rankings</a></li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content   container-fluid">
          <div class="tab-pane active" id="a">
-   
+            <div class="row">
             {% for ranking in document_set.rankings.all %}
               <div class="col-md-6">
               {% render_ranking ranking %}
               </div>
             {% endfor %}
-
+            </div>
          </div>
-         <div class="tab-pane" id="b"> {% list_ranking_user document_set.leaderboard|slice:":10" %}</div>
+         <div class="tab-pane" id="b"> 
+           <div class="row"> 
+              <div class="col-md-12">
+              {% list_ranking_user document_set.leaderboard|slice:":10" %}
+              </div>
+            </div>
+         </div>
       </div>
       <!-- /tabs -->
-      
-    </div>
 
 {% endblock %}
 
