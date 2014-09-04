@@ -3,14 +3,24 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'document_set_index' %}">Crowdata</a>
+      <a class="navbar-brand" href="{% url 'document_set_index' %}">
+      <div class = "navbar-logo"><img src = "/static/img/crowdata.png" /></div>
+      Crowdata
+      </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
           <li class="dropdown">
-            <a href=""reverse('user_profile', kwargs={'document_set':{{document_set}}, 'username':{{ user.username }} })"" class="dropdown-toggle" data-toggle="dropdown">{{ user }} <span class="caret"></span></a>
+            <a href=""reverse('user_profile', kwargs={'document_set':{{document_set}}, 'username':{{ user.username }} })"" class="dropdown-toggle username" data-toggle="dropdown">
+              <span class="name">{{ user }}</span>
+
+              {% if request.user.is_admin or request.user.is_staff %}
+                <span class="role">Admin</span>
+              {% endif %}
+              <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="{% url 'edit_profile' %}">Profile</a></li>
               <li><a href="{% url 'admin:index' %}">Admin</a></li>
