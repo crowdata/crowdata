@@ -18,7 +18,7 @@ def dbPop():
 	if os.environ['crowdata_WITH_DB'] is not None:
 		print "Populating database from backup %s" % os.environ['crowdata_WITH_DB']
 		import subprocess
-		
+
 		subprocess.call(("pg_restore --dbname=%s --verbose %s --clean" % (os.environ['crowdata_NAME'], os.environ['crowdata_WITH_DB'])).split(" "))
 
 	# superuser
@@ -37,11 +37,11 @@ def init():
 			for directive in ["NAME", "USER", "PASSWORD", "HOST"]:
 				if re.match(re.compile('.*\'%s\':' % directive), line) is not None:
 					if "crowdata_%s" % directive not in os.environ.keys():
-						print "(%s) No directive set for %s. using default value %s" % (e, directive, defaults[directive])
+						print "No directive set for %s. using default value %s" % (directive, defaults[directive])
 						os.environ["crowdata_%s" % directive] = defaults[directive]
 					
 					idx = line.find("\'\'") + 1
-					line = "%s%s%s" % (line[0:idx], os.environ["crowdata_%s" % directive], line[idx:])
+					line = "%s%s%s" % (line[:idx], os.environ["crowdata_%s" % directive], line[idx:])
 			
 			local_settings.append(line)
 
@@ -53,5 +53,6 @@ if __name__ == "__main__": main()
 
 	if argv[1] == "-init": init()
 	elif argv[1] == "-db_pop": dbPop()
+	else: exit(-1) 
 	
 	exit(0)
