@@ -116,7 +116,7 @@ set each of them with:
 
 `cat Dockerfile | envsubst | sudo docker build -t lanacion/crowdata -`
 
-3. Once it's built, run a the server with
+3. Once it's built, run the server with
 
 `sudo docker run -i -t lanacion/crowdata python /crowdata/manage.py runserver_plus`
 
