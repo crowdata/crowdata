@@ -30,11 +30,11 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
 
 5. Install dependencies:
 
+    Ubuntu users: before you can move forward, please make sure you have the following packages installed: `python-dev`, `postgresql-9.3`, `postgresql-server-dev-9.3`, `postgresql-contrib`, and `libgeos-dev`
+
     ```bash
     pip install -r requirements.txt
     ```
-
-   (If you are using Ubuntu, you may need to install `python-dev` before dependencies.)
 
 6. Create PostgreSQL database
 
@@ -94,6 +94,31 @@ In 2014, La Nacion in Argentina launched [VozData](http://vozdata.lanacion.com.a
     ```
 
 14. Navigate to `http://localhost:8000/admin/` and log in with your superuser credentials.
+
+## Installing via Docker ##
+
+1. Set your environment variables
+
+There are 6 required environment variables.
+
+* crowdata_NAME : your database name
+* crowdata_USER : the main database user (this will also be the django superuser)
+* crowdata_HOST : usually localhost
+* crowdata_EMAIL : email for django superuser
+* crowdata_WITH_DB : the filename of a prepopulated backup for the database (or simply None)
+* crowdata_PASSWORD : the password you want
+
+set each of them with:
+
+`export [var name]=[value you want]` (i.e. `export crowdata_USER="beyonce"`)
+
+2. Build your image with
+
+`cat Dockerfile | envsubst | sudo docker build -t lanacion/crowdata -`
+
+3. Once it's built, run the server with
+
+`sudo docker run -i -t -d lanacion/crowdata python /crowdata/manage.py runserver_plus && tail -f /dev/null`
 
 ## When creating a document set ##
 
