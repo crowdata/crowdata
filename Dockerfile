@@ -67,7 +67,7 @@ ENV crowdata_WITH_DB $crowdata_WITH_DB
 RUN python docker_setup.py -init
 
 # Setup database 
-# TODO: since there is no prior postgres user, we have to:
+# TODO: since there is no prior postgres user, we have to
 # init the primary user and grant permissions (Gaba, how to do this again?)
 # then...
 RUN createuser -s -h $crowdata_HOST $crowdata_USER

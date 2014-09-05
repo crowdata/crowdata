@@ -110,7 +110,7 @@ There are 6 required environment variables.
 
 set each of them with:
 
-`export [var name]=[value you want]` i.e. `export crowdata_USER="beyonce"`
+`export [var name]=[value you want]` (i.e. `export crowdata_USER="beyonce"`)
 
 2. Build your image with
 
@@ -118,7 +118,7 @@ set each of them with:
 
 3. Once it's built, run the server with
 
-`sudo docker run -i -t lanacion/crowdata python /crowdata/manage.py runserver_plus`
+`sudo docker run -i -t -d lanacion/crowdata python /crowdata/manage.py runserver_plus && tail -f /dev/null`
 
 ## When creating a document set ##
 
