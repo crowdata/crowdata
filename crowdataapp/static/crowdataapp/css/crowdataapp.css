@@ -1,0 +1,158 @@
+/*
+  Header
+*/
+
+/* logo */
+.navbar-logo{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.navbar-logo img {
+	width: 38px;
+}
+
+/* user navigation */
+.navbar-nav > li > a.username {
+  text-transform: capitalize;
+  position: relative;
+  padding: 10px 30px 10px 10px;
+}
+nav .username .role {
+  text-transform: uppercase;
+  font-size: 8px;
+  line-height: 10px;
+  color: #bbb;
+  font-weight: bold;
+  display: block;
+}
+nav .username .caret {
+  position: absolute;
+  top: 23px;
+  right: 10px;
+}
+
+/*
+  Document Set Index
+*/
+
+.project-index {
+  position: relative;
+  margin-bottom: 2em;
+}
+.project-index .btn-group {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+.project-index .media {
+  border-top: 1px solid #cecece;
+  padding-top: 2em;
+  margin-top: 2em;
+}
+.project-index .media .pull-left {
+  margin-right: 1em;
+}
+.project-index .media h4 {
+  margin-bottom: 1em;
+}
+.project-index .media .cta {
+  margin-top: 1em;
+}
+.project-index .media .verified-container,
+.project-index .media .new-transcription {
+  width: 48%;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+.project-index .media:first-child {
+  border: 0;
+  margin: 0;
+}
+.pull-left{
+	width: 180px;
+	height: 180px;
+	overflow: hidden;
+}
+
+/* footer */
+.panel-footer {
+  overflow: auto;
+  margin: 40px 0 0 0;
+}
+.panel-footer ul {
+  padding: 0;
+  float: left;
+  margin: 0;
+}
+.panel-footer li {
+  display: inline-block;
+}
+.panel-footer li a {
+  padding: 0 0.5em;
+  line-height: 29px;
+}
+.panel-footer .open-news {
+  float: right;
+}
+
+/*
+ Project overview
+ */
+
+.project-header {margin-bottom: 30px;}
+.project-header .verified-container {padding: 15px 15px 5px; margin: 15px 0 0 0;}
+
+.table-rank td.wide {width: 65%;}
+.table-rank td.val {text-align: right}
+.table-rank .view-more {
+  text-align: center;
+  padding: 8px;
+  display: block;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  background: #fafafa;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin:  0 0 30px ;
+}
+
+.media-wrapper {padding-bottom: 15px; border-bottom: 1px solid #ccc;}
+
+/*
+  New transcript
+*/
+
+#document-viewer-container {
+  width: 100%!important;
+}
+
+#document-viewer-container,
+#document-transcript {
+  max-height: 73vh;
+  overflow: auto;
+  padding: 0;
+}
+#document-transcript .twitter-typeahead {
+  width: 100%;
+}
+#document-transcript label {
+  margin: 1em 0 0 0;
+}
+#document-transcript input,
+#document-transcript textarea {
+  width: 90%;
+  border: 1px solid #cecece;
+  padding: 0.2em;
+}
+#document-transcript input[type="radio"] {
+  width: auto;
+}
+
+/* Utilities */
+.DV-pixelping {
+  display: none;
+}
+

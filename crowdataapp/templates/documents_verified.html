@@ -1,13 +1,17 @@
 {% load humanize %}
 
-<div class="bg-info center-block">
-
-  <a href="{% url 'new_transcription' document_set.slug %}" class="btn btn-primary btn-lg btn-block" role="button" >{{ _('Free a file') }}</a>
+<div class="bg-info center-block verified-container">
 
   <div class="center-block">
     {% if document_set.get_verified_documents.count > 0 %}
 
       ¡We already reviewed {{ document_set.get_verified_documents.count }} of {{ document_set.documents.count }} documents!
+
+	<div class="progress">
+	  <div class="progress-bar" role="progressbar" aria-valuenow="{% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}" aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}%;">
+	    {% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}%
+	  </div>
+	</div>
 
     {% endif %}
   </div>

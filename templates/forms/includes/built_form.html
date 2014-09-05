@@ -15,9 +15,6 @@
     {% for field in form_for_form %}
 
       <div class="form-group">
-        <!--<a href="#" onclick="ga('send', 'event', 'New_trancription','BTN_HELP'); return false;"><img src='{% static "img/ayuda.png" %}' width="49" height="17" border="0" alt="ayuda" /></a>-->
-
-
         <label for="">{{field.label_tag}}</label>
         <span class="help-block">{{field.help_text}}</span>
 
@@ -25,21 +22,22 @@
       </div>
     {% endfor %} {% comment %} for field in form_for_form {% endcomment %}
 
+    <a href="" class="btn btn-success" onClick="ga('send', 'event', 'New_trancription','Enviar')">Send it</a>
 
-    <div style="clear:left;">&nbsp;</div>
-
-    <input type="image" src="{% static "img/bot_enviar.png" %}" alt="Enviar" onClick="ga('send', 'event', 'New_trancription','Enviar')" class="btn btn-default">
-
-    <br />
-    <br />
-    -- {{ _('or') }} <b>{{ _('skip it') }}</b> {{ _('because') }} --
-    <br />
-    <br />
-
-    <a href="#" onClick="ga('send', 'event', 'New_trancription','No tiene importe final', '{{document.url}}')" class="btn btn-danger">{{ _('It does not have a price') }}</a>
-    <br />
-    <br />
-    <a href="#" onClick="ga('send', 'event', 'New_trancription','Quiero otro documento', '{{document.url}}')" class="btn btn-warning">{{ _('I want other document') }}</a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+        Skip it
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="#" onClick="ga('send', 'event', 'New_trancription','No tiene importe final', '{{document.url}}')">{{ _('It does not have a price') }}</a>
+        </li>
+        <li>
+          <a href="#" onClick="ga('send', 'event', 'New_trancription','Quiero otro documento', '{{document.url}}')">{{ _('I just want another document') }}</a>
+        </li>
+      </ul>
+    </div>
 
 <!--    <div class="contenedor">
       <div class="head_especial">

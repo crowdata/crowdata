@@ -1,35 +1,61 @@
-{% extends "base.html" %}
+{% extends "layout/layout_8-4.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 
-{% block headercontent %}
-  {{ _('Choose a project') }}
-{% endblock %}
+{% block maincolumn %}
+  <div class="project-index">
+    <h2>{{ _('Choose a project') }}</h2>
 
-{% block content %}
-  {% for ds in document_sets %}
-		<div class="media">
-      {% if ds.header_image %}
-        <a class="pull-left" href="{{ds.get_absolute_url}}">
-          <img src="{{ ds.header_image }}" width="316" height="216" class="media-object" />
-        </a>
-      {% endif %}
+    <script src="/static/crowdataapp/js/jquery.tinysort.min.js"></script>
 
-      <div class="media-body">
-        <h4 class="media-heading"><a href="{{ds.get_absolute_url}}">{{ds.name}}</a></h4>
-		    {{ds.description}}
-		  </div>
-		</div>
-  {% endfor %}
+    <div class="btn-group">
+      <button type="button" class="btn btn-default btn-sm sort-name asc">Sort name</button>
+      <button type="button" class="btn btn-default btn-sm sort-count">Sort count</button>
+      <button type="button" class="btn btn-default btn-sm sort-percentage">Sort percentage</button>
+    </div>
 
+    <div class = "media-wrapper">
+      {% for ds in document_sets %}
+    		<div class="media" data-name = "{{ds.name}}" data-count = "{{ ds.documents.count }}" data-complete = "{% widthratio ds.get_verified_documents.count ds.documents.count 100 %}">
+          {% if ds.header_image %}
+            <a class="pull-left" href="{{ds.get_absolute_url}}">
+              <img src="{{ ds.header_image }}" width="316" height="216" class="media-object" />
+            </a>
+          {% endif %}
+
+          <div class="media-body">
+            <h4 class="media-heading"><a href="{{ds.get_absolute_url}}">{{ds.name}}</a></h4>
+    		    {{ds.description}}
+            <div class="cta">
+              {% call_to_action ds %}
+              {% documents_verified ds %}
+            </div>
+    		  </div>
+    		</div>
+      {% endfor %}
+
+      <script>
+        $('div.sort-name').click(function() {
+          orden = 'asc';
+
+          if ($(this).hasClass('desc')) {
+            $(this).removeClass('desc');
+            $(this).addClass('asc');
+            orden = 'desc';
+          }
+          $('div.media-wrapper').tsort('div.media',{data:'name'},{order:orden});
+        });
+      </script>
+    </div>
+  </div>
 {% endblock %}
 
 {% block rightcolumn %}
-
-  <div class="herramientasSociales social row">
-  </div>
-
-  <script type="text/javascript">
-    $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
-  </script>
+  <h2>About Crowdata</h2>
+  <p>
+    CrowData is a tool to collaborate on the verification or release of data that otherwise would be hard or impossible to get via automatic tools. This is the software we used to create VozData.
+  </p>
+  <p>
+    In 2014, La Nacion in Argentina launched VozData, a website to crowdsourced senate spendings by asking people to transcribe information from 6500 scanned PDF documents from the senate. This is the code that created that website and it can be used with any document set and any data you may need to take from them.
+  </p>
 {% endblock %}

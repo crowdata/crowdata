@@ -1,42 +1,71 @@
-{% extends "base.html" %}
+{% extends "layout/layout_12.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 {% load i18n %}
 {% load cache %}
-{% load humanize %}
+
 
 {% block headercontent %}
   {{document_set.name}}
 {% endblock %}
 
-{% block content %}
-  <div class="media">
-    {% if document_set.header_image %}
-        <a class="pull-left" href="{{ds.get_absolute_url}}">
-          <img src="{{ document_set.header_image }}" width="316" height="216" class="media-object" />
-        </a>
-    {% endif %}
+{% block headerblock %}
 
-    <div class="media-body">
-      {{document_set.description|linebreaks}}
+  <div class="row project-header">
+    <div class="col-md-8">
+      <div class="media">
+      {% if document_set.header_image %}
+          <a class="pull-left" href="{{ds.get_absolute_url}}">
+            <img src="{{ document_set.header_image }}" width="316" height="216" class="media-object" />
+          </a>
+      {% endif %}
+
+
+        <div class="media-body">
+          {{document_set.description|linebreaks}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      {% call_to_action document_set %}
+      {% documents_verified document_set %}
     </div>
 
-  </div>
-  <br>
-  <br>
-  <div class="row">
-    {% for ranking in document_set.rankings.all %}
-      <div class="col-md-6">
-      {% render_ranking ranking %}
+{% endblock %}
+
+{% block maincolumn %}
+
+      <!-- tabs left -->
+      <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+          <li  class="active"><a href="#a" data-toggle="tab">Statistics</a></li>
+          <li><a href="#b" data-toggle="tab">User Rankings</a></li>
+        </ul>
+        <div class="tab-content   container-fluid">
+         <div class="tab-pane active" id="a">
+            <div class="row">
+            {% for ranking in document_set.rankings.all %}
+              <div class="col-md-6">
+              {% render_ranking ranking %}
+              </div>
+            {% endfor %}
+            </div>
+         </div>
+         <div class="tab-pane" id="b"> 
+           <div class="row"> 
+              <div class="col-md-12">
+              {% list_ranking_user document_set.leaderboard|slice:":10" %}
+              </div>
+            </div>
+         </div>
       </div>
-    {% endfor %}
-  </div>
+      <!-- /tabs -->
 
 {% endblock %}
 
 {% block rightcolumn %}
 
-  {% documents_verified document_set %}
+
 
   <div class="herramientasSociales social row">
   </div>
@@ -45,6 +74,6 @@
     $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
   </script>
 
-  {% list_ranking_user document_set.leaderboard|slice:":10" %}
+
 
 {% endblock %}

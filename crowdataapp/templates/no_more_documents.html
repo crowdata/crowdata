@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout/layout_8-4.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 {% load i18n %}
@@ -9,7 +9,7 @@
   {{document_set.name}}
 {% endblock %}
 
-{% block content %}
+{% block maincolumn %}
 <div class="introduccion">
   {% if document_set.header_image %}
   <img src="{{ document_set.header_image }}" width="316" height="216" class="fotovozdata" />
@@ -29,8 +29,9 @@
 
 {% block rightcolumn %}
 
+  {% call_to_action document_set %}
   {% documents_verified document_set %}
-
+  
 <div class="herramientasSociales social" style="height:90px;">
 
 </div>

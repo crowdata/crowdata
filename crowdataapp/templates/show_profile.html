@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout/layout_8-4.html" %}
 {% load crowdataapp_tags %}
 {% load static from staticfiles %}
 {% load i18n %}
@@ -11,7 +11,7 @@
   {% trans "Perfil de usuario" %}
 {% endblock %}
 
-{% block content %}
+{% block maincolumn %}
 
 <!-- maqueta -->
 
@@ -61,8 +61,9 @@
 
 {% block rightcolumn %}
  
+  {% call_to_action document_set %}
   {% documents_verified document_set %}
-
+  
   {% list_ranking_user users_ranking_list profile %}
 
 <div class="herramientasSociales social" style="overflow:hidden">
