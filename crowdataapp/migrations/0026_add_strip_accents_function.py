@@ -8,7 +8,7 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        db.execute("CREATE EXTENSION unaccent");
+        db.execute("CREATE EXTENSION IF NOT EXISTS unaccent");
 
     def backwards(self, orm):
         pass
