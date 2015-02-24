@@ -11,6 +11,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        {% browserid_info %}
         {% if user.is_authenticated %}
           <li class="dropdown">
             <a href=""reverse('user_profile', kwargs={'document_set':{{document_set}}, 'username':{{ user.username }} })"" class="dropdown-toggle username" data-toggle="dropdown">
