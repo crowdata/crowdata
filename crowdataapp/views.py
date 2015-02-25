@@ -134,7 +134,7 @@ def autocomplete_field(request, document_set, field_name):
                                        verified_entries)),
                         content_type='application/json')
 
-
+@render_to('login_page.html')
 def login(request):
     next_page = request.REQUEST.get(auth.REDIRECT_FIELD_NAME, reverse('document_set_index'))
 
@@ -148,7 +148,7 @@ def login(request):
         auth.login(request, user)
         return HttpResponseRedirect(reverse('after_login'))
     else:
-        return HttpResponseRedirect(settings.LANACION_LOGIN_PAGE + '?' + urllib.urlencode({'pagina': request.build_absolute_uri(reverse('after_login'))}))
+        return { }
 
 def logout(request):
     auth.logout(request)

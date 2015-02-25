@@ -31,7 +31,7 @@ def dbPop():
 
 def init():
 	local_settings = []
-	
+
 	with open('local_settings.py.example', 'rb') as C:
 		for line in C.read().split('\n'):
 			for directive in ["NAME", "USER", "PASSWORD", "HOST"]:
@@ -39,10 +39,10 @@ def init():
 					if "crowdata_%s" % directive not in os.environ.keys():
 						print "No directive set for %s. using default value %s" % (directive, defaults[directive])
 						os.environ["crowdata_%s" % directive] = defaults[directive]
-					
+
 					idx = line.find("\'\'") + 1
 					line = "%s%s%s" % (line[:idx], os.environ["crowdata_%s" % directive], line[idx:])
-			
+
 			local_settings.append(line)
 
 	with open('local_settings.py', 'wb+') as C:
@@ -53,6 +53,6 @@ if __name__ == "__main__": main()
 
 	if argv[1] == "-init": init()
 	elif argv[1] == "-db_pop": dbPop()
-	else: exit(-1) 
-	
+	else: exit(-1)
+
 	exit(0)

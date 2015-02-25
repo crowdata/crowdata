@@ -48,7 +48,7 @@ $(function() {
       data: serializedForm,
       success: function(data) {
         // $('#form-container').html(FORM_SUBMITTED);
-      
+
         var social = new create_sosial($('.herramientasSociales.social'), doc_url, 'Revisé #GastosdelSenado en #Vozdata. ¡Sumate!');
         $('#form-container').html("");
         $("#social_document").show();
@@ -71,7 +71,7 @@ $(function() {
   $('input[type=text][data-verify=True]').each(function() {
     var $el = $(this);
     var $spinner = $("img.spinner", $el.closest('.vd_label'));
-    
+
     $el.typeahead({
       name: $(this).attr('name'),
       minLength: 3,
@@ -87,7 +87,7 @@ $(function() {
       }
     });
   });
-  
+
   $('input[type=number]').keydown(function(e){ // only numbers
     var key = e.charCode || e.keyCode || 0;
     return ( key == 8 || key == 46 || key == 188 || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105)); 
@@ -109,7 +109,7 @@ $(function() {
     e.preventDefault();
     window.location.reload();
   });
-  
+
   /* datepicker */
   /*
   var date = $("[type='date']").datepicker({
@@ -119,7 +119,7 @@ $(function() {
        date.datepicker('hide');
      });
   */
-  
+
   /* help butons */
   var popup = new Popup();
   var tmpl_slide = $("#templateslide").html();
