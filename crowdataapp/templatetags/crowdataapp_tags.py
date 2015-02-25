@@ -79,14 +79,14 @@ def index_in_ranking(page, counter, cant_per_page ):
 def call_to_action(context, document_set):
     t = get_template("call_to_action.html")
     context["document_set"] = document_set
-    
+
     return t.render(context)
 
 @register.simple_tag(takes_context=True)
 def documents_verified(context, document_set):
     t = get_template("documents_verified.html")
     context["document_set"] = document_set
-    
+
     return t.render(context)
 
 @register.simple_tag(takes_context=True)

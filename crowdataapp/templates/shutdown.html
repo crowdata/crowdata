@@ -40,7 +40,7 @@
         </div>
         <div class="central_data">
           {% if document_set.get_verified_documents.count > 0 %}
-          
+
           {% blocktrans with amount_reviewed=document_set.get_verified_documents.count amount_total = document_set.documents.count %}
           ¡We already reviewed {{ amount_reviewed }} of {{ amount_total }} documents!
           {% endblocktrans %}
