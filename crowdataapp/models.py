@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db.models import Count
 
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
+
 from django_extensions.db import fields as django_extensions_fields
 from django_countries import CountryField
 import forms_builder
@@ -46,10 +49,34 @@ forms_builder.forms.models.Field._meta.local_fields[3]._choices \
     = filter(lambda i: i[0] in ALLOWED_FIELD_TYPES,
              forms_builder.forms.fields.NAMES)
 
+class Organization(models.Model):
+    name = models.CharField(_('Organization Name'), max_length='128')
+    logo = models.ImageField(upload_to = 'organizations')
+    logo_thumbnail = ImageSpecField(source='logo', processors=[ResizeToFill(45, 45)], format='JPEG')
+    logo_profile = ImageSpecField(source='logo', processors=[ResizeToFill(90, 90)], format='JPEG')    
+    
+    email = models.EmailField(_('Email'), max_length='128')
+    description = models.TextField()
+    
+    users = models.ManyToManyField(User, blank = True, null = True)
+        
+    twitter = models.CharField(_('Twitter URL'), max_length='128', blank = True, null = True)
+    facebook = models.CharField(_('Facebook URL'), max_length='128', blank = True, null = True)
+    url = models.CharField(_('URL Web'), max_length='128', blank = True, null = True)
+
+    slug = django_extensions_fields.AutoSlugField(populate_from=('name'))
+    
+    def __unicode__(self):
+        return self.name
+
+    def num_entries(self):
+        return self.documentsetformentry_set.filter(document__document_set__published = True).count()
+
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
     name = models.CharField(_('Your Name'), max_length='128', null=False, blank=False)
     country = CountryField(_('Your country'), null=True)
+    current_organization = models.ForeignKey(Organization, blank = True, null = True)
     show_in_leaderboard = models.BooleanField(_("Appear in the leaderboards"),
                                               default=True,
                                               help_text=_("If checked, you will appear in CrowData's leaderboards"))
@@ -183,6 +210,20 @@ class DocumentSet(models.Model):
        result    = [user_top, user_down]
        return [item for sublist in result for item in sublist]
 
+    def organization_board(self):
+       """ Returns a queryset of the Organizations around user to this DocumentSet """
+       documents = DocumentSetFormEntry.objects.filter(document__document_set = self)
+       organizations = {}
+       
+       for d in documents:
+           if d.organization:
+               if not organizations.has_key(d.organization):
+                   organizations[d.organization] = 0
+
+               organizations[d.organization] += 1
+            
+       return sorted(organizations.items(), reverse = True, key=lambda x: x[1])
+
     def amount_on_field(self):
         """ Sums the total on verified field on the amount """
 
@@ -245,6 +286,7 @@ class DocumentSetFormEntry(forms_builder.forms.models.AbstractFormEntry):
     form = models.ForeignKey("DocumentSetForm", related_name='entries')
     document = models.ForeignKey('Document', related_name='form_entries', blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True)
+    organization = models.ForeignKey(Organization, blank=True, null=True)    
 
     def to_dict(self):
         form_fields = dict([(f.id, f.label)
@@ -287,6 +329,10 @@ class DocumentSetFormEntry(forms_builder.forms.models.AbstractFormEntry):
 
         self.document.verified = True
         self.document.save()
+
+    @classmethod
+    def get_user_documents_without_organization(cls, user):
+        return cls.objects.filter(user = user, organization = None)
 
 class DocumentSetFieldEntry(forms_builder.forms.models.AbstractFieldEntry):
     entry = models.ForeignKey("DocumentSetFormEntry", related_name="fields")
@@ -370,7 +416,6 @@ class DocumentSetRankingDefinition(models.Model):
      INNER JOIN crowdataapp_document document ON document.id = form_entry.document_id
      WHERE document.document_set_id = %(document_set_id)d
        AND field_entry.verified = TRUE
-       AND field_entry.field_id = %(magnitude_field_id)d
     """
 
     name = models.CharField(_('Ranking title'), max_length=256, editable=True, null=False)
@@ -397,65 +442,88 @@ class DocumentSetRankingDefinition(models.Model):
             limit = 10000000
 
         # ToDo : WHERE label.value LIKE %(search_term)s
+        subquery_label = self.SUBQUERY_LABEL % {
+            'document_set_id': self.document_set.id,
+            'label_field_id': self.label_field.id,
+            'magnitude_field_id': self.magnitude_field_id
+            }
+
+        subquery_magnitude = self.SUBQUERY_MAGNITUDE %  {
+            'document_set_id': self.document_set.id,
+            'label_field_id': self.label_field.id,
+            }
+
         q = None
+        
         if self.grouping_function == 'COUNT':
             q = """ SELECT label.value, COUNT(label.value), label.canonical_label_id
-                    FROM (%s) label
+                    FROM ({0}) label
+                    WHERE label.value ILIKE %s
                     GROUP BY label.value, label.canonical_label_id
-                    ORDER BY COUNT(label.value) %s
-                    LIMIT %d OFFSET %d """ % (self.SUBQUERY_LABEL,
-                                              'ASC' if self.sort_order else 'DESC',
-                                              limit,
-                                              offset)
+                    ORDER BY COUNT(label.value) {1}
+                    LIMIT {2} OFFSET {3} """ 
+            q = q.format(
+                subquery_label,
+                'ASC' if self.sort_order else 'DESC',
+                limit,
+                offset
+                )
 
-            q = q % { 'document_set_id': self.document_set.id, 'label_field_id': self.label_field.id }
-        elif self.grouping_function == 'SUM':
-            q = """ SELECT label.value, SUM(magnitude.value), label.canonical_label_id
-                    FROM (%s) label
-                    INNER JOIN (%s) magnitude
-                      ON magnitude.document_id = label.document_id
-                    GROUP BY label.value, label.canonical_label_id
-                    ORDER BY SUM(magnitude.value) %s
-                    LIMIT %d OFFSET %d """ % (self.SUBQUERY_LABEL,
-                                              self.SUBQUERY_MAGNITUDE,
-                                              'ASC' if self.sort_order else 'DESC',
-                                              limit,
-                                              offset)
+        else:
+            subquery_magnitude = subquery_magnitude + " AND field_entry.field_id = %(magnitude_field_id)d" %  {
+                'magnitude_field_id': self.magnitude_field_id
+                }
 
-            q = q % { 'document_set_id': self.document_set.id,
-                      'label_field_id': self.label_field.id,
-                      'magnitude_field_id': self.magnitude_field_id }
+            if self.grouping_function == 'SUM':
 
-        elif self.grouping_function == 'AVG':
-            q = """ SELECT label.value, AVG(magnitude.value), label.canonical_label_id
-                    FROM (%s) label
-                    INNER JOIN (%s) magnitude
-                      ON magnitude.document_id = label.document_id
-                    GROUP BY label.value, label.canonical_label_id
-                    ORDER BY AVG(magnitude.value) %s
-                    LIMIT %d OFFSET %d """ % (self.SUBQUERY_LABEL,
-                                              self.SUBQUERY_MAGNITUDE,
-                                              'ASC' if self.sort_order else 'DESC',
-                                              limit,
-                                              offset)
+                q = """ SELECT label.value, SUM(magnitude.value), label.canonical_label_id
+                        FROM ({0}) label
+                        INNER JOIN ({1}) magnitude
+                          ON magnitude.document_id = label.document_id
+                        WHERE label.value ILIKE %s
+                        GROUP BY label.value, label.canonical_label_id
+                        ORDER BY SUM(magnitude.value) {2}
+                        LIMIT {3} OFFSET {4} """
 
-            q = q % { 'document_set_id': self.document_set.id,
-                      'label_field_id': self.label_field.id,
-                      'magnitude_field_id': self.magnitude_field_id}
-            #ToDo, filter on 'search_term': "'%" + search_term.encode('utf-8') + "%'"
+                q = q.format(
+                        subquery_label,
+                        subquery_magnitude,
+                        'ASC' if self.sort_order else 'DESC',
+                        limit,
+                        offset)
 
+            elif self.grouping_function == 'AVG':
+                q = """ SELECT label.value, AVG(magnitude.value), label.canonical_label_id
+                        FROM ({0}) label
+                        INNER JOIN ({1}) magnitude
+                          ON magnitude.document_id = label.document_id
+                        WHERE label.value ILIKE %s
+                        GROUP BY label.value, label.canonical_label_id
+                        ORDER BY AVG(magnitude.value) {2}
+                        LIMIT {3} OFFSET {4} """ 
+
+                q = q.format(
+                        subquery_label,
+                        subquery_magnitude,
+                        'ASC' if self.sort_order else 'DESC',
+                        limit,
+                        offset)
         return q
 
     def calculate(self):
+        search_term = ''
         cursor = connection.cursor()
-        cursor.execute(self._ranking_query(limit=self.amount_rows_on_home))
+        cursor.execute(self._ranking_query(limit=self.amount_rows_on_home), ["%"+search_term+"%"])
         return cursor.fetchall()
 
     def calculate_all(self, search_term):
-        cursor = connection.cursor()
-        cursor.execute(self._ranking_query(search_term))
-        return cursor.fetchall()
+        if search_term is None:
+            search_term = ''
 
+        cursor = connection.cursor()
+        q = self._ranking_query()
+        cursor.execute(q, ["%"+search_term+"%"])
+        return cursor.fetchall()
 
 class Document(models.Model):
     name = models.CharField(_('Document title'), max_length=256, editable=True, null=True)
@@ -640,6 +708,32 @@ class CanonicalFieldEntryLabel(models.Model):
     cursor.execute(q)
     return cursor.fetchall()
 
+  def get_verified_documents_rankings(self, document_set, ranking_id):
+    """ Get all documents that have an entry with canon """
+
+    ranking_definition = DocumentSetRankingDefinition.objects.get(id=ranking_id)
+
+    q = """
+    SELECT distinct(document.id) AS document_id, document.name as document_name, 
+           (SELECT value
+                FROM crowdataapp_documentsetfieldentry
+                WHERE entry_id = field_entry.entry_id 
+                  AND field_id = {2})
+    FROM crowdataapp_documentsetfieldentry field_entry
+
+    LEFT OUTER JOIN crowdataapp_canonicalfieldentrylabel canonical_label ON canonical_label.id = field_entry.canonical_label_id
+    INNER JOIN crowdataapp_documentsetformentry form_entry ON form_entry.id = field_entry.entry_id
+    INNER JOIN crowdataapp_document document ON document.id = form_entry.document_id
+
+    WHERE document.document_set_id = {0}
+      AND field_entry.verified = TRUE
+      AND canonical_label.id = {1}
+    """.format(document_set.id, self.id, ranking_definition.magnitude_field_id)
+
+    cursor = connection.cursor()
+    cursor.execute(q)
+    return cursor.fetchall()
+
   def has_entries(self):
     return (len(self.fields.all()) != 0)
 
@@ -647,3 +741,7 @@ class CanonicalFieldEntryLabel(models.Model):
     for entry in self.fields.all():
       entry.canonical_label = new_canon
       entry.save_without_setting_canon()
+
+  def __unicode__(self):
+    return self.value
+

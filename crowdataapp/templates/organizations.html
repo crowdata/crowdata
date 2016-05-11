@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+{% load pagination_tags %}
+{% load humanize %}
+
+{% block headercontent %}
+<!-- {{document_set.name}} -->
+{% trans "Organizations" %}
+{% endblock %}
+
+{% block content %}
+
+  {% if organizations %}
+  <div class="caja001 cont_ranking_all organizations_list">
+      <!-- <div class="titulo"></div> -->
+      <!-- <div class="subtitulo"></div> -->
+      {% autopaginate organizations %}
+      {% for org in organizations %}
+      <div class="gris organization_row">
+          <div class="caja_numeral" style="padding:0">
+              <img src="{{ org.logo_thumbnail.url }}" width="45" height="45" />
+          </div>
+          <div class="caja_detalle">                        
+              <a href="{% url 'organization_profile' org.slug %}">{{ org.name }}</a>
+          </div>
+          <div class="caja_monto" >
+              {{ org.num_entries }}
+          </div>
+          <div class="caja_member" >
+              {% if org in user_organizations %}
+              <a class="vd_btn btn_bg_s enter_org_btn  already_member">Member</a>
+              {% endif %}
+          </div>
+          <br clear="all" />
+      </div>
+      {% endfor %}
+      {% paginate %}
+  </div>
+
+  <p class="organization_list_legend">For signing up a Team please fill the next 
+  <a href="{{ organization_signup_link }}" target="_blank">form.</a>
+  </p>    
+  {% endif %}
+
+
+{% endblock %}
+

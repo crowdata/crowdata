@@ -40,6 +40,7 @@
         <ul class="nav nav-tabs">
           <li  class="active"><a href="#a" data-toggle="tab">Statistics</a></li>
           <li><a href="#b" data-toggle="tab">User Rankings</a></li>
+          <li><a href="#c" data-toggle="tab">Orgs Rankings</a></li>
         </ul>
         <div class="tab-content   container-fluid">
          <div class="tab-pane active" id="a">
@@ -58,22 +59,14 @@
               </div>
             </div>
          </div>
+         <div class="tab-pane" id="c"> 
+           <div class="row"> 
+              <div class="col-md-12">
+              {% list_ranking_organizations document_set.organization_board|slice:":10" %}
+              </div>
+            </div>
+         </div>
       </div>
       <!-- /tabs -->
-
-{% endblock %}
-
-{% block rightcolumn %}
-
-
-
-  <div class="herramientasSociales social row">
-  </div>
-
-  <script type="text/javascript">
-    $(document).ready(function(){ create_sosial($('.herramientasSociales.social'), null, "Mensaje a enviar a redes sociales usando #CrowData"); });
-  </script>
-
-
 
 {% endblock %}

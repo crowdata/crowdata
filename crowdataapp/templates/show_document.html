@@ -30,7 +30,7 @@
     <div class="cajas">
       <div class="liberar">
         <div class="central_data2">
-          <a href="{% url 'new_transcription' document_set.slug %}" class="vd_btn btn_bg_l" onClick="ga('send', 'event', 'Liberá un documento', 'show_document')">Liberá un documento
+          <a href="{% url 'new_transcription' document_set.slug %}" class="vd_btn btn_bg_l" onClick="ga('send', 'event', 'Liberá un documento', 'show_document')">{{_('Free a document') }}
             <!--
             <img src='{% static "img/bot_libera.png" %}' alt="Liberá un dato ya!">
              -->
@@ -39,9 +39,7 @@
         <div class="central_data">
           {% if document_set.get_verified_documents.count > 0 %}
 
-          {% blocktrans with amount_reviewed=document_set.get_verified_documents.count amount_total = document_set.documents.count %}
-            ¡We already reviewed {{ amount_reviewed }} of {{ amount_total }} documents!
-          {% endblocktrans %}
+          ¡{{_('We already reviewed')}} {{ document_set.get_verified_documents.count }} {{_('of')}} {{ document_set.documents.count }} {{_('documents')}}!
 
           {% endif %}
           <br />

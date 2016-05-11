@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+
+
+{% block headercontent %}
+<!-- {{document_set.name}} -->
+{{ organization.name }}
+
+<div class="organization_member_status">
+    {% if request.user.is_authenticated %}
+        <a class="vd_btn btn_bg_s enter_org_btn  already_member" {% if not already_member %} style="display:none" {% endif %}>Member</a>
+        <a class="vd_btn btn_bg_s enter_org_btn signup_organization" {% if already_member %} style="display:none" {% endif %}>Join</a>
+        <a class="organization_sign_out" {% if not already_member %} style="display:none" {% endif %}>Exit team</a>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+{% block content %}
+        <div class="hidden error organization_error"> An error has occurred. Please try it again. </div>                
+<!-- maqueta -->
+
+<div class="profile_organization">
+  <div class="profile_picture">
+    <img src="{{ organization.logo_profile.url }}" width="90" height="90" class="" />
+    <div>
+      {% if organization.twitter %}
+        <a class="facebook" rel="external" title="Twitter" target="_blank" href="{{ organization.twitter }}"></a>
+      {% endif %}
+
+      {% if organization.facebook %}        
+        <a class="twitter" rel="external" title="Facebook" target="_blank" href="{{ organization.facebook }}"></a>
+      {% endif %}        
+    </div>
+  </div>  
+
+
+  <div class="text_usuario">
+      <p> Email: {{ organization.email }} </p>
+      <p> <a href="{{ organization.url }}" target="_blank"> {{ organization.url }}</a> </p>
+      <br>
+      <p> {{ organization.description }} </p><br>
+  </div>
+</div>
+
+
+<div class="caja001 ajuste" style="width:631px; margin-left:0;font-size:12px;">
+    <div>
+        For starting working for a Team you must need first join it and then you can choose the current team in:
+        <a onclick="show_ajax_popup({url: '{% url "choose_current_organization" %}', title: 'Free for an Organization'})" title="Free for an Organization" itemprop="url"><span itemprop="title">Do you want to free for an Organization?</span></a>
+    </div>
+</div>
+
+
+{% if documents_without_organization %}
+<div class="caja001 ajuste assign_docs_to_organization_box" style="width:631px; margin-left:0;{% if not already_member %}display:none{% endif %}"">    
+    <div class="titulo">You have {{ documents_without_organization }} document{{ documents_without_organization|pluralize }} without a team.</div>
+    <a class="assign_docs_to_organization" href="{% url 'assign_docs_to_organization' %}">Associate them to {{ organization.name }}</a>
+    <br clear="all" />
+    </div>
+</div>
+
+<div class="caja001 ajuste assign_docs_to_organization_success">
+    {{ documents_without_organization }} Document{{ documents_without_organization|pluralize }} was associated{{ documents_without_organization|pluralize }} successfully!
+</div>
+{% endif %}
+{% if users %}
+<div class="caja001 ajuste organization_profile" style="width:631px; margin-left:0">
+    <div class="titulo show_organization_users">Users</div>
+    <div class="organization_users" {% if not show_users %} style="display:none;" {% endif %}>
+        <br>        
+        {% for user in users %}
+    <div class="gris ">
+        <div class="caja_numeral" style="padding:0"><img src="http://bucket.clanacion.com.ar/avatar/{{user.username|slice:"-1:"}}/{{ user.username|slice:"3:" }}G.jpg" width="45" height="45" /></div>
+        <div class="caja_detalle" style="width: 470px; padding:15px 0 0 14px">
+        <a href="/cd/{{document_set.slug}}/users/{{user.username}}">{{user.get_full_name}}</a>
+    </div>        
+    <br clear="all" />
+    </div>
+
+    {% endfor %}
+
+    {% if users.paginator.num_pages > 1 %}
+    <div class="pagination">
+        {% if users.has_previous %}
+            <a href="?user_page={{ users.previous_page_number }}&organization_page={{ document_form_entries.number }}">‹‹ previous {{ users.previous_page_number }}</a>
+        {% endif %}
+
+        <span class="current">
+            {{ users.number }} 
+        </span>
+
+        {% if users.has_next %}
+            <a href="?user_page={{ users.next_page_number }}&organization_page={{ document_form_entries.number }}"">{{ users.next_page_number }} next ››</a>
+        {% endif %}
+    </div>
+    {% endif %}
+    </div>
+    
+</div>
+{% else %}
+<div class="caja001 ajuste" style="width:631px; margin-left:0">
+    <div class="titulo">There are no Users</div>
+</div>
+{% endif %}
+
+{% if document_form_entries %}
+<div class="caja001 ajuste organization_profile" style="width:631px; margin-left:0">
+    <div class="titulo show_organization_documents">Documents</div>
+    <div class="organization_documents" {% if not show_documents %} style="display:none;" {% endif %}>
+      <div class="subtitulo">These are the <b>{{ document_form_entries.count }} documents</b>: </div>
+      <div>
+          {% if document_sets.count > 1 %}
+          <select class="documentset_selector">
+              <option value="" {% if document_set_filter == "" %} selected {% endif %}> -- All --  </option>
+              {% for document_set in document_sets %}
+              <option value="{{ document_set.document__document_set__id }}" {% if document_set_filter == document_set.document__document_set__id %} selected {% endif %}> 
+                  {{ document_set.document__document_set__name }}
+              </option>
+              {% endfor %}
+          </select>
+          {% else %}
+          <select class="documentset_selector">
+              <option value="{{ document_sets.0.document__document_set__id }}" selected> 
+                  {{ document_sets.0.document__document_set__name }}
+              </option>
+          </select>
+          {% endif %}
+      </div>
+
+      <br clear="all" />
+    {% for doc in document_form_entries %}
+    <div class="gris">
+
+        <div class="caja_numeral">
+            {{ forloop.counter }}.
+        </div>
+        <div class="caja_detalle_usuario">
+            <a href="{% url 'show_document' doc.document.document_set.slug doc.document.id %}" target="_blank">{{ doc.document.name }}</a>
+        </div>
+        <br clear="all" />
+    </div>
+
+    {% endfor %}
+    {% if document_form_entries.paginator.num_pages > 1 %}
+    <div class="pagination">
+        {% if document_form_entries.has_previous %}
+            <a href="?user_page={{ users.number }}&organization_page={{ document_form_entries.previous_page_number }}">‹‹ previous {{ document_form_entries.previous_page_number }}</a>
+        {% endif %}
+
+        <span class="current">
+            {{ document_form_entries.number }} 
+        </span>
+
+        {% if document_form_entries.has_next %}
+            <a href="?user_page={{ users.number }}&organization_page={{ document_form_entries.next_page_number }}">{{ document_form_entries.next_page_number }} next ››</a>
+        {% endif %}
+    </div>    
+    {% endif %}
+    </div>
+</div>
+{% else %}
+<div class="caja001 ajuste" style="width:631px; margin-left:0">
+    <div class="titulo">There are no Documents</div>
+</div>
+{% endif %}    
+  <br clear="all" />
+<!--
+  <div id="paginado">
+  anterior | <a href="#" title="1"><b>1</b></a> | <a href="#" title="2">2</a> | <a href="#" title="3">3</a> | <a href="#" title="siguiente">siguiente</a>
+  </div>
+ -->
+
+  <!-- maqueta -->
+
+
+  
+<script type="text/javascript">
+ $(function() {
+     $('.signup_organization').click(function() {
+         $('.error').hide();
+         
+         var that = this;
+         $.post("{% url 'signup_organization' %}",
+                { organization_slug: "{{ organization.slug }}"},
+                function(response) {
+                    if(response.success) {
+                        $(that).hide();
+                        $('.already_member').fadeIn();
+                        $('.organization_sign_out').fadeIn();
+                        $('.assign_docs_to_organization_box').fadeIn();
+                    } else {
+                        $('.error').fadeIn();
+                    }
+                })
+             .fail(function() {
+                 $('.error').fadeIn();
+             });
+     });
+
+     $('.organization_sign_out').click(function() {
+         $('.error').hide();
+         
+         var that = this;
+         $.post("{% url 'signout_organization' %}",
+                { organization_slug: "{{ organization.slug }}"},
+                function(response) {
+                    if(response.success) {
+                        $(that).hide();
+                        $('.already_member').hide();
+                        $('.assign_docs_to_organization_box').hide();
+                        $('.signup_organization').fadeIn();
+
+                        var organization_slug = $('.organization_name').data('slug');
+                        if(organization_slug == "{{ organization.slug }}" ) {
+                            $(".organization_legend").hide();
+                            $(".organization_none_legend").fadeIn();
+                        }
+                        
+                    } else {
+                        $('.error').fadeIn();
+                    }
+                })
+             .fail(function() {
+                 $('.error').fadeIn();
+             });
+     });
+
+     $('.assign_docs_to_organization').click(function(e) {
+         $('.error').hide();
+          e.preventDefault();
+
+         var that = this;
+         $.post("{% url 'assign_docs_to_organization' %}",
+                { organization_slug: "{{ organization.slug }}"},
+                function(response) {
+                    if(response.success) {
+                        $('.assign_docs_to_organization_box').hide();
+                        $('.assign_docs_to_organization_success').fadeIn();
+                    } else {
+                        $('.error').fadeIn();
+                    }
+                })
+             .fail(function() {
+                 $('.error').fadeIn();
+             });
+     });
+
+     $('.show_organization_users').click(function() {
+         $('.organization_users').slideToggle();
+     });
+
+     $('.show_organization_documents').click(function() {
+         $('.organization_documents').slideToggle();
+     });
+
+     $('.pagination a').click(function() {
+         var show_users = $('.organization_users').is(':visible') ? 'true' : '';
+         var show_documents =$('.organization_documents').is(':visible') ? 'true' : '';;
+         
+         var href = $(this).attr('href') + '&show_users=' + show_users + '&show_documents=' + show_documents;
+
+         var doc_set_filter = $('.documentset_selector').val();
+         if(doc_set_filter != '') {
+             href = href + '&document_set_filter=' + doc_set_filter;
+         }
+          
+         $(this).attr('href', href);
+
+     });
+
+     $('.documentset_selector').change(function() {
+         var base_url = window.location.pathname + "?user_page={{ users.number }}&organization_page={{ document_form_entries.page_number }}";
+
+         var show_users = $('.organization_users').is(':visible') ? 'true' : '';
+         var show_documents =$('.organization_documents').is(':visible') ? 'true' : '';
+         var url = base_url +  '&show_users=' + show_users + '&show_documents=' + show_documents;
+
+         var url = url + '&reset_filter=true&document_set_filter=' + $(this).val();
+
+         window.location = url;
+     });
+ });
+</script>
+
+{% endblock %}

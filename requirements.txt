@@ -1,27 +1,29 @@
 Django==1.5.4
-South==0.8.4
-Unidecode==0.04.14
-Werkzeug==0.9.4
-argparse==1.2.1
 django-ace==0.3.1
 django-admin-bootstrapped==1.6.5
 django-admintheme==0.2
 django-annoying==0.7.7
+django-appconf==1.0.1
 django-browserid==0.10.1
 django-countries==1.5
 django-email-extras==0.1.13
 django-extensions==1.2.5
 django-forms-builder==0.9
--e git://github.com/Soaa-/django-nested-inlines.git@aaf995a223720ca7d6b4bfc74fb5707cd1bd08dd#egg=django_nested_inlines-master
+django-imagekit==3.2.5
+-e git://github.com/Soaa-/django-nested-inlines.git@aaf995a223720ca7d6b4bfc74fb5707cd1bd08dd#egg=django_nested_inlines
 django-pagination==1.0.7
 djorm-ext-pgtrgm==0.1
 fancy-tag==0.2.0
 gunicorn==18.0
 ipdb==0.8
 ipython==1.2.1
+pilkit==1.1.12
+Pillow==2.7.0
 psycopg2==2.5.2
 python-gnupg==0.3.5
 requests==2.0.1
 six==1.4.1
+South==0.8.4
 sphinx-me==0.2.1
-wsgiref==0.1.2
+Unidecode==0.4.14
+Werkzeug==0.9.4

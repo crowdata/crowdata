@@ -29,6 +29,21 @@
               <li>{% browserid_logout text=_('Logout')  %}</li>
             </ul>
           </li>
+          <li>
+            <a href="{% url 'organizations' %}"><span>Organizations</span></a> 
+          </li>
+          <li>
+              <div class="organization_legend" {% if not user.get_profile.current_organization %} style="display:none" {% endif %}>
+                Your team is: <strong class="organization_name" data-slug="{{ user.get_profile.current_organization.slug }}">{{ user.get_profile.current_organization }}</strong>
+                <a onclick="show_ajax_popup({url: '{% url "choose_current_organization" %}', title: 'Choose a team'})" title="Choose a team" itemprop="url"><span itemprop="title"> (change)</span></a>
+                <div class="notification">You have changed your team!</div>
+              </div>
+
+              <div class="organization_none_legend" {% if user.get_profile.current_organization %} style="display:none" {% endif %}>              
+                <a onclick="show_ajax_popup({url: '{% url "choose_current_organization" %}', title: 'Choose a team'})" title="Choose a team" itemprop="url"><span itemprop="title">Choose a team</span></a>
+                <div class="notification">You stopped having a team associated</div>                
+              </div>
+          </li>
         {% else %}
           <li>{% browserid_login text=_('Login') %}</li>
         {% endif %}

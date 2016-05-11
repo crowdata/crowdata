@@ -2,21 +2,33 @@
 {% load crowdataapp_tags %}
 {% load humanize %}
 <div class="caja001 cont_ranking_all">
-  <div class="titulo">{{ranking.name}}</div>
+  <div class="titulo">{{ranking.name}}
+    <div class="search" style="display: inline-block; float:right">
+      <form>
+        <input type="search" name="q">
+        <input type="submit" class="search-ranking" value="search">
+      </form>
+    </div>
+  </div>
   <div class="subtitulo"></div>
-  <table class="table table-striped">
   {% autopaginate ranking_calculate_all %}
-  {% for i in ranking_calculate_all %}
-  <tr>
-    <td>{% index_in_ranking page forloop.counter 20 %}</td>
-    <td><a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}">{{ i.0 }}</a></td>
-    <td class="caja_monto" data-formatTextMillons="true">$ {{ i.1|floatformat:"0"|intcomma }}</td>
-  </tr>
-  </div>
-  {% endfor %}
-  </table>
-  <div style="text-align:center">
-  {% paginate %}
-  </div>
-
+  {% if ranking_calculate_all%}
+    {% for i in ranking_calculate_all %}
+    <div class="gris">
+      <div class="caja_numeral">
+        {% index_in_ranking page forloop.counter 20 %}
+      </div>
+      <div class="caja_detalle">
+        <a href="/cd/{{ranking.document_set.slug}}/{{ ranking.label_field.id }}/{{ i.2 }}/{{ ranking_definition_id }}">{{ i.0 }}</a>
+      </div>
+      <div class="caja_monto" data-formatTextMillons="true">
+        $ {{ i.1|floatformat:"0"|intcomma }}
+      </div>
+      <br clear="all" />
+    </div>
+    {% endfor %}
+    {% paginate %}
+  {% else %}
+    No se encontraron resultados para su búsqueda, <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ ranking.id }}">volver.</a>
+  {% endif%}
 </div>

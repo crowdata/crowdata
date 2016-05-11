@@ -18,9 +18,6 @@ DATABASES = {
 SESSION_COOKIE_SECURE = False
 BROWSERID_CREATE_USER = True
 
-
-LANACION_LOGIN_PAGE = ''
-
 def username(email):
     return email
 BROWSERID_USERNAME_ALGO = username
@@ -30,3 +27,8 @@ CACHES = {
         'LOCATION': 'unique-snowflake'
     }
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_URL = '/media/'
+
+ORGANIZATION_SIGNUP_LINK = ""

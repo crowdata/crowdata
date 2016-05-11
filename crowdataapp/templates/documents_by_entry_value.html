@@ -4,6 +4,7 @@
 {% load cache %}
 {% load pagination_tags %}
 {% load crowdataapp_tags %}
+{% load humanize %}
 
 {% block headercontent %}
   <!-- {{document_set.name}} -->
@@ -29,7 +30,7 @@
         {{ forloop.counter }}.
         </div>
         <div class="caja_detalle_usuario">
-        <a href="{% url 'show_document' document_set.slug doc.0 %}" target="_blank">{{ doc.1 }}</a>
+          <a href="{% url 'show_document' document_set.slug doc.0 %}" target="_blank">{{ doc.1 }}</a> - $ {{ doc.2|floatformat:"0"|intcomma }}
         </div>
         <br clear="all" />
       </div>
@@ -56,6 +57,8 @@
   $(document).ready(function(){ create_sosial($('.herramientasSociales.social')); });
 </script>
 
-  {% list_ranking_user document_set.leaderboard|slice:":10" %}
+{% list_ranking_user document_set.leaderboard|slice:":10" %}
+
+{% list_ranking_organizations document_set.organization_board|slice:":10" %}
 
 {% endblock %}

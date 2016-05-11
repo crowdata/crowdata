@@ -39,7 +39,9 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"/>
     <link rel="stylesheet" href="{% static 'crowdataapp/css/bootstrap-tabs.css' %}" type="text/css"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/estilos_v3.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'crowdataapp/css/crowdataapp.css' %}" type="text/css"/>
+    
 
     <!-- descomentar cuando se use el datepicker
     <link rel="stylesheet" href='{% static "css/datepicker.css" %}' type="text/css" />
@@ -156,6 +158,27 @@
     <script src="https://login.persona.org/include.js"></script>
     <script src="{% static 'browserid/api.js' %}"></script>
     <script src="{% static 'browserid/browserid.js' %}"></script>
+
+    <!-- Popup -->
+    <div id="popup">
+      <div class="popup_bg" onClick='$(".popup_cont a.close").click(); return false;'></div>
+      <div class="popup_cont">
+        <b>Popup</b>
+        <a class="close theSans">x</a>
+        <hr>
+        <div class="popup_body">
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function show_ajax_popup(conf){
+        $.get(conf.url, function(data){
+          var cto_popup = new Popup();  
+          cto_popup.show_p({title:conf.title, body: data, addclass: ''});
+          ga('send', 'event', conf.title, location.pathname);
+        });
+      }
+    </script>
 
   </body>
 
