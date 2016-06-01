@@ -25,14 +25,14 @@
      </b>
     </p>
     <p>
-      User: {{ profile.name }}
+    {{ _('User: ') }} {{ profile.name }}
     </p>
   </div>
 </div>
 {% if organizations %}
     <div class="caja001 ajuste" style="width:631px; margin-left:0">
-        <div class="titulo">Organizations</div>
-        <div class="subtitulo">You belong to:</div>
+      <div class="titulo">{{ _('Organizations') }}</div>
+      <div class="subtitulo">{{ _('You belong to:') }}</div>
   {% for org in organizations %}
       <div class="gris organization_row">
           <div class="caja_numeral" style="padding:0">
@@ -51,8 +51,8 @@
 {% endif %}
 
     <div class="caja001 ajuste" style="width:631px; margin-left:0">
-      <div class="titulo">Documents</div>
-      <div class="subtitulo">These are the <b>{{ verified_documents_count }} documents you free </b> and validated by {{ full_name }}</div>
+      <div class="titulo">{{ _('Documents') }}</div>
+      <div class="subtitulo">{{ _('These are the ') }}<b>{{ verified_documents_count }}{{ _(' documents you free ') }}</b>{{ _(' and validated by ') }} {{ full_name }}</div>
   {% autopaginate verified_documents %}
   {% for doc in verified_documents %}
       <div class="gris">

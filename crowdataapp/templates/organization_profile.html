@@ -11,9 +11,9 @@
 
 <div class="organization_member_status">
     {% if request.user.is_authenticated %}
-        <a class="vd_btn btn_bg_s enter_org_btn  already_member" {% if not already_member %} style="display:none" {% endif %}>Member</a>
-        <a class="vd_btn btn_bg_s enter_org_btn signup_organization" {% if already_member %} style="display:none" {% endif %}>Join</a>
-        <a class="organization_sign_out" {% if not already_member %} style="display:none" {% endif %}>Exit team</a>
+    <a class="vd_btn btn_bg_s enter_org_btn  already_member" {% if not already_member %} style="display:none" {% endif %}>{{ _('Member') }}</a>
+    <a class="vd_btn btn_bg_s enter_org_btn signup_organization" {% if already_member %} style="display:none" {% endif %}>{{ _('Join') }}</a>
+    <a class="organization_sign_out" {% if not already_member %} style="display:none" {% endif %}>{{ _('Exit team') }}</a>
     {% endif %}
 </div>
 
@@ -21,8 +21,7 @@
 {% endblock %}
 
 {% block content %}
-        <div class="hidden error organization_error"> An error has occurred. Please try it again. </div>                
-<!-- maqueta -->
+<div class="hidden error organization_error">{{ _('An error has occurred. Please try it again. ') }}</div>
 
 <div class="profile_organization">
   <div class="profile_picture">
@@ -50,27 +49,27 @@
 
 <div class="caja001 ajuste" style="width:631px; margin-left:0;font-size:12px;">
     <div>
-        For starting working for a Team you must need first join it and then you can choose the current team in:
-        <a onclick="show_ajax_popup({url: '{% url "choose_current_organization" %}', title: 'Free for an Organization'})" title="Free for an Organization" itemprop="url"><span itemprop="title">Do you want to free for an Organization?</span></a>
+      {{ _('For starting working for a Team you must need first join it and then you can choose the current team in:') }}
+      <a onclick="show_ajax_popup({url: '{% url "choose_current_organization" %}', title: 'Free for an Organization'})" title="Free for an Organization" itemprop="url"><span itemprop="title">{{ _('Do you want to free for an Organization?') }}</span></a>
     </div>
 </div>
 
 
 {% if documents_without_organization %}
 <div class="caja001 ajuste assign_docs_to_organization_box" style="width:631px; margin-left:0;{% if not already_member %}display:none{% endif %}"">    
-    <div class="titulo">You have {{ documents_without_organization }} document{{ documents_without_organization|pluralize }} without a team.</div>
-    <a class="assign_docs_to_organization" href="{% url 'assign_docs_to_organization' %}">Associate them to {{ organization.name }}</a>
+  <div class="titulo">{{ _('You have ') }} {{ documents_without_organization }} {{ _(' document') }} {{ documents_without_organization|pluralize }}{{ _(' without a team.') }}</div>
+  <a class="assign_docs_to_organization" href="{% url 'assign_docs_to_organization' %}">{{ _('Associate them to ') }} {{ organization.name }}</a>
     <br clear="all" />
     </div>
 </div>
 
 <div class="caja001 ajuste assign_docs_to_organization_success">
-    {{ documents_without_organization }} Document{{ documents_without_organization|pluralize }} was associated{{ documents_without_organization|pluralize }} successfully!
+{{ documents_without_organization }} {{ _('Document') }}{{ documents_without_organization|pluralize }} {{ _(' was associated') }} {{ documents_without_organization|pluralize }} {{ _('successfully!') }}
 </div>
 {% endif %}
 {% if users %}
 <div class="caja001 ajuste organization_profile" style="width:631px; margin-left:0">
-    <div class="titulo show_organization_users">Users</div>
+  <div class="titulo show_organization_users">{{ _('Users') }}</div>
     <div class="organization_users" {% if not show_users %} style="display:none;" {% endif %}>
         <br>        
         {% for user in users %}
@@ -87,7 +86,7 @@
     {% if users.paginator.num_pages > 1 %}
     <div class="pagination">
         {% if users.has_previous %}
-            <a href="?user_page={{ users.previous_page_number }}&organization_page={{ document_form_entries.number }}">‹‹ previous {{ users.previous_page_number }}</a>
+        <a href="?user_page={{ users.previous_page_number }}&organization_page={{ document_form_entries.number }}">‹‹ {{ _('previous ') }} {{ users.previous_page_number }}</a>
         {% endif %}
 
         <span class="current">
@@ -95,7 +94,7 @@
         </span>
 
         {% if users.has_next %}
-            <a href="?user_page={{ users.next_page_number }}&organization_page={{ document_form_entries.number }}"">{{ users.next_page_number }} next ››</a>
+        <a href="?user_page={{ users.next_page_number }}&organization_page={{ document_form_entries.number }}"">{{ users.next_page_number }} {{ _('next ') }}››</a>
         {% endif %}
     </div>
     {% endif %}
@@ -104,15 +103,15 @@
 </div>
 {% else %}
 <div class="caja001 ajuste" style="width:631px; margin-left:0">
-    <div class="titulo">There are no Users</div>
+  <div class="titulo">{{ _('There are no Users') }}</div>
 </div>
 {% endif %}
 
 {% if document_form_entries %}
 <div class="caja001 ajuste organization_profile" style="width:631px; margin-left:0">
-    <div class="titulo show_organization_documents">Documents</div>
+  <div class="titulo show_organization_documents">{{ _('Documents') }}</div>
     <div class="organization_documents" {% if not show_documents %} style="display:none;" {% endif %}>
-      <div class="subtitulo">These are the <b>{{ document_form_entries.count }} documents</b>: </div>
+      <div class="subtitulo">{{ _('These are the ') }}<b>{{ document_form_entries.count }}{{ _(' documents') }}</b>: </div>
       <div>
           {% if document_sets.count > 1 %}
           <select class="documentset_selector">
@@ -149,7 +148,7 @@
     {% if document_form_entries.paginator.num_pages > 1 %}
     <div class="pagination">
         {% if document_form_entries.has_previous %}
-            <a href="?user_page={{ users.number }}&organization_page={{ document_form_entries.previous_page_number }}">‹‹ previous {{ document_form_entries.previous_page_number }}</a>
+        <a href="?user_page={{ users.number }}&organization_page={{ document_form_entries.previous_page_number }}">‹‹ {{ _('previous ') }} {{ document_form_entries.previous_page_number }}</a>
         {% endif %}
 
         <span class="current">
@@ -157,7 +156,7 @@
         </span>
 
         {% if document_form_entries.has_next %}
-            <a href="?user_page={{ users.number }}&organization_page={{ document_form_entries.next_page_number }}">{{ document_form_entries.next_page_number }} next ››</a>
+        <a href="?user_page={{ users.number }}&organization_page={{ document_form_entries.next_page_number }}">{{ document_form_entries.next_page_number }} {{ _('next ') }}››</a>
         {% endif %}
     </div>    
     {% endif %}
@@ -165,20 +164,16 @@
 </div>
 {% else %}
 <div class="caja001 ajuste" style="width:631px; margin-left:0">
-    <div class="titulo">There are no Documents</div>
+  <div class="titulo">{{ _('There are no Documents') }}</div>
 </div>
 {% endif %}    
   <br clear="all" />
 <!--
   <div id="paginado">
-  anterior | <a href="#" title="1"><b>1</b></a> | <a href="#" title="2">2</a> | <a href="#" title="3">3</a> | <a href="#" title="siguiente">siguiente</a>
+  anterior | <a href="#" title="1"><b>1</b></a> | <a href="#" title="2">2</a> | <a href="#" title="3">3</a> | <a href="#" title="siguiente">{{ _('siguiente') }}</a>
   </div>
  -->
 
-  <!-- maqueta -->
-
-
-  
 <script type="text/javascript">
  $(function() {
      $('.signup_organization').click(function() {

@@ -29,6 +29,6 @@
     {% endfor %}
     {% paginate %}
   {% else %}
-    No se encontraron resultados para su búsqueda, <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ ranking.id }}">volver.</a>
+    {{ _('Sorry, but nothing matched your search criteria.') }} <a href="/cd/{{ranking.document_set.slug}}/ranking/{{ ranking.id }}">{{ _('Return') }}</a>
   {% endif%}
 </div>

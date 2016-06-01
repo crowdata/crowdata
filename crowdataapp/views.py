@@ -299,8 +299,11 @@ def choose_current_organization(request):
         current_organization = user_profile.current_organization
 
     template = 'choose_current_organization.html' if organizations.count() > 0 else 'without_organization.html'
-    return render_to_response(template,
-                              {'organizations': organizations, 'current_organization': current_organization},
+    return render_to_response(template, {
+                                'organizations': organizations, 
+                                'current_organization': current_organization,
+                                'organization_signup_link': settings.ORGANIZATION_SIGNUP_LINK
+                               },
                                context_instance = RequestContext(request))        
 
 @render_to('organizations.html')

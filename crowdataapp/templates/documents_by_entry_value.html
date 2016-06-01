@@ -20,8 +20,8 @@
 </div>
 
   <div class="caja001 ajuste" style="width:631px; margin-left:0">
-      <div class="titulo">Documentos Liberados</div>
-      <div class="subtitulo">Estos son los <b>documentos liberados</b> que contienen el texto "<b>{{ entry_value }}</b>" en el <b>{{ field_name }}</b></div>
+    <div class="titulo">{{ _('Documents') }}</div>
+    <div class="subtitulo">{{ _('These are the ') }}<b>{{ _('documents') }}</b>{{ _(' that contains the text ') }}"<b>{{ entry_value }}</b>"{{ _(' in the field ') }}<b>{{ field_name }}</b></div>
   {% autopaginate documents %}
   {% for doc in documents %}
       <div class="gris">
