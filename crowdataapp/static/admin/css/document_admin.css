@@ -1,0 +1,42 @@
+#form_entries-group table thead th:first-child {
+  width: 25%;
+}
+
+#form_entries-group table thead th:nth-child(2) {
+  width: 35%;
+}
+
+
+#form_entries-group tr.add-row {
+  display: none;
+}
+
+td.original {
+  width: 0 !important; height: 0;
+}
+
+td.original p {
+  display: none;
+}
+
+td.field-user_link {
+  text-align: left;
+}
+
+td.field-answers ul {
+  list-style-type: none;
+  padding: 0; margin: 0;
+}
+
+td.field-answers ul li {
+  padding: 0;
+}
+
+td.field-answers input[type=checkbox] {
+  margin-left: 0 !important;
+  margin-right: 5px;
+}
+
+.verify {
+  text-decoration: underline;
+}

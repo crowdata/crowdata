@@ -1,0 +1,105 @@
+/* fonts face */
+
+@font-face {
+	font-family: "TheSansExtraLight";
+	src: url(fonts/TheSans_B2_2_.eot);
+	src: local("TheSans_B2_2_"),
+		   url(fonts/TheSans_B2_2_.woff) format("woff"),
+		   url(fonts/TheSans_B2_2_.svg#TheSans_B2_2_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "TheSansExtraLightItalic";
+	src: url(fonts/TheSans_B2_2i.eot);
+	src: local("TheSans_B2_2i"),
+		   url(fonts/TheSans_B2_2i.woff) format("woff"),
+		   url(fonts/TheSans_B2_2i.svg#TheSans_B2_2_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "TheSansSemiLight";
+	src: url(fonts/TheSans_B2_4_.eot);
+	src: local("TheSans_B2_4_"),
+		   url(fonts/TheSans_B2_4_.woff) format("woff"),
+		   url(fonts/TheSans_B2_4_.svg#TheSans_B2_4_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "TheSansSemiLightItalic";
+	src: url(fonts/TheSans_B2_4i.eot);
+	src: local("TheSans_B2_4i"),
+		   url(fonts/TheSans_B2_4i.woff) format("woff"),
+		   url(fonts/TheSans_B2_4i.svg#TheSans_B2_4_) format("svg");
+	font-style: italic;
+	font-weight: normal;
+}
+
+@font-face {
+    font-family: 'TheSans';
+   src: url(fonts/TheSans_B2_5_.eot);
+	src: local("TheSans_B2_5_"),
+		   url(fonts/TheSans_B2_5_.woff) format("woff"),
+		   url(fonts/TheSans_B2_5_.svg#TheSans_B2_5_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+
+}
+
+@font-face {
+    font-family: 'TheSansItalic';
+   src: url(fonts/TheSans_B2_5i.eot);
+	src: local("TheSans_B2_5i"),
+		   url(fonts/TheSans_B2_5i.woff) format("woff"),
+		   url(fonts/TheSans_B2_5i.svg#TheSans_B2_5i_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+
+}
+
+@font-face {
+	font-family: "TheSansSemi";
+	src: url(fonts/TheSans_TT6_.eot);
+	src: local("TheSans_TT6_"),
+		   url(fonts/TheSans_TT6_.woff) format("woff"),
+		   url(fonts/TheSans_TT6_.svg#TheSans_TT6_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "TheSansSemiItalic";
+	src: url(fonts/TheSans_TT6i.eot);
+	src: local("TheSans_TT6i"),
+		   url(fonts/TheSans_TT6i.woff) format("woff"),
+		   url(fonts/TheSans_TT6i.svg#TheSans_TT6_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "TheSansBold";
+	src: url(fonts/TheSans_TT7_.eot);
+	src: local("TheSans_TT7_"),
+		   url(fonts/TheSans_TT7_.woff) format("woff"),
+		   url(fonts/TheSans_TT7_.svg#TheSans_TT7_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "TheSansBoldItalic";
+	src: url(fonts/TheSans_TT7i.eot);
+	src: local("TheSans_TT7i_"),
+		   url(fonts/TheSans_TT7i.woff) format("woff"),
+		   url(fonts/TheSans_TT7i.svg#TheSans_TT7i) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+

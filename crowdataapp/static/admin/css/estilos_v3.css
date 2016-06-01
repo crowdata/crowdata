@@ -1,0 +1,281 @@
+/*HOME*/
+a { cursor: pointer;}
+div.introduccion{border-top:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; width:652px; height:271px; margin-bottom:16px;}
+.fotovozdata{border-right:1px solid #000; border-bottom:1px solid #000; border-left:1px solid #000; float:left; margin-top: 17px;}
+div.text_intro{ margin:13px 20px 0 0; border:0px solid green; width:298px; float:right;}
+
+div.central_data2{text-align:center; margin:15px 15px; padding-bottom:15px; border-bottom:1px solid #000;}
+div.liberar{width:300px; border:1px solid #000; position:relative; margin-bottom:14px; background-color:#222; padding-bottom: 10px}
+div.regla2{border:1px solid #000; margin:10px 15px; width:270px; height:21px; background-color:#f7f7f7;}
+
+div.cont_ranking { margin-left: -10px}
+div.caja001{  width:299px; border:1px solid #000; position:relative; margin: 0 0 15px 10px; padding:10px; float:left; }
+div.caja001 div.titulo, div.caja_usuarios div.titulo, a.vd_titulo {cursor:default; font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;}
+a.vd_titulo { cursor: pointer;}
+div.caja001 div.subtitulo, div.caja_usuarios  div.subtitulo{cursor:default; padding-bottom:8px;  border-bottom:1px solid #e7e7e7; margin-bottom:6px; font-size:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif;}
+div.caja001.cont_ranking_all { width: 615px}
+div.caja001.cont_ranking_all div.caja_detalle { width: 485px}
+div.caja001.cont_ranking_all div.caja_monto { width: 75px}
+
+div.caja001 div.gris{background-color:#f7f7f7; margin-bottom:3px;}
+
+div.caja001 div.caja_numeral, div.caja001 div.caja_detalle, div.caja001  div.caja_monto{ font-size:12px; line-height:15px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:14px 0;}
+div.caja001  div.caja_numeral{float:left; width:45px; text-align:center;}
+div.caja001  div.caja_detalle{float:left; width:153px; white-space: nowrap; text-overflow: ellipsis;overflow: hidden;}
+div.caja001  div.caja_monto{float:right; width:90px; text-align:right; margin-right:10px; font-weight:bold;}
+
+div.caja_usuarios{width:278px; border:1px solid #000; position:relative; margin-bottom:15px; padding:10px; float:left; }
+div.caja_usuarios div.gris{background-color:#f7f7f7;  border:0px solid blue; margin-bottom:3px;}
+div.caja_usuarios div.caja_detalle, div.caja_usuarios  div.caja_monto{ font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0; border:0px solid orange;}
+div.caja_usuarios  div.caja_numeral{float:left; width:60px; text-align:left; margin:0px; padding:0px; height:45px;}
+div.caja_usuarios  div.caja_detalle{float:left; width:150px;}
+div.caja_usuarios  div.caja_monto{float:right; width:50px; text-align:right; margin-right:10px; font-weight:bold;}
+
+.ajuste{margin-right:17px; }
+
+
+/*FORM*/
+#id_campo_multiline {width:273px; height:80px; font:normal 12px/15px 'Arial';}
+#id_what_color_is_it, .charfield{width:220px; font:normal 12px/15px 'Arial'; height: 20px }
+#date{font:normal 12px/15px 'Arial'; width:80px;}
+b label {display:block;font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;}
+#ayuda1,#ayuda2,#ayuda3,#ayuda4,#ayuda5,#ayuda6{display:none; border: 1px solid #bbbbbb; background-color: #fffeeb; padding: 10px; width:258px; font:normal 11px/14px  arial, sans-serif; color:#333333; margin-bottom:5px;}
+#error{background-color:#fffeeb; margin:5px; padding:7px; color:#990000; border:0px solid red;}
+
+div.calendar{float:left; width:90px; height:40px;}
+div.almanaque{float:left;  height:40px; padding-top:3px;}
+div.ayuda{float:right; padding-left:7px;}
+div.masomenos{float:left; padding-right:5px; padding-top:3px; height:17px;}
+div.compmail{margin-left:5px; border:0px solid red; float:left; width:48px; padding-top:40px;}
+div.compmail2{margin-left:5px; border:0px solid red; float:left; width:48px;}
+#muestro1, #menos{display:none; }
+#date, .charfield, .multiplechoicefield, textarea{border:1px solid #ccc;border-radius: 4px;}
+textarea {  max-width: 266px; min-width: 266px; min-height: 6em; max-height: 6em}
+/*grales*/
+section#contenedor {margin:auto;width:988px;border:1px solid #000;border-top:none;padding-top:0px;border-bottom:none;position:relative;z-index:1;}
+#tercera {width:300px;float:right;padding:7px 0px; margin-right:15px; border:0px solid red;}
+#tercera .banner {margin-bottom:20px;}
+
+/*PATH*/
+.path {margin:10px 0 8px 12px;font-size:12px;color:#a3a3a3!important;clear:both;display:block;background-color:#fff;padding-bottom:8px;}
+.path a {color:#808080!important;text-decoration:none!important;margin-left:0;}
+.path span {float:left;margin-right:5px;}
+.path a:hover {color:#626262!important;}
+.path {padding-left:0;margin-bottom:0;}
+.path .tag-destacado h2 a {color:#1da3d6!important;font:normal 17px/15px 'TheSans', 'Arial';}
+a.title_color, a.title_color:hover {color:#1da3d6 !important; font: normal 14px/15px 'TheSans', 'Arial';}
+
+/*ayuda*/
+.ui-dialog .ui-dialog-titlebar {
+	font:normal 17px/17px 'TheSans', 'Arial';color:#1da3d6;
+	background:none;
+	border:0px;
+	border-bottom:1px solid #ccc;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
+/*----- especial destacado----- */
+
+div.cajas {width:300px; margin-left: 0px; margin-top:102px;}
+
+div.contenedor div.cajas div.destacado{width:300px; height:180px; margin-bottom:10px; }
+div.contenedor div.cajas div.destacado a{ text-decoration:none; cursor:pointer;}
+div.contenedor div.cajas div.destacado div.titulo{cursor:default; padding:5px 0px 10px 10px; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+div.contenedor div.cajas div.destacado div.conte{ width:280px; height:120px;  overflow:hidden; background:#efefef; position:relative; margin-left:10px; transition: background 1s;	-moz-transition: background 1s;	-webkit-transition: background 1s;	-o-transition: background 1s;}
+div.contenedor div.cajas div.destacado div.conte:hover{background:#eefcff; }
+div.contenedor div.cajas div.destacado div.conte div.elementos{ width:840px; height:120px; position:absolute; top:0px; left:0px; }
+div.contenedor div.cajas div.destacado div.conte div.elementos div.caja{ width:280px; height:120px; float:left;}
+div.contenedor div.cajas div.destacado div.conte div.elementos div.caja div.foto{ padding:10px; float:left;  }
+div.contenedor div.cajas div.destacado div.conte div.elementos div.caja div.tit_nota{ padding-top:10px; padding-left:0px; width:130px; float:left; line-height:18px; font-size:12px; color:#474747; font-family: Arial, Helvetica, sans-serif; }
+div.contenedor div.cajas div.destacado div.conte div.elementos div.caja div.seccion{ padding-top:17px; padding-left:0px; width:120px;  float:left; font-size:12px; color:#335577; font-weight:bold; font-family: Arial, Helvetica, sans-serif; }
+div.contenedor div.cajas div.destacado div.conte div.elementos div.caja div.linea{width:260px; height:1px; float:left; margin-left:10px; border-bottom:1px solid #dcdcdc }
+
+div.contenedor div.cajas div.destacado div.cuadrados
+{width:80px; height:10px; margin-left:115px; margin-top:5px;}
+div.contenedor div.cajas div.destacado div.cuadrados div.off
+{width:10px; height:10px; cursor:pointer; margin-left:10px; margin-top:3px; -moz-border-radius: 75px; -webkit-border-radius: 75px; border-radius: 75px; background:#ccc; float:left;  }
+div.contenedor div.cajas div.destacado div.cuadrados div.on
+{width:15px; height:15px; cursor:pointer; margin-left:10px; text-align:center; font-weight:bold; -moz-border-radius: 75px; -webkit-border-radius: 75px; border-radius: 75px; background:#32a9d3; font-family: Arial, Helvetica, sans-serif; font-size:11px; color:#fff; float:left;  }
+
+
+div.contenedor div.cajas div.mapa{width:300px; border:1px solid #000; position:relative; margin-bottom:15px;}
+div.contenedor div.cajas div.mapa div.titulo{cursor:default; padding:8px 0px 0px 10px; font-size:17px; color:#000; letter-spacing: -1px;  font-family: "TheSans";}
+div.contenedor div.cajas div.mapa div.subtitulo{width:280px; cursor:default; margin-left:10px; padding-bottom:5px;  border-bottom:0px solid #e7e7e7; font-size:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif;}
+div.contenedor div.cajas div.mapa a.btn2{padding:5px 10px; margin-left:120px; cursor:pointer; border-radius:3px; display:inline-block; background:#335577; color:#fff; font-size:12px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;}
+div.contenedor div.cajas div.mapa a.btn2:hover{background:#e7e7e7; color:#000; border:1px solid #aaa;}
+
+div.contenedor div.cajas div.mapa a{ text-decoration:none; cursor:pointer;}
+div.contenedor div.cajas div.mapa div.btn{width:95px; height:25px; cursor:pointer; position:absolute; top:5px; left:215px; text-align:center; line-height:24px; font-size:12px; color:#335577; font-family:Arial, Helvetica, sans-serif; }
+div.contenedor div.cajas div.mapa div.btn:hover{ text-decoration:underline;}
+
+div.mapa div.label_bco, div.mapa div.label_gris {border-top:1px solid #000; padding:15px 10px; margin-top:9px; position: relative;}
+div.contenedor div.cajas { background-color:#f5f5f5;}
+div.contenedor div.cajas div.mapa div.label_bco_enviar {border-top:1px solid #000; padding:10px; text-align:center;}
+img.spinner { position: absolute; bottom: 20px; right: 15px; display: none;}
+div.contenedor div.cajas div.mapa p{color:#7c7c7c; margin-bottom:5px;}
+
+div.central_data{text-align:center; font-size:14px; border:0px solid red;}
+div.evaluaste{font-size:11px; line-height:13px; width:130px; float:left;}
+div.evaluaste strong{font-weight:bold;}
+strong {font-weight:bold;}
+div.regla{border:1px solid #000; float:right; width:130px; height:21px; background-color:#f7f7f7;}
+div.medidor{background-color:#1b7da2; height:21px;}
+
+
+#tercera .herramientasSociales {border:1px solid #000;padding:9px 13px 10px 13px;margin-bottom:17px;height:97px; overflow: hidden;}
+#tercera .herramientasSociales b, #popup b, .theSans {display:block;font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;margin-bottom:9px;}
+#tercera .herramientasSociales .google, .herramientasSociales .facebookMeGusta, .herramientasSociales .twitter {float:left!important;}
+#tercera .herramientasSociales .facebookMeGusta {margin-right:18px;}
+#tercera .herramientasSociales .twitter {margin-right:18px;width:60px;}
+
+
+/* anexos */
+section.anexo {margin-bottom:6px;clear:both;}
+.conHidden {display:none!important;}
+section#item {padding-top:6px;}
+section#item article#nota {width:663px;float:left; margin-left:10px; padding-bottom:25px; border:0px solid violet;}
+/*------------------------------- COMUN CUERPO ---------------*/
+
+#encabezado {
+margin:11px 0 10px 0;
+}
+
+#encabezado a.tema {
+	color: #28578B;
+	font: normal 12px/17px 'Arial';
+	left: 0;
+	padding: 4px 6px 3px 12px;
+	/*filter:none;*/
+	background:#efefef;
+	float:left;
+}
+
+#encabezado a.tema:hover {
+	color:#2b90b7!important;
+	text-decoration:none;
+}
+
+.tema_hoy #encabezado a.tema  {
+	color:#9C2829!important;
+	font: normal 12px/17px 'Arial';
+	left: 0;
+	padding: 4px 6px 3px 12px;
+	/*filter:none!important;*/
+	background:#efefef!important;
+	float:left;
+	font-weight:bold;
+}
+
+.tema_hoy #encabezado a.tema:hover  {
+	color:#b94849!important;
+}
+
+#encabezado .fecha {
+	font: normal 12px/17px 'Arial';
+	color:#666;
+	float:right;
+	padding:0 12px 15px 0;
+}
+#encabezado p.volanta {
+	font: normal 14px/20px 'Arial';
+	color:#808080;
+	padding: 0 12px 0 12px;
+}
+#encabezado h1 {
+	font: normal 35px/40px 'TheSans', 'Arial';
+	color:#222;
+	padding: 5px 12px 10px 12px;
+	letter-spacing:-0.1px;
+}
+
+#encabezado p.bajada {
+	font: normal 16px/22px 'Arial';
+	color:#222;
+	padding: 0 12px 5px 12px;
+}
+#encabezado p.firma {
+	font: normal 14px/20px 'Arial';
+	color:#222;
+	padding: 0 12px 0 12px;
+}
+
+#encabezado p.firma span {
+	color:#808080;
+}
+
+
+
+/* @cb */
+/* la url del bg esta en el base */
+a.vd_btn { color: #FFFFFF; display: inline-block; font-family: 'TheSans';  font-weight: bold; text-align: center; padding: 8px 0 0; font-size: 15px; border-radius: 6px}
+a.vd_btn:hover {text-decoration: none;}
+a.btn_bg_l { width: 239px; height: 25px; }
+a.btn_bg_s { width: 239px; height: 34px; padding: 9px 0 0; font-size: 15px; }
+a.btn_bg_l.red {background: #bd362f}
+span.ver_mas {background: none repeat scroll 0 0 #1FA1D0;border-radius: 6px;color: #FFFFFF;display: inline-block;float: right;font-size: 13px;padding: 0 4px;}
+
+/* creditos */
+#creditos {  background: none repeat scroll 0 0 #CCCCCC; border-radius: 3px; color: #666666; display: inline-block; padding: 3px 7px; position: absolute; right: 10px; top: 10px; font-size: 13px; cursor: pointer;}
+
+
+/* slide help */
+#cont_slide {position: relative; overflow: hidden; }
+#cont_slide, div#slide, ul#list li {width: 750px;  height: 90% } /* heigth of slide */
+div#slide { left:30px; }
+ul#list { overflow: hidden;}
+ul#list li { overflow: hidden; float: left; margin: 0; }
+div#cont_slide a.btn { display: none;}
+a.btn { position: absolute; top: 30px; display: inline-block; padding: 5px 10px; background: rgba(100, 100, 100, 0.4); color: #fff; cursor: pointer; border-radius: 4px; font-size: 14px}
+a.btn:hover { background: rgba(100, 100, 100, 0.8); }
+a.prev { left: 20px}
+a.next { right: 20px}
+
+/* pagination */
+.pagination { text-align: center; margin: 10px 0 0; word-spacing: 5px;}
+.pagination a, .pagination span.current.page{ color:#1da3d6; font: normal 14px/15px 'Arial'; }
+.pagination span.current.page {  border: 1px solid #CCCCCC; border-radius: 3px; color: #000000; padding: 1px 3px; }
+.pagination span.disabled { visibility: hidden; }
+
+/* popup */
+#popup { display: none }
+.popup_bg, .popup_cont { z-index: 1000; position: fixed;}
+.popup_bg { top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,10, 0.3); }
+.popup_cont {display:none; overflow-y: auto; overflow-x: hidden; top: 7%; left: 50%; max-height: 85%; min-height:200px;  width: 750px; padding: 10px; margin-left: -355px; background: #fff; }
+.popup_cont a.close { text-decoration: none; position: absolute; top: 10px; right: 10px; padding: 0px 5px; background: #ccc; display: inline-block; color: #fff; border-radius: 3px; font-weight: bold; cursor: pointer;}
+.popup_cont a.close:hover { }
+.popup_cont hr { border: none; border-bottom: solid 1px #ccc; margin-bottom: 10px}
+/*.popup_cont .cont_tabs { overflow-y: auto; overflow-x: hidden; height: 90%}*/
+
+/* creditos*/
+.popup_cont.popup_cont_small { width: 450px; margin-left: -225px;}
+div.popup_body ul.ctos { margin: 40px 15px 0 40px; font-size: 13px}
+div.popup_body ul li { margin: 15px 0 0 15px; font-size: 14px}
+div.popup_body ul li.resp { margin-top: 5px}
+div.popup_body ul li hr { width: 100%; float: left; margin-top: 5px}
+div.popup_body ul li span.rol { font-weight: bold; font-size: 12px}
+div.popup_body ul li span.rol a{ color: #000;}
+div.popup_body ul li span.san { font-style: italic;}
+div.popup_body ul li ul { margin: 5px 0 0;}
+div.popup_body ul li ul li { margin-top: 10px;}
+
+div.popup_body .cerrar { position: absolute; top: 0px; right: 10px; display: block; width: 35px; height: 30px; background: url(http://interactivos.lanacion.com.ar/ddjj/stylesheets/../images/cerrar.jpg) no-repeat 0 0; text-indent: -5000px;cursor: pointer;}
+/*div.popup div#bg_ctos { height: auto; left: 50%; margin-left: -300px; position: fixed; top: 20%; width: 560px; padding: 20px; border-radius: 5px; z-index: 1}*/
+div.popup div p.tit { font-weight: bold;  margin: 15px 0;}
+
+div.logos { margin: 10px 0}
+div.logos .ln{ margin-left: 20px; }
+
+/*perfil user*/
+div.usuario { width: 652px; border-top:1px solid #000; border-right:1px solid #000; border-bottom:1px solid #000; margin-bottom:16px; overflow: hidden;}
+div.usuario span.ver_mas { font-size: 10px}
+div.usuario img { border: 1px solid #000; border-top: none; border-bottom: none; float: left}
+div.text_usuario{ margin:13px 20px 0 0; border:0px solid green; width:530px; float:right; padding-top:10px;}
+div.caja001  div.caja_detalle_usuario{float:left; width:565px; font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0;}
+div.caja_posicion{float:left; width:20px; text-align:right; margin-right:10px; font-weight:bold;}
+div.caja_posicion{ font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0; text-align:center; border:0px solid orange;}
+div.caja_detalle2{ font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0; border:0px solid orange;}
+div.caja_detalle2{float:left; width:120px; border:0px solid red;}
+#markado{background-color:#b8deec;}
+#markado2{color:#006699;}
+#paginado {float:left; width:650px;margin:auto;font-size:12px;color:#9D9D9D; text-align:center; border:0px solid red;}
