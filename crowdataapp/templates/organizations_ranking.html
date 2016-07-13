@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crowdataapp_tags %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% load cache %}
+{% load humanize %}
+
+{% block headercontent %}
+  <!-- {{document_set.name}} -->
+  {% trans "Organizations Ranking" %}
+{% endblock %}
+
+{% block content %}
+  <div class="caja001 cont_ranking_all">
+    <!-- <div class="titulo"></div> -->
+    <!-- <div class="subtitulo"></div> -->
+    {% for org, num_entries in organizations %}
+    <div class="gris">
+      <div class="caja_numeral" style="padding:0">
+        <img src="{{ org.logo_thumbnail.url }}" width="45" height="45" />
+      </div>
+      <div class="caja_detalle" style="width: 470px; padding:15px 0 0 14px">
+        <b class="theSans" style="display:inline-block; min-width: 30px;">{% index_in_ranking page forloop.counter 20 %}</b>
+          <a href="{% url 'organization_profile' org.slug %}">{{ org.name }}</a>              
+      </div>
+      <div class="caja_monto">
+        {{ num_entries }}
+      </div>
+      <br clear="all" />
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
+
+{% block rightcolumn %}
+
+  {% documents_verified document_set %}
+
+  {% list_ranking_user document_set.leaderboard|slice:":10" %}
+
+  {% list_ranking_organizations document_set.organization_board|slice:":10" %}
+{% endblock %}

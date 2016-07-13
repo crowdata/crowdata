@@ -20,10 +20,14 @@ def create_entry(sender=None, form=None, entry=None, document_id=None, **kwargs)
         raise Exception(_("The document %s already has an entry.") % document_id)
 
     try:
-
         # Create the entry
         entry.document = models.Document.objects.get(pk=document_id)
         entry.user = request.user
+
+        user_profile = request.user.get_profile()
+        # See if the User Profile exists when an Account is created with Social Auth
+        if user_profile:
+            entry.organization = user_profile.current_organization
 
         # Save all the canonical for the fields of the entry
         for f in entry.fields.all():
@@ -32,7 +36,6 @@ def create_entry(sender=None, form=None, entry=None, document_id=None, **kwargs)
             f.save()
         # Save the entry
         entry.save()
-
         # Verify the document
         if request.user.is_staff or request.user.is_superuser:
             entry.force_verify()

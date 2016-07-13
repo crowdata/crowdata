@@ -105,6 +105,33 @@ $(function() {
       .inputmask('decimal', input_mask_options);
   });
 */
+
+  // Tab functionality
+  var elements = $('form fieldset .form-group .form-field'),
+      element = elements[0];
+
+  element.focus();
+
+  // Add tabindex
+  for(var i = 0; i < elements.length; i++) {
+    elements[i].setAttribute('tabindex', i);
+  }
+
+  $('input').keydown(function(e){ // only numbers
+    var key = e.charCode || e.keyCode;
+    var elementIndex;
+
+    if ( key === 9) {
+      elementIndex = parseInt($(this).attr('tabindex')) + 1;
+      if(elementIndex >= elements.length) {
+        elementIndex = 0;
+      } 
+
+      element = elements[elementIndex];
+      element.focus();
+    }
+  });
+
   $('div.label_bco_enviar a').click(function(e) {
     e.preventDefault();
     window.location.reload();

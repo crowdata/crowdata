@@ -25,9 +25,14 @@ class BuiltFormNode(template.Node):
         # kind of a hack
         # add the 'data-verify' attribute if the field is marked
         # as a verifiable field
-        for field in filter(lambda f: f.verify,
-                            form_for_form.form_fields):
-            form_for_form.fields[field.slug].widget.attrs['data-verify'] = True
+        for i, field in enumerate(form_for_form.form_fields):
+            if field.verify:
+                form_for_form.fields[field.slug].widget.attrs['data-verify'] = True
+
+            # We give to all the form fields a common class so we can reference 
+            # them in the frontend
+            fieldAttrs = form_for_form.fields[field.slug].widget.attrs
+            fieldAttrs['class'] = fieldAttrs['class']  + ' form-field'
 
         context["form_for_form"] = form_for_form
         return t.render(context)
@@ -66,7 +71,7 @@ def render_ranking(context, ranking_definition):
 def render_ranking_all(context, ranking_definition, search_term):
     t = get_template('ranking_all.html')
     context['ranking'] = ranking_definition
-    context['ranking_calculate_all'] = ranking_definition.calculate_all(search_term)
+    context['ranking_calculate_all'] = ranking_definition.calculate_all(search_term = search_term)
 
     r = t.render(context)
     return r
@@ -96,8 +101,14 @@ def list_ranking_user(context, users_ranking, profile = None):
     context["profile"] = profile
     return t.render(context)
 
-
 @register.filter_function
 def order_by(queryset, args):
     args = [x.strip() for x in args.split(',')]
     return queryset.order_by(*args)
+
+@register.simple_tag(takes_context=True)
+def list_ranking_organizations(context, organizations, profile = None):
+    t = get_template("list_ranking_organizations.html")
+    context["organizations"] = organizations
+    return t.render(context)
+

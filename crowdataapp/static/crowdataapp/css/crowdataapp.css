@@ -156,3 +156,6 @@ nav .username .caret {
   display: none;
 }
 
+
+/* Ranking Search */
+input.search-ranking { display: inline-block; text-indent: -5000px; width: 17px; height: 17px; background: url(../img/lupa.png) no-repeat; border: none; background-size: 17px; cursor: pointer; }

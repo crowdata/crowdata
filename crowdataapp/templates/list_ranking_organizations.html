@@ -1,0 +1,18 @@
+{% if organizations %}
+  <h5><a class="vd_titulo" href="{% url 'document_set_organizations_ranking' document_set.slug %}">{{ _('Organizations Ranking') }}<button class="btn btn-primary pull-right btn-xs">{{ _('more') }}</button></a></h5> 
+  <h6>{{ _('Per reviewed documents') }}</h6>
+  <!-- for user in document_set.leaderboard|slice:":10"  -->
+  <table class="table table-striped">
+  {% for org, num_entries in organizations %}
+    <tr>
+      <td>
+          <img src="{{ org.logo_thumbnail.url }}" width="45" height="45" />
+          <a href="{% url 'organization_profile' org.slug %}">{{ org.name }}</a>                      
+      </td>
+      <td>
+        {{ num_entries }}
+      <td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endif %}

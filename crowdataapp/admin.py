@@ -342,8 +342,8 @@ class DocumentSetAdmin(NestedModelAdmin):
 
 
 class DocumentSetFormEntryInline(admin.TabularInline):
-    fields = ('user_link', 'answers', 'entry_time', 'document_link', 'document_set_link')
-    readonly_fields = ('user_link', 'answers', 'entry_time', 'document_link', 'document_set_link')
+    fields = ('user_link', 'organization', 'answers', 'entry_time', 'document_link', 'document_set_link')
+    readonly_fields = ('user_link', 'organization', 'answers', 'entry_time', 'document_link', 'document_set_link')
     ordering = ('document',)
     list_select_related = True
     model = models.DocumentSetFormEntry
@@ -466,6 +466,17 @@ class DocumentAdmin(admin.ModelAdmin):
           doc.verify()
     verify_document.short_description = _('Re-verify selected documents.')
 
+
+class UserProfileInline(admin.StackedInline):
+    verbose_name = _('Current Organization')
+    verbose_name_plural = _('Current Organization')
+    model = models.UserProfile
+    max_num = 1
+    can_delete = False
+
+    fields = ('current_organization', )
+
+
 class CrowDataUserAdmin(UserAdmin):
 
     class Media:
@@ -484,11 +495,16 @@ class CrowDataUserAdmin(UserAdmin):
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
-    inlines = [DocumentSetFormEntryInline]
+    
+    inlines = [UserProfileInline, DocumentSetFormEntryInline]
 
     readonly_fields = ('last_login', 'date_joined', )
 
 
+class OrganizationAdmin(admin.ModelAdmin):
+    model = models.Organization
+    filter_horizontal = ('users',)
+    
 admin.site.register(models.DocumentSet, DocumentSetAdmin)
 admin.site.register(models.Document, DocumentAdmin)
 admin.site.unregister(forms_builder.forms.models.Form)
@@ -501,3 +517,5 @@ admin.site.register(User, CrowDataUserAdmin)
 from django.contrib.sites.models import Site
 admin.site.unregister(Site)
 admin.site.unregister(Group)
+
+admin.site.register(models.Organization, OrganizationAdmin)

@@ -1,0 +1,35 @@
+<div style="font-size:13px; line-height: 17px;">
+    <b>
+      {{ _('Please select the team you would like to work.') }}
+    </b>
+    {{ _('The Documents you free will be associated with the ') }}<strong>{{ _('team') }}</strong>{{ _(' you choose.') }}
+    <br>
+    <br>
+
+    <p><strong>{{ _('Teams you belong:') }}</strong></p>
+    <br>
+    <select class="organizations">
+      <option value="none">-- {{ _('Without a team') }} -- </option>
+        {% for organization in organizations %}
+          <option value="{{ organization.id }}" {% if current_organization == organization %} selected="selected" {% endif %} data-slug="{{ organization.slug }}">{{ organization.name }}</option>
+        {% endfor %}
+
+    </select>
+
+    <div class="organization_error error hidden">
+      {{ _('An error has occurred. Please try it again.') }}
+    </div>
+
+    <div class="organization_buttons">
+      <a class="vd_btn btn_bg_l btn_bg_m ok">{{ _('Confirm') }}</a>
+      <a class="vd_btn btn_bg_l btn_bg_m red cancel">{{ _('Cancel') }}</a>
+    </div>
+    
+    <p class="organization_list_legend">
+    {{ _('You can join other teams from here:') }}
+    <a href="{% url 'organizations' %}">{{ _('Team list') }}</a>
+    </p>
+    <p class="organization_list_legend">
+        {{ _('For signing up a Team please fill the next ') }} <a href="{{organization_signup_link }}" target="_blank">{{ _('form.') }}</a>
+    </p>    
+</div>

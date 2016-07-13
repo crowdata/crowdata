@@ -26,7 +26,8 @@
 <script type="text/javascript">
 $(document).ready(function(){ create_sosial($('.herramientasSociales.social')); });
 </script>
-
   {% list_ranking_user document_set.leaderboard|slice:":10" %}
+
+  {% list_ranking_organizations document_set.organization_board|slice:":10" %}
 
 {% endblock %}

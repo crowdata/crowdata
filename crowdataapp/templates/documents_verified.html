@@ -5,7 +5,7 @@
   <div class="center-block">
     {% if document_set.get_verified_documents.count > 0 %}
 
-      ¡We already reviewed {{ document_set.get_verified_documents.count }} of {{ document_set.documents.count }} documents!
+    {{ _('¡We already reviewed ') }} {{ document_set.get_verified_documents.count }} {{ _('of ') }} {{ document_set.documents.count }} {{ _('documents!') }}
 
 	<div class="progress">
 	  <div class="progress-bar" role="progressbar" aria-valuenow="{% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}" aria-valuemin="0" aria-valuemax="100" style="width: {% widthratio document_set.get_verified_documents.count document_set.documents.count 100 %}%;">

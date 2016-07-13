@@ -19,18 +19,40 @@
   <img src="http://bucket.clanacion.com.ar/avatar/{{profile.user.username|slice:"-1:"}}/{{ profile.user.username|slice:"3:" }}G.jpg" width="90" height="90" class="" />
 
   <div class="text_usuario">
-  <p><b>
-  {{ full_name }}
-  <a target="_blank" style="font-size:12px" href="https://registracion.lanacion.com.ar/mis-datos-publico?usuario_id={{ profile.user.username|slice:"3:" }}"><span class="ver_mas">ver en lanacion.com</span></a>
-  </b></p>
-  <p>
-  Usuario: {{ profile.name }}
-  </p>
+    <p>
+      <b>
+      {{ full_name }}
+     </b>
+    </p>
+    <p>
+    {{ _('User: ') }} {{ profile.name }}
+    </p>
   </div>
 </div>
+{% if organizations %}
     <div class="caja001 ajuste" style="width:631px; margin-left:0">
-      <div class="titulo">Documentos Liberados</div>
-      <div class="subtitulo">Estos son los <b>{{ verified_documents_count }} documentos liberados</b> y validados de {{ full_name }}</div>
+      <div class="titulo">{{ _('Organizations') }}</div>
+      <div class="subtitulo">{{ _('You belong to:') }}</div>
+  {% for org in organizations %}
+      <div class="gris organization_row">
+          <div class="caja_numeral" style="padding:0">
+              <img src="{{ org.logo_thumbnail.url }}" width="45" height="45" />
+          </div>
+          <div class="caja_detalle" style="width: 470px; padding:15px 0 0 14px">
+              <a href="{% url 'organization_profile' org.slug %}">{{ org.name }}</a>
+          </div>
+          <div class="caja_monto" >
+              {{ org.num_entries }}
+          </div>
+          <br clear="all" />
+      </div>      
+  {% endfor %}
+    </div>
+{% endif %}
+
+    <div class="caja001 ajuste" style="width:631px; margin-left:0">
+      <div class="titulo">{{ _('Documents') }}</div>
+      <div class="subtitulo">{{ _('These are the ') }}<b>{{ verified_documents_count }}{{ _(' documents you free ') }}</b>{{ _(' and validated by ') }} {{ full_name }}</div>
   {% autopaginate verified_documents %}
   {% for doc in verified_documents %}
       <div class="gris">
@@ -49,14 +71,6 @@
   </div>
 
   <br clear="all" />
-<!--
-  <div id="paginado">
-  anterior | <a href="#" title="1"><b>1</b></a> | <a href="#" title="2">2</a> | <a href="#" title="3">3</a> | <a href="#" title="siguiente">siguiente</a>
-  </div>
- -->
-
-  <!-- maqueta -->
-
 {% endblock %}
 
 {% block rightcolumn %}
@@ -65,6 +79,8 @@
   {% documents_verified document_set %}
 
   {% list_ranking_user users_ranking_list profile %}
+
+  {% list_ranking_organizations document_set.organization_board|slice:":10" %}  
 
 <div class="herramientasSociales social" style="overflow:hidden">
 </div>
