@@ -1,0 +1,14 @@
+/* fixed css*/
+.titulo legend { text-transform: uppercase;}
+div.introduccion { overflow: hidden; height: auto; padding-bottom: 15px}
+/* /fixed css*/
+
+/*typeahead*/
+.typeahead{background-color:#fff}
+.tt-query{ width: 230px; background: #fff; -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-moz-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}
+.tt-hint{color:#fff; width: 228px}
+.tt-dropdown-menu{width:100%;margin-top:5px;padding:2px 0;background-color:#fff;border:1px solid #ccc;border:1px solid rgba(0,0,0,.2);-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:0 5px 10px rgba(0,0,0,.2);-moz-box-shadow:0 5px 10px rgba(0,0,0,.2);box-shadow:0 5px 10px rgba(0,0,0,.2)}.tt-suggestion{padding:3px;font-size:12px}
+div.contenedor div.head_especial div.cajas div.mapa .tt-suggestion.tt-is-under-cursor p{color:#fff}.tt-suggestion.tt-cursor,.tt-suggestion.tt-is-under-cursor{color:#fff;background-color:#0097cf}.tt-suggestion p{margin:0}.gist{font-size:14px}
+
+/* datepicker */
+/*.datepicker.dropdown-menu { width: 205px; border: 1px solid #ccc   }*/

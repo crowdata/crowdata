@@ -1,0 +1,285 @@
+@charset "utf-8";
+@font-face {
+	font-family: "TheSans";
+	src: url(fonts/TheSans_TT7_.eot);
+	src: local("TheSans_TT7_"),
+		   url(fonts/TheSans_TT7_.woff) format("woff"),
+		   url(fonts/TheSans_TT7_.svg#TheSans_TT7_) format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
+
+.cleaner{ clear:both;}
+
+body {margin: 0 0;}
+
+div.contenedor {width:990px; height:auto; position:relative;}
+
+/*--------- COLUMNA IZQUIERDA -------------------------------------------*/
+
+	
+		/*----- especial destacado----- */
+		
+div.contenedor div.head_especial div.cajas {width:300px; margin-left: 0px; margin-top:102px;}
+
+div.contenedor div.head_especial div.cajas div.destacado{width:300px; height:180px; margin-bottom:10px; }
+div.contenedor div.head_especial div.cajas div.destacado a{ text-decoration:none; cursor:pointer;}
+div.contenedor div.head_especial div.cajas div.destacado div.titulo{cursor:default; padding:5px 0px 10px 10px; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+div.contenedor div.head_especial div.cajas div.destacado div.conte{ width:280px; height:120px;  overflow:hidden; background:#efefef; position:relative; margin-left:10px; transition: background 1s;	-moz-transition: background 1s;	-webkit-transition: background 1s;	-o-transition: background 1s;}
+div.contenedor div.head_especial div.cajas div.destacado div.conte:hover{background:#eefcff; }
+div.contenedor div.head_especial div.cajas div.destacado div.conte div.elementos{ width:840px; height:120px; position:absolute; top:0px; left:0px; }
+div.contenedor div.head_especial div.cajas div.destacado div.conte div.elementos div.caja{ width:280px; height:120px; float:left;}
+div.contenedor div.head_especial div.cajas div.destacado div.conte div.elementos div.caja div.foto{ padding:10px; float:left;  }
+div.contenedor div.head_especial div.cajas div.destacado div.conte div.elementos div.caja div.tit_nota{ padding-top:10px; padding-left:0px; width:130px; float:left; line-height:18px; font-size:12px; color:#474747; font-family: Arial, Helvetica, sans-serif; }
+div.contenedor div.head_especial div.cajas div.destacado div.conte div.elementos div.caja div.seccion{ padding-top:17px; padding-left:0px; width:120px;  float:left; font-size:12px; color:#335577; font-weight:bold; font-family: Arial, Helvetica, sans-serif; }
+div.contenedor div.head_especial div.cajas div.destacado div.conte div.elementos div.caja div.linea{width:260px; height:1px; float:left; margin-left:10px; border-bottom:1px solid #dcdcdc }
+
+div.contenedor div.head_especial div.cajas div.destacado div.cuadrados
+{width:80px; height:10px; margin-left:115px; margin-top:5px;}
+div.contenedor div.head_especial div.cajas div.destacado div.cuadrados div.off
+{width:10px; height:10px; cursor:pointer; margin-left:10px; margin-top:3px; -moz-border-radius: 75px; -webkit-border-radius: 75px; border-radius: 75px; background:#ccc; float:left;  }
+div.contenedor div.head_especial div.cajas div.destacado div.cuadrados div.on
+{width:15px; height:15px; cursor:pointer; margin-left:10px; text-align:center; font-weight:bold; -moz-border-radius: 75px; -webkit-border-radius: 75px; border-radius: 75px; background:#32a9d3; font-family: Arial, Helvetica, sans-serif; font-size:11px; color:#fff; float:left;  }
+	
+	
+div.contenedor div.head_especial div.cajas div.mapa{width:300px; border:1px solid #dadada; position:relative; margin-bottom:15px;}
+div.contenedor div.head_especial div.cajas div.mapa div.titulo{cursor:default; padding:8px 0px 0px 10px; font-size:17px; color:#000; letter-spacing: -1px;  font-family: "TheSans";}
+div.contenedor div.head_especial div.cajas div.mapa div.subtitulo{width:280px; cursor:default; margin-left:10px; padding-bottom:5px;  border-bottom:0px solid #e7e7e7; font-size:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif;}
+div.contenedor div.head_especial div.cajas div.mapa div.img{width:280px; height:68px; margin:10px 10px; }
+div.contenedor div.head_especial div.cajas div.mapa a.btn2{padding:5px 10px; margin-left:120px; cursor:pointer; border-radius:3px; display:inline-block; background:#335577; color:#fff; font-size:12px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;}
+div.contenedor div.head_especial div.cajas div.mapa a.btn2:hover{background:#e7e7e7; color:#000; border:1px solid #aaa;}
+
+div.contenedor div.head_especial div.cajas div.mapa div.imagen:hover{}
+div.contenedor div.head_especial div.cajas div.mapa a{ text-decoration:none; cursor:pointer;}
+div.contenedor div.head_especial div.cajas div.mapa div.btn{width:95px; height:25px; cursor:pointer; position:absolute; top:5; left:215; text-align:center; line-height:24px; font-size:12px; color:#335577; font-family:Arial, Helvetica, sans-serif; }
+div.contenedor div.head_especial div.cajas div.mapa div.btn:hover{ text-decoration:underline;}
+	
+
+div.contenedor div.head_especial div.cajas div.mapa div.label_bco{border-top:1px solid #dadada; padding:15px 10px;}	
+div.contenedor div.head_especial div.cajas div.mapa div.label_gris{border-top:1px solid #dadada; padding:15px 10px; background-color:#f5f5f5;}	
+div.contenedor div.head_especial div.cajas div.mapa div.label_bco p{margin-top:9px;}
+div.contenedor div.head_especial div.cajas div.mapa div.label_gris p{margin-top:9px;}
+div.contenedor div.head_especial div.cajas div.mapa div.label_bco_enviar{border-top:1px solid #dadada; padding:10px; text-align:center;}	
+
+div.contenedor div.head_especial div.cajas div.mapa p{color:#7c7c7c; margin-bottom:5px;}
+
+div.central_data{text-align:center; font-size:14px;}
+div.evaluaste{font-size:11px; line-height:13px; width:130px; float:left:}
+div.evaluaste strong{font-weight:bold;}
+div.regla{border:1px solid #dadada; float:right; width:130px; height:21px; background-color:#f7f7f7;}
+div.medidor{background-color:#1b7da2; height:21px;}
+
+/*FORM*/
+#id_campo_multiline {width:273px; height:80px; font:normal 12px/15px 'Arial';}
+#id_what_color_is_it, .charfield{width:220px; font:normal 12px/15px 'Arial';}
+#date{font:normal 12px/15px 'Arial'; width:80px;}
+span label {display:block;font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;}
+.ayuda_hidden, #ayuda1,#ayuda2,#ayuda3,#ayuda4,#ayuda5,#ayuda6{display:none; border: 1px solid #bbbbbb; background-color: #fffeeb; padding: 10px; width:258px; font:normal 11px/14px  arial, sans-serif; color:#333333; margin-bottom:5px;}
+#error{background-color:#fffeeb; margin:5px; padding:7px; color:#990000; border:0px solid red;}
+
+div.calendar{float:left; width:90px; height:40px;}
+div.almanaque{float:left;  height:40px; padding-top:3px;}
+div.ayuda{float:right; padding-left:7px;}
+div.masomenos{float:left; padding-right:5px; padding-top:3px; height:17px;}
+div.compmail{margin-left:5px; border:0px solid red; float:left; width:48px; padding-top:40px;}
+div.compmail2{margin-left:5px; border:0px solid red; float:left; width:48px;}
+#muestro1, #menos{display:none; }
+
+
+/*HOME*/
+div.introduccion{border-top:1px solid #dadada; border-right:1px solid #dadada; border-bottom:1px solid #dadada; width:652px; height:271px; margin-bottom:16px;}
+.fotovozdata{border-right:1px solid #dadada; border-bottom:1px solid #dadada; border-left:1px solid #dadada; float:left;}
+div.text_intro{ margin:13px 20px 0 0; border:0px solid green; width:298px; float:right;}
+
+div.central_data2{text-align:center; margin:15px 15px; padding-bottom:15px; border-bottom:1px solid #dadada;}
+div.contenedor div.head_especial div.cajas div.liberar{width:300px; border:1px solid #dadada; position:relative; margin-bottom:14px; background-color:#e8f5fa;}
+div.regla2{border:1px solid #dadada; margin:10px 15px; width:270px; height:21px; background-color:#f7f7f7;}
+
+div.caja001{width:296px; border:1px solid #dadada; position:relative; margin-bottom:15px; padding:10px; float:left;}
+div.caja001 div.titulo, div.caja_usuarios div.titulo{cursor:default; font:normal 17px/22px 'TheSans', 'Arial';color:#1da3d6;}
+div.caja001 div.subtitulo, div.caja_usuarios  div.subtitulo{cursor:default; padding-bottom:5px;  border-bottom:1px solid #e7e7e7; margin-bottom:6px; font-size:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif;}
+
+
+
+div.caja001 div.gris{background-color:#f7f7f7; margin-bottom:3px;}
+
+div.caja001 div.caja_numeral, div.caja001 div.caja_detalle, div.caja001  div.caja_monto{ font-size:12px; line-height:15px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:14px 0;}
+div.caja001  div.caja_numeral{float:left; width:45px; text-align:center;}
+div.caja001  div.caja_detalle{float:left; width:180px;}
+div.caja001  div.caja_monto{float:right; width:60px; text-align:right; margin-right:10px; font-weight:bold;}
+
+div.caja_usuarios{width:278px; border:1px solid #dadada; position:relative; margin-bottom:15px; padding:10px; float:left; }
+div.caja_usuarios div.gris{background-color:#f7f7f7;  border:0px solid blue; margin-bottom:3px;}
+div.caja_usuarios div.caja_detalle, div.caja_usuarios  div.caja_monto{ font-size:12px; line-height:12px; color:#575757;  font-family:Arial, Helvetica, sans-serif; padding:16px 0; border:0px solid orange;}
+div.caja_usuarios  div.caja_numeral{float:left; width:60px; text-align:left; margin:0px; padding:0px; height:45px;}
+div.caja_usuarios  div.caja_detalle{float:left; width:150px;}
+div.caja_usuarios  div.caja_monto{float:right; width:50px; text-align:right; margin-right:10px; font-weight:bold;}
+
+.ajuste{margin-right:17px; }
+/*--------- COLUMNA DERECHA -------------------------------------------*/
+
+		/*----- catalogo de datos ----- */
+div.contenedor div.col_der {width:320px; float:left; }
+div.contenedor div.col_der div.catalogo{width:298px; height:305px;  margin:0 0; border:1px solid #dadada}
+div.contenedor div.col_der div.catalogo div.titulo{cursor:default; padding:5px 0px 5px 10px; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+div.contenedor div.col_der div.catalogo div.fichas{width:280px; height:270px; margin-left:10px; position:relative; overflow: hidden;}
+div.contenedor div.col_der div.catalogo div.fichas div.botones{width:285px; height:25px; }
+
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn1,
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn2,
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn3
+{width:91px; height:25px; cursor:pointer; line-height:2; color:#383838; font-size:12px; font-family:Arial, Helvetica, sans-serif; background:#f1f0f0; float:left; margin-right:3px; text-align:center;transition: background 0.2s;	-moz-transition: background 0.2s;	-webkit-transition: background 0.2s;	-o-transition: background 0.2s; 
+-moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright:3px;
+    -moz-border-radius-bottomleft:3px;
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-top-left-radius:3px;
+    -webkit-border-top-right-radius:3px;
+    -webkit-border-bottom-left-radius:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+}
+
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn1:hover,
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn2:hover,
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn3:hover
+{background:#c9c9c9;}
+
+div.contenedor div.col_der div.catalogo div.fichas div.botones div.btn_sel{width:91px; height:25px; line-height:2; color:#FFF; font-size:12px; font-family:Arial, Helvetica, sans-serif; background:#787878; float:left; margin-right:3px; text-align:center; }
+
+div.contenedor div.col_der div.catalogo div.fichas div.secciones{width:840px; height:250px; position:absolute; top:25px; left:0px;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec1{width:280px; height:250px; margin-top:5px; float:left; }
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec1 a{text-decoration:none; }
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec1 div.item{width:280px; height:45px; margin-top:2px; background:#f7f7f7; float:left;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec1 div.item:hover{background:#ededed;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec1 div.item div.numero{width:45px; height:45px; color:#FFF; line-height:1.3; font-size:30px; font-family: "TheSans"; text-align:center; background:#1b7da2; float:left;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec1 div.item div.link{width:215px; height:35px; color:#325274; padding-left:10px; padding-top:7px; font-size:12px; font-family:Arial, Helvetica, sans-serif; float:left; }
+
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec2{width:280px; height:250px; margin-top:5px; float:left; }
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec2 a{text-decoration:none; }
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec2 div.item{width:280px; height:45px; margin-top:2px; background:#f7f7f7; float:left;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec2 div.item:hover{background:#ededed;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec2 div.item div.numero{width:45px; height:45px; color:#FFF; line-height:1.3; font-size:30px; font-family: "TheSans"; text-align:center; background:#3da5a6; float:left;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec2 div.item div.link{width:215px; height:35px; color:#325274; padding-left:10px; padding-top:7px; font-size:12px; font-family:Arial, Helvetica, sans-serif; float:left; }
+
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec3{width:280px; height:250px; margin-top:5px; float:left; }
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec3 a{text-decoration:none; }
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec3 div.item{width:280px; height:45px; margin-top:2px; background:#f7f7f7; float:left;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec3 div.item:hover{background:#ededed;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec3 div.item div.numero{width:45px; height:45px; color:#FFF; line-height:1.3; font-size:30px; font-family: "TheSans"; text-align:center; background:#1da3d6; float:left;}
+div.contenedor div.col_der div.catalogo div.fichas div.secciones div.sec3 div.item div.link{width:215px; height:35px; color:#325274; padding-left:10px; padding-top:7px; font-size:12px; font-family:Arial, Helvetica, sans-serif; float:left; }
+
+div.contenedor div.col_der div.catalogo div.footer{position:relative;}
+div.contenedor div.col_der div.catalogo div.footer a{text-decoration:none;}
+div.contenedor div.col_der div.catalogo div.footer div.vermas{width:95px; height:25px; cursor:pointer; position:absolute; top:-298; left:214; text-align:center; line-height:24px; font-size:12px; color:#335577; font-family:Arial, Helvetica, sans-serif;}
+div.contenedor div.col_der div.catalogo div.footer div.vermas:hover{ text-decoration:underline;}
+
+		/*----- banner ----- */
+		
+div.contenedor div.col_der div.banner{margin:10 20; }
+
+		/*----- Especiales ----- */
+
+div.contenedor div.col_der div.especiales{width:298px; height:auto; margin:0 0; border:1px solid #dadada; position:relative}
+div.contenedor div.col_der div.especiales div.titulo{padding:8px 0px 5px 10px; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+div.contenedor div.col_der div.especiales div.banners img{margin-left:10px; margin-bottom:5px; width:280px; height:95px;}
+		
+		/*----- covert ----- */
+		
+div.contenedor div.col_der div.covert{width:298px; height:390px; margin:10 0; border:1px solid #dadada; position:relative}
+div.contenedor div.col_der div.covert div.titulo{padding:8px 0px 5px 10px; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+div.contenedor div.col_der div.covert iframe{margin-left:10px; margin-bottom:5px;}
+div.contenedor div.col_der div.covert a{text-decoration:none; cursor:pointer;}
+div.contenedor div.col_der div.covert div.btn{width:95px; height:25px; text-align:center; line-height:2; color:#fff; background:#20a3d1; font-size:12px; font-family:Arial, Helvetica, sans-serif; margin-left:107px; margin-bottom:5px; 
+
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright:3px;
+    -moz-border-radius-bottomleft:3px;
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-top-left-radius:3px;
+    -webkit-border-top-right-radius:3px;
+    -webkit-border-bottom-left-radius:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+
+transition: background 0.2s;	-moz-transition: background 0.2s;	-webkit-transition: background 0.2s;	-o-transition: background 0.2s;
+}
+div.contenedor div.col_der div.covert div.btn:hover{background:#1a799b;}
+
+		/*----- Contacto ----- */
+		
+div.contenedor div.col_der div.contacto{width:298px; height:139px; margin:0 0; border:1px solid #dadada; margin-bottom:10px; position:relative}
+div.contenedor div.col_der div.contacto a{text-decoration:none; cursor:pointer;}
+div.contenedor div.col_der div.contacto div.titulo{padding:8px 0px 5px 10px; cursor:default; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+
+div.contenedor div.col_der div.contacto div.facebook{width:298px; height:52px; border-top:1px solid #dadada; background:#f4f4f4}
+div.contenedor div.col_der div.contacto div.facebook:hover{background:#d2e5eb}
+div.contenedor div.col_der div.contacto div.facebook div.texto{color:#335475; padding:15px; font-size:14px; font-family: "TheSans"; float:left; }
+div.contenedor div.col_der div.contacto div.facebook div.imagen{width:50px; height:45px; margin-right:5px; margin-top:3px; float:right;}
+
+div.contenedor div.col_der div.contacto div.mail{width:298px; height:52px; border-top:1px solid #dadada; background:#e9e9e9}
+div.contenedor div.col_der div.contacto div.mail:hover{background:#d2e5eb}
+div.contenedor div.col_der div.contacto div.mail div.texto{color:#335475; padding:15px; font-size:14px; font-family: "TheSans"; float:left; }
+div.contenedor div.col_der div.contacto div.mail div.imagen{width:38px; height:23px; margin-right:11px; margin-top:14px;  float:right;}
+
+div.contenedor div.col_der div.contacto div.equipo{width:298px; height:52px; border-top:1px solid #dadada; background:#dbdbdb}
+div.contenedor div.col_der div.contacto div.equipo:hover{background:#d2e5eb}
+div.contenedor div.col_der div.contacto div.equipo div.texto{color:#335475; padding:15px; font-size:14px; font-family: "TheSans"; float:left; }
+div.contenedor div.col_der div.contacto div.equipo div.imagen{width:42px; height:27px; margin-right:8px; margin-top:12px; float:right;}
+
+		
+		/*----- youtube ----- */
+		
+div.contenedor div.col_der div.youtube{width:298px; height:320px; margin:0 0; margin-bottom:10px; border:1px solid #dadada;  position:relative}
+div.contenedor div.col_der div.youtube a{text-decoration:none; cursor:pointer; }
+div.contenedor div.col_der div.youtube div.titulo{padding:8px 0px 5px 10px; cursor:default; font-size:15px; color:#32a9d3; font-family: "TheSans"; }
+div.contenedor div.col_der div.youtube div.vermas{width:95px; height:25px; cursor:pointer; position:absolute; top:4; left:214; text-align:center; line-height:24px; font-size:12px; color:#335577; font-family:Arial, Helvetica, sans-serif;}
+div.contenedor div.col_der div.youtube div.vermas:hover{ text-decoration:underline;}
+
+		/*----- firmas ----- */
+		
+div.contenedor div.col_der div.firmas{width:298px; height:245px; margin:0 0; border-top:1px solid #dadada; padding-top:10px; position:relative}
+div.contenedor div.col_der div.firmas div.logo1{width:280px; height:64px; cursor:pointer; margin-left:13px;  float:left;}
+div.contenedor div.col_der div.firmas div.logo2{width:47px; height:190px; cursor:pointer; float:left;}
+
+
+/* dropdown */
+.tt-dropdown-menu {
+  width: 220px;
+  margin-top: 10px;
+  padding: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+div.caja001:nth-child(2) {
+  margin-right: 11px;
+}

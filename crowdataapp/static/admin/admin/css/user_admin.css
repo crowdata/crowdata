@@ -1,0 +1,16 @@
+#documentsetformentry_set-group table thead th:first-child {
+  width: 40%;
+}
+#documentsetformentry_set-group table thead th:nth-child(2), #documentsetformentry_set-group table thead th:nth-child(3) {
+  width: 25%;
+}
+
+
+#documentsetformentry_set-group table li input[type="checkbox"] {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.verify {
+  text-decoration: underline;
+}
