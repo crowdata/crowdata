@@ -48,12 +48,12 @@ VOLUME ["/data"]
 # Install requirements
 RUN apt-get install -yq python-dev python-pip libgeos-dev
 
-# Install python deps
-RUN pip install -r requirements.txt
-
 # Add the crowdata application to the image
 ADD . /crowdata
 WORKDIR /crowdata
+
+# Install python deps
+RUN pip install -r requirements.txt
 
 # Import all the variables
 ENV crowdata_HOST $crowdata_HOST
